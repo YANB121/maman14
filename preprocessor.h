@@ -2,7 +2,7 @@
 #ifndef MAMN14_PREPROCESSOR_H
 #define MAMN14_PREPROCESSOR_H
 
-#include "hashmap.h"
+#include "utils/hashmap.h"
 
 FILE *create_macro_file(char *);
 

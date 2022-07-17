@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "preprocessor.h"
-#include "hashmap.h"
+#include "utils/hashmap.h"
 
 #define ENDMACRO "endmacro"
 #define MACRO "macro"
@@ -35,7 +35,8 @@ void span_macros(char *path) {
 
 void fetch_write_macros(FILE *file, HashTable *hashTable, char *path) {
     int bufferLength = 255;
-    char buffer[255];
+    char buffer[bufferLength];
+
 
     char delimiter[] = " ";
     char *temp_copy;
