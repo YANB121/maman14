@@ -1,11 +1,10 @@
-#include <process.h>
 #include <stdlib.h>
 #include "assembler_iterations.h"
 #include "utils/hashmap.h"
 #include "utils/assembler_utils.h"
 #include "utils/file_utils.h"
 #include <string.h>
-
+#include "utils/constants.h"
 
 #define  LINE_LENGTH 100
 
@@ -27,6 +26,7 @@ void first_iteration(char *program_file_path) {
         line_num++;
         struct LineAndMetadata *lineAndMetadata = initialize_line_and_metadata(line, line_num);
 
+        //TODO:done
         char *symbol = get_symbol(line); //return the symbol, null if line is not starting with symbol
 
         if (symbol != NULL)
@@ -110,18 +110,17 @@ char *get_instruction(struct LineAndMetadata *lineAndMetadata) {
 }
 
 char *validate_instruction(char *word) {
-    char starting_char = *word;
-    if (starting_char != ".")
+    char starting_char = *word; //fetch the first character
+    char *valid_word = ht_search(dataInstructions, word); //find the instruction in the instruction table
+    if (starting_char != '.') //if the word doesn't start with "."
         return NULL;
-    else if (){
-
-
-    }
+    else
+        return valid_word; //NULL if its invalid instruction.
 
 }
 
 
-void second_iteration(char *) {};
+void second_iteration(char *file_path) {};
 
 void *handle_operation(char *line, int contains_symbol, struct SymbolsSection *symbolsSection) {};
 

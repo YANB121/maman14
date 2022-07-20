@@ -3,6 +3,8 @@
 #include "preprocessor.h"
 #include "string.h"
 #include "assembler_iterations.h"
+#include "utils/constants.h"
+
 
 int main(int size, char *argv[]) {
 
@@ -31,16 +33,23 @@ int main(int size, char *argv[]) {
 //    str= strtok(str,":");
 //    printf("%s",str);
 
-    char *str = malloc(sizeof(str));
-    strcpy(str, "HELLO: .string \"AB:C\"");
+//    char *str = malloc(sizeof(str));
+//    strcpy(str, "HELLO: .string \"AB:C\"");
 //    char* sym = get_symbol(str);
 //    if(sym != NULL)
 //        printf("%s",sym);
 //    else
 //        printf("get null");
-    char temp = *str;
-    printf("%c\n", temp);
-    printf("%s", str);
+//    char temp = *str;
+//    printf("%c\n", temp);
+//    printf("%s", str);
+
+    initialize_names_tables();
+    HashTable *temp = registers;
+    HashTable *temp1 = dataInstructions;
+    char *word = validate_instruction(".struct");
+    printf("%s\n", word);
+
     return 0;
 }
 

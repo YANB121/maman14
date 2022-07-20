@@ -1,5 +1,5 @@
 
-#include <process.h>
+#include <stdlib.h>
 #include "file_utils.h"
 
 FILE *open_read_file_else_exit(char *file_path) {

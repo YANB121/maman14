@@ -113,7 +113,7 @@ FILE *create_macro_file(char *path2) {
 
 void macro_file_path(char *path) {
     char *temp = calloc(1, sizeof(path));
-    temp = strrev(temp);
+   // temp = strrev(temp);
 
     char *reminder;
 }

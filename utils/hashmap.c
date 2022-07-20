@@ -4,16 +4,14 @@
 #include "hashmap.h"
 
 
-unsigned long hash_function(char *input,int size) {
-   unsigned long i;
+unsigned long hash_function(char *input, int size) {
+    unsigned long i;
     i = 0;
     for (int j = 0; input[j]; j++)
-       i += input[j];
-   return i % size;
- //  return 0l;
+        i += input[j];
+    return i % size;
+    //  return 0l;
 }
-
-
 
 
 struct Ht_item {
@@ -22,17 +20,20 @@ struct Ht_item {
 };
 
 
-typedef struct HashTable HashTable;
-typedef struct LinkedList LinkedList;
+//typedef struct HashTable HashTable;
+//typedef struct LinkedList LinkedList;
 
-struct HashTable {
+typedef struct LinkedList {
+    Ht_item *item;
+    LinkedList *next;
+} LinkedList;
 
+typedef struct HashTable {
     Ht_item **items;
     int size;
     int count;
     LinkedList **overflow_buckets;
-};
-
+} HashTable;
 
 
 Ht_item *create_item(char *key, char *value) {
@@ -99,11 +100,6 @@ void free_table(HashTable *table) {
 
 typedef struct LinkedList LinkedList;
 
-
-struct LinkedList {
-    Ht_item *item;
-    LinkedList *next;
-};
 
 LinkedList *allocate_list() {
     LinkedList *list = (LinkedList *) malloc(sizeof(LinkedList));
@@ -193,7 +189,7 @@ void ht_insert(HashTable *table, char *key, char *value) {
     Ht_item *item = create_item(key, value);
 
     // Compute the index
-    unsigned long index = hash_function(key,table->size);
+    unsigned long index = hash_function(key, table->size);
 
     Ht_item *current_item = table->items[index];
 
@@ -225,7 +221,7 @@ void ht_insert(HashTable *table, char *key, char *value) {
 
 char *ht_search(HashTable *table, char *key) {
 
-    int index = hash_function(key,table->size);
+    int index = hash_function(key, table->size);
     Ht_item *item = table->items[index];
 
 
