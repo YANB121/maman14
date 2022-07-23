@@ -44,7 +44,7 @@ int main(int size, char *argv[]) {
 //    printf("%c\n", temp);
 //    printf("%s", str);
 
-    initialize_names_tables();
+    initialize_constant_tables();
     HashTable *temp = registers;
     HashTable *temp1 = dataInstructions;
     char *word = validate_instruction(".struct");

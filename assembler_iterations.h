@@ -16,16 +16,17 @@ typedef struct LineAndMetadata {
     int is_contains_label;
 };
 
+char *get_opcode(struct LineAndMetadata *);
 
-void first_iteration(char *);
+int first_iteration(char *);
 
 void second_iteration(char *);
 
-struct LineAndMetadata* initialize_line_and_metadata(char* line, int line_number);
+struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number);
 
 char *get_symbol(char *line);
 
-char *get_instruction(struct LineAndMetadata*);
+char *get_instruction(struct LineAndMetadata *);
 
 void *handle_data_instruction(char *line, int contains_symbol, struct SymbolsSection *symbolsSection);
 
