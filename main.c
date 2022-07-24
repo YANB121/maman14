@@ -45,10 +45,18 @@ int main(int size, char *argv[]) {
 //    printf("%s", str);
 
     initialize_constant_tables();
-    HashTable *temp = registers;
-    HashTable *temp1 = dataInstructions;
-    char *word = validate_instruction(".struct");
-    printf("%s\n", word);
+    struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
+    char *line = malloc(sizeof(line));
+    lineAndMetadata->line = line;
+    strcpy(line, "acdd");
+    printf("%s\n", lineAndMetadata->line);
+
+//    char *word = get_instruction(lineAndMetadata);
+    char *word = get_opcode(lineAndMetadata);
+    if (word == NULL)
+        printf("null");
+    else
+        printf("%s\n", word);
 
     return 0;
 }

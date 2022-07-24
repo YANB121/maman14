@@ -16,6 +16,8 @@ typedef struct LineAndMetadata {
     int is_contains_label;
 };
 
+int is_empty_or_comment(char *);
+
 char *get_opcode(struct LineAndMetadata *);
 
 int first_iteration(char *);

@@ -20,11 +20,13 @@ int first_iteration(char *program_file_path) {
     char *line = malloc(sizeof(char) * LINE_LENGTH);
     int line_num = 0; //indicates the current line number
 
-
-
-
     while (fgets(line, LINE_LENGTH, assembly_file)) {
         line_num++;
+
+        //first check if its empty line or comment line, if so continue to the next line.
+        if (is_empty_or_comment(line))
+            continue;
+
         struct LineAndMetadata *lineAndMetadata = initialize_line_and_metadata(line, line_num);
 
         //TODO:done
@@ -48,6 +50,15 @@ int first_iteration(char *program_file_path) {
     return is_error_occurred;//return 1 if any error occurred so the assembler won't proceed to the second iteration
 
 }
+
+int is_empty_or_comment(char *line) {
+    char first_char = line;
+    if (first_char == '\n' || first_char == ';')
+        return 1;
+    else
+        return 0;
+}
+
 
 char *get_opcode(struct LineAndMetadata *lineAndMetadata) {
     char *line_copy = malloc(sizeof(line_copy));
