@@ -184,7 +184,7 @@ void handle_collision(HashTable *table, unsigned long index, Ht_item *item) {
 }
 
 
-void ht_insert(HashTable *table, char *key, char *value) {
+void ht_insert(HashTable *table, char *key, void *value) {
 
     Ht_item *item = create_item(key, value);
 

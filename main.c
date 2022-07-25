@@ -65,7 +65,7 @@ int main(int size, char *argv[]) {
 
 
 
-/*void test(){
+void test(){
 
     int SIZE=10;
     printf("%d\n",SIZE);
@@ -79,4 +79,4 @@ int main(int size, char *argv[]) {
     print_search(ht, "3");
 
     print_table(ht);
-    free_table(ht); */
+    free_table(ht); }

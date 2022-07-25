@@ -29,7 +29,7 @@ LinkedList *linkedlist_insert(LinkedList *list, Ht_item *item);
 Ht_item *linkedlist_remove(LinkedList *list);
 void free_linkedlist(LinkedList *list);
 void handle_collision(HashTable *table, unsigned long index, Ht_item *item);
-void ht_insert(HashTable *table, char *key, char *value);
+void ht_insert(HashTable *table, char *key, void *value);
 char *ht_search(HashTable *table, char *key);
 void print_search(HashTable *table, char *key);
 void print_table(HashTable *table);
