@@ -225,6 +225,30 @@ preprocessor.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/preprocessor.c.s
 .PHONY : preprocessor.c.s
 
+utils/assembler_addressing_utils.o: utils/assembler_addressing_utils.c.o
+.PHONY : utils/assembler_addressing_utils.o
+
+# target to build an object file
+utils/assembler_addressing_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/assembler_addressing_utils.c.o
+.PHONY : utils/assembler_addressing_utils.c.o
+
+utils/assembler_addressing_utils.i: utils/assembler_addressing_utils.c.i
+.PHONY : utils/assembler_addressing_utils.i
+
+# target to preprocess a source file
+utils/assembler_addressing_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/assembler_addressing_utils.c.i
+.PHONY : utils/assembler_addressing_utils.c.i
+
+utils/assembler_addressing_utils.s: utils/assembler_addressing_utils.c.s
+.PHONY : utils/assembler_addressing_utils.s
+
+# target to generate assembly for a file
+utils/assembler_addressing_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/assembler_addressing_utils.c.s
+.PHONY : utils/assembler_addressing_utils.c.s
+
 utils/assembler_utils.o: utils/assembler_utils.c.o
 .PHONY : utils/assembler_utils.o
 
@@ -272,6 +296,30 @@ utils/constants.s: utils/constants.c.s
 utils/constants.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/constants.c.s
 .PHONY : utils/constants.c.s
+
+utils/errors_utils.o: utils/errors_utils.c.o
+.PHONY : utils/errors_utils.o
+
+# target to build an object file
+utils/errors_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/errors_utils.c.o
+.PHONY : utils/errors_utils.c.o
+
+utils/errors_utils.i: utils/errors_utils.c.i
+.PHONY : utils/errors_utils.i
+
+# target to preprocess a source file
+utils/errors_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/errors_utils.c.i
+.PHONY : utils/errors_utils.c.i
+
+utils/errors_utils.s: utils/errors_utils.c.s
+.PHONY : utils/errors_utils.s
+
+# target to generate assembly for a file
+utils/errors_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MAMN14.dir/build.make CMakeFiles/MAMN14.dir/utils/errors_utils.c.s
+.PHONY : utils/errors_utils.c.s
 
 utils/file_utils.o: utils/file_utils.c.o
 .PHONY : utils/file_utils.o
@@ -342,12 +390,18 @@ help:
 	@echo "... preprocessor.o"
 	@echo "... preprocessor.i"
 	@echo "... preprocessor.s"
+	@echo "... utils/assembler_addressing_utils.o"
+	@echo "... utils/assembler_addressing_utils.i"
+	@echo "... utils/assembler_addressing_utils.s"
 	@echo "... utils/assembler_utils.o"
 	@echo "... utils/assembler_utils.i"
 	@echo "... utils/assembler_utils.s"
 	@echo "... utils/constants.o"
 	@echo "... utils/constants.i"
 	@echo "... utils/constants.s"
+	@echo "... utils/errors_utils.o"
+	@echo "... utils/errors_utils.i"
+	@echo "... utils/errors_utils.s"
 	@echo "... utils/file_utils.o"
 	@echo "... utils/file_utils.i"
 	@echo "... utils/file_utils.s"

@@ -62,22 +62,25 @@ CMakeFiles/MAMN14.dir/assembler_iterations.c.o: ../assembler_iterations.c \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/strings.h \
-  ../utils/constants.h
+  /usr/include/libgen.h \
+  ../utils/constants.h \
+  ../utils/errors_utils.h
 
 CMakeFiles/MAMN14.dir/first_pass.c.o: ../first_pass.c \
   /usr/include/stdc-predef.h
 
 CMakeFiles/MAMN14.dir/main.c.o: ../main.c \
   /usr/include/stdc-predef.h \
-  ../utils/hashmap.h \
-  /usr/include/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/libgen.h \
   /usr/include/features.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  ../utils/hashmap.h \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/stdarg.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -128,7 +131,8 @@ CMakeFiles/MAMN14.dir/main.c.o: ../main.c \
   ../assembler_iterations.h \
   ../utils/assembler_utils.h \
   ../utils/hashmap.h \
-  ../utils/constants.h
+  ../utils/constants.h \
+  ../utils/file_utils.h
 
 CMakeFiles/MAMN14.dir/preprocessor.c.o: ../preprocessor.c \
   /usr/include/stdc-predef.h \
@@ -188,6 +192,10 @@ CMakeFiles/MAMN14.dir/preprocessor.c.o: ../preprocessor.c \
   /usr/include/strings.h \
   ../preprocessor.h \
   ../utils/hashmap.h
+
+CMakeFiles/MAMN14.dir/utils/assembler_addressing_utils.c.o: ../utils/assembler_addressing_utils.c \
+  /usr/include/stdc-predef.h \
+  ../utils/assembler_addressing_utils.h
 
 CMakeFiles/MAMN14.dir/utils/assembler_utils.c.o: ../utils/assembler_utils.c \
   /usr/include/stdc-predef.h \
@@ -299,6 +307,10 @@ CMakeFiles/MAMN14.dir/utils/constants.c.o: ../utils/constants.c \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   ../utils/constants.h
 
+CMakeFiles/MAMN14.dir/utils/errors_utils.c.o: ../utils/errors_utils.c \
+  /usr/include/stdc-predef.h \
+  ../utils/errors_utils.h
+
 CMakeFiles/MAMN14.dir/utils/file_utils.c.o: ../utils/file_utils.c \
   /usr/include/stdc-predef.h \
   /usr/include/stdlib.h \
@@ -342,6 +354,10 @@ CMakeFiles/MAMN14.dir/utils/file_utils.c.o: ../utils/file_utils.c \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
+  /usr/include/string.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/strings.h \
   ../utils/file_utils.h \
   /usr/include/stdio.h \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/stdarg.h \
@@ -414,11 +430,19 @@ CMakeFiles/MAMN14.dir/utils/hashmap.c.o: ../utils/hashmap.c \
 
 ../utils/hashmap.c:
 
+../utils/errors_utils.c:
+
+../utils/assembler_addressing_utils.h:
+
 ../preprocessor.h:
 
 ../first_pass.c:
 
+../utils/errors_utils.h:
+
 ../utils/constants.h:
+
+/usr/include/libgen.h:
 
 /usr/include/strings.h:
 
@@ -511,6 +535,8 @@ CMakeFiles/MAMN14.dir/utils/hashmap.c.o: ../utils/hashmap.c \
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/endian.h:
+
+../utils/assembler_addressing_utils.c:
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 

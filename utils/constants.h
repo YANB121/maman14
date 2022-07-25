@@ -8,6 +8,8 @@ struct HashTable *dataInstructions;
 struct HashTable *opcodeAndDecimal;
 struct HashTable *additionalInstructions;
 
+
+
 void initialize_additional_instructions_map();
 void initialize_constant_tables();
 void initialize_opcode_table();

@@ -1,12 +1,22 @@
 
+#include <libgen.h>
 #include "utils/hashmap.h"
 #include "preprocessor.h"
 #include "string.h"
 #include "assembler_iterations.h"
 #include "utils/constants.h"
+#include "utils/file_utils.h"
 
+void test_map();
+
+void test_arr();
+
+void test_set_0();
+
+void test();
 
 int main(int size, char *argv[]) {
+    initialize_constant_tables();
 
 //    int i = 1;
 //    for (i; i < size; i++) {
@@ -44,32 +54,79 @@ int main(int size, char *argv[]) {
 //    printf("%c\n", temp);
 //    printf("%s", str);
 
-    initialize_constant_tables();
-    struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
-    char *line = malloc(sizeof(line));
-    lineAndMetadata->line = line;
-    strcpy(line, "acdd");
-    printf("%s\n", lineAndMetadata->line);
+//    struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
+//    char *line = malloc(sizeof(line));
+//    lineAndMetadata->line = line;
+//    strcpy(line, "mov");
+//    printf("%s\n", lineAndMetadata->line);
 
-//    char *word = get_instruction(lineAndMetadata);
-    char *word = get_opcode(lineAndMetadata);
-    if (word == NULL)
-        printf("null");
-    else
-        printf("%s\n", word);
+//    char *word = get_data_instruction(lineAndMetadata);
+//    char *word = get_opcode(lineAndMetadata);
+//    if (word == NULL)
+//        printf("null");
+//    else
+//        printf("%s\n", word);
+//
+//    printf("\n\n\n");
+//    strcpy(word, "/home/ub-l/maman14.abcd");
+//    char *file_word = basename(word);
+//    printf("%s\n", file_word);
+//    printf("%s\n", word);
+//    printf("%s\n", word);
+//    char *new_extension = get_name_with_new_file_extension(word, "eee", 66);
+//    if (new_extension != NULL) {
+//        printf("%s\n", new_extension);
+//    }
+//    test_map();
+
+    //test_arr();
+    test_set_0();
 
     return 0;
 }
 
 
+void test() {
+    int *counter_and_type = calloc(2, sizeof(int));
+    counter_and_type[0] = 6;
+    counter_and_type[1] = 7;
+    printf("0- %d,1- %d", counter_and_type[0], counter_and_type[1]);
+//    ht_insert(labelSection->label_table, lineAndMetadata->label, counter_and_type);
 
 
+}
 
-void test(){
 
-    int SIZE=10;
-    printf("%d\n",SIZE);
-    HashTable* ht = create_table(SIZE);
+void test_set_0() {
+    struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
+//    lineAndMetadata->errors_codes = calloc(10, sizeof(int));
+    for (int i = 0; i < 10; i++)
+        printf("%d\n", lineAndMetadata->errors_codes[i]);
+
+    printf("---------------------------------\n");
+
+    memset(lineAndMetadata->errors_codes, 0, ERROR_ARRAY_SIZE * sizeof(int) );
+    for (int i = 0; i < 10; i++)
+        printf("%d\n", (lineAndMetadata->errors_codes)[i]);
+
+}
+
+
+void test_arr() {
+    int arr[10];
+    for (int i = 0; i < 10; i++)
+        printf("%d\n", arr[i]);
+
+}
+
+
+void test_map() {
+
+    int SIZE = 10;
+    printf("%d\n", SIZE);
+    HashTable *ht = create_table(SIZE);
+
+
     ht_insert(ht, "1", "First address");
     ht_insert(ht, "2", "Second address");
     ht_insert(ht, "3", "Third address");
@@ -79,4 +136,9 @@ void test(){
     print_search(ht, "3");
 
     print_table(ht);
-    free_table(ht); }
+
+    free_table(ht);
+}
+
+
+

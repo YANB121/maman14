@@ -53,4 +53,6 @@ CMakeFiles/MAMN14.dir/assembler_iterations.c.o: \
  /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/strings.h /home/ub-l/maman14/utils/constants.h
+ /usr/include/strings.h /usr/include/libgen.h \
+ /home/ub-l/maman14/utils/constants.h \
+ /home/ub-l/maman14/utils/errors_utils.h

@@ -94,6 +94,12 @@
 		<Unit filename="/home/ub-l/maman14/preprocessor.h">
 			<Option target="MAMN14"/>
 		</Unit>
+		<Unit filename="/home/ub-l/maman14/utils/assembler_addressing_utils.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="/home/ub-l/maman14/utils/assembler_addressing_utils.h">
+			<Option target="MAMN14"/>
+		</Unit>
 		<Unit filename="/home/ub-l/maman14/utils/assembler_utils.c">
 			<Option target="MAMN14"/>
 		</Unit>
@@ -104,6 +110,12 @@
 			<Option target="MAMN14"/>
 		</Unit>
 		<Unit filename="/home/ub-l/maman14/utils/constants.h">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="/home/ub-l/maman14/utils/errors_utils.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="/home/ub-l/maman14/utils/errors_utils.h">
 			<Option target="MAMN14"/>
 		</Unit>
 		<Unit filename="/home/ub-l/maman14/utils/file_utils.c">

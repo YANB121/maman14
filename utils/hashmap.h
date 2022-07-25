@@ -19,7 +19,7 @@ typedef struct HashTable HashTable;
 typedef struct LinkedList LinkedList;
 typedef struct Ht_item Ht_item;
 void free_linkedlist(LinkedList *pList);
-Ht_item *create_item(char *key, char *value);
+Ht_item *create_item(char *key, void *value);
 LinkedList **create_overflow_buckets(HashTable *table);
 void free_overflow_buckets(HashTable *table);
 HashTable *create_table(int size);
@@ -30,7 +30,7 @@ Ht_item *linkedlist_remove(LinkedList *list);
 void free_linkedlist(LinkedList *list);
 void handle_collision(HashTable *table, unsigned long index, Ht_item *item);
 void ht_insert(HashTable *table, char *key, void *value);
-char *ht_search(HashTable *table, char *key);
+void * ht_search(HashTable *table, char *key);
 void print_search(HashTable *table, char *key);
 void print_table(HashTable *table);
 

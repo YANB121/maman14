@@ -1,21 +1,20 @@
-
 #ifndef MAMN14_ASSEMBLER_UTILS_H
 #define MAMN14_ASSEMBLER_UTILS_H
 
 #include "hashmap.h"
 
-struct SymbolsSection {
+struct LabelSection {
     int dc;
     int ic;
-    HashTable *symbol_table;
+    HashTable *label_table;
+
 };
 
-struct SymbolEntry {
-    char *type; // type of data/code
+struct LabelEntry {
+    int *type; // type of data/code
     int counter;// the relevant counter value (ic/dc)
 };
 
-
-struct SymbolsSection *initialize_symbol_section();
+struct LabelSection *initialize_label_section();
 
 #endif //MAMN14_ASSEMBLER_UTILS_H

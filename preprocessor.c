@@ -22,7 +22,7 @@ void span_macros(char *path) {
 
     FILE *file = fopen(path, "r");
 
-    if (!file) { //test if the input file is valid
+    if (!file) { //test_map if the input file is valid
         printf("input file not found");
         exit(1);
     }

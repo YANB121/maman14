@@ -16,7 +16,7 @@ unsigned long hash_function(char *input, int size) {
 
 struct Ht_item {
     char *key;
-    char *value;
+    void *value;
 };
 
 
@@ -36,14 +36,17 @@ typedef struct HashTable {
 } HashTable;
 
 
-Ht_item *create_item(char *key, char *value) {
+Ht_item *create_item(char *key, void *value) {
 
     Ht_item *item = (Ht_item *) malloc(sizeof(Ht_item));
     item->key = (char *) malloc(strlen(key) + 1);
-    item->value = (char *) malloc(strlen(value) + 1);
+    item->value = value;
+//    item->value = malloc(sizeof(value));
+//    item->value = (char *) malloc(strlen(value) + 1);
 
     strcpy(item->key, key);
-    strcpy(item->value, value);
+//    memcpy(item->value, value, sizeof(value));
+//    strcpy(item->value, value);
 
     return item;
 }
@@ -219,11 +222,10 @@ void ht_insert(HashTable *table, char *key, void *value) {
     }
 }
 
-char *ht_search(HashTable *table, char *key) {
+void * ht_search(HashTable *table, char *key) {
 
     int index = hash_function(key, table->size);
     Ht_item *item = table->items[index];
-
 
     if (item != NULL) {
         if (strcmp(item->key, key) == 0)
