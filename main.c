@@ -68,19 +68,22 @@ int main(int size, char *argv[]) {
 //        printf("%s\n", word);
 //
 //    printf("\n\n\n");
-//    strcpy(word, "/home/ub-l/maman14.abcd");
+    char *word = malloc(1000);
+
+    strcpy(word, "/home/ub-l/maman14.abcd");
 //    char *file_word = basename(word);
+
 //    printf("%s\n", file_word);
+    printf("%s\n", word);
 //    printf("%s\n", word);
-//    printf("%s\n", word);
-//    char *new_extension = get_name_with_new_file_extension(word, "eee", 66);
-//    if (new_extension != NULL) {
-//        printf("%s\n", new_extension);
-//    }
+    char *new_extension = get_name_with_new_file_extension(word, "eee", 4);
+    if (new_extension != NULL) {
+        printf("%s\n", new_extension);
+    }
 //    test_map();
 
     //test_arr();
-    test_set_0();
+//    test_set_0();
 
     return 0;
 }
@@ -96,6 +99,11 @@ void test() {
 
 }
 
+void test_find_extension_point() {
+    char *word = malloc(100);
+    strcpy(word, "path.12");
+    int pos = find_extension_point (word);
+}
 
 void test_set_0() {
     struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
@@ -105,7 +113,7 @@ void test_set_0() {
 
     printf("---------------------------------\n");
 
-    memset(lineAndMetadata->errors_codes, 0, ERROR_ARRAY_SIZE * sizeof(int) );
+    memset(lineAndMetadata->errors_codes, 0, ERROR_ARRAY_SIZE * sizeof(int));
     for (int i = 0; i < 10; i++)
         printf("%d\n", (lineAndMetadata->errors_codes)[i]);
 
