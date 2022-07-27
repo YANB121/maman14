@@ -4,7 +4,7 @@
 #include "utils/assembler_utils.h"
 #include "utils/file_utils.h"
 #include <string.h>
-#include <libgen.h>
+//#include <libgen.h>
 #include "utils/constants.h"
 #include "utils/errors_utils.h"
 

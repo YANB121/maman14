@@ -1,7 +1,5 @@
 
-#include <libgen.h>
 #include "utils/hashmap.h"
-#include "preprocessor.h"
 #include "string.h"
 #include "assembler_iterations.h"
 #include "utils/constants.h"
@@ -23,7 +21,6 @@ int main(int size, char *argv[]) {
 //        printf("%s", argv[i]);
 //        span_macros(argv[i]);
 //    }
-
 //    char *str = malloc(sizeof(str));
 //    char *delim = malloc(sizeof(str));
 //    strcpy(str, "HELLO: .string \"AB:C\"");
@@ -102,7 +99,7 @@ void test() {
 void test_find_extension_point() {
     char *word = malloc(100);
     strcpy(word, "path.12");
-    int pos = find_extension_point (word);
+//    int pos = find_extension_point(word);
 }
 
 void test_set_0() {
@@ -124,16 +121,12 @@ void test_arr() {
     int arr[10];
     for (int i = 0; i < 10; i++)
         printf("%d\n", arr[i]);
-
 }
 
-
 void test_map() {
-
     int SIZE = 10;
     printf("%d\n", SIZE);
     HashTable *ht = create_table(SIZE);
-
 
     ht_insert(ht, "1", "First address");
     ht_insert(ht, "2", "Second address");
@@ -144,9 +137,7 @@ void test_map() {
     print_search(ht, "3");
 
     print_table(ht);
-
     free_table(ht);
 }
-
 
 

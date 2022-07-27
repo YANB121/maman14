@@ -8,8 +8,13 @@
 #define MACRO "macro"
 #define SIZE 30
 
+#if defined(_WIN32) || defined(_WIN64)
+//for developing in windows.
+# define strtok_r strtok_s
+#endif
 
-void fetch_write_macros(FILE *file, HashTable *hashTabl, char *);
+
+void fetch_write_macros(FILE *file, HashTable *, char *);
 
 FILE *create_macro_file(char *);
 
@@ -34,8 +39,8 @@ void span_macros(char *path) {
 
 
 void fetch_write_macros(FILE *file, HashTable *hashTable, char *path) {
-    int bufferLength = 255;
-    char buffer[bufferLength];
+    const int bufferLength = 255;
+    char buffer[255];
 
 
     char delimiter[] = " ";
@@ -113,7 +118,7 @@ FILE *create_macro_file(char *path2) {
 
 void macro_file_path(char *path) {
     char *temp = calloc(1, sizeof(path));
-   // temp = strrev(temp);
+    // temp = strrev(temp);
 
     char *reminder;
 }
