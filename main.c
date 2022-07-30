@@ -1,9 +1,9 @@
 
-#include "utils/hashmap.h"
+#include "hashmap.h"
 #include "string.h"
 #include "assembler_iterations.h"
-#include "utils/constants.h"
-#include "utils/file_utils.h"
+#include "constants.h"
+#include "file_utils.h"
 
 void test_map();
 

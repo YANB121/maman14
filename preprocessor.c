@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "preprocessor.h"
-#include "utils/hashmap.h"
+#include "hashmap.h"
 
 #define ENDMACRO "endmacro"
 #define MACRO "macro"

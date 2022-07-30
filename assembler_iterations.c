@@ -1,14 +1,11 @@
 #include <stdlib.h>
 #include "assembler_iterations.h"
-#include "utils/hashmap.h"
-#include "utils/assembler_utils.h"
-#include "utils/file_utils.h"
+#include "hashmap.h"
+#include "assembler_utils.h"
+#include "file_utils.h"
 #include <string.h>
-//#include <libgen.h>
-#include "utils/constants.h"
-#include "utils/errors_utils.h"
-
-
+#include "constants.h"
+#include "errors_utils.h"
 
 
 int first_iteration(char *program_file_path) {
@@ -35,7 +32,6 @@ int first_iteration(char *program_file_path) {
         if (is_empty_or_comment(line))
             continue;
 
-
         //TODO:done
         char *label = get_symbol(line); //return the label, null if line is not starting with label
         struct LineAndMetadata *lineAndMetadata = initialize_line_and_metadata(line, line_num);
@@ -44,6 +40,7 @@ int first_iteration(char *program_file_path) {
             lineAndMetadata->is_contains_label = 1;
             lineAndMetadata->label = label;
         }
+
         //return the instruction type, null if not an instruction line
         char *data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
 
@@ -71,17 +68,17 @@ int is_empty_or_comment(char *line) {
 
 
 char *get_opcode(struct LineAndMetadata *lineAndMetadata) {
-    char *line_copy = malloc(sizeof(char)*LINE_LENGTH);
+    char *line_copy = malloc(sizeof(char) * LINE_LENGTH);
     strcpy(line_copy, lineAndMetadata->line);
 
     if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction word may be the second
         char *word = strtok(line_copy, " ");
         word = strtok(NULL, " ");
-        return ht_search(opcodeAndDecimal, word);
+        return ht_search(get_opcode_and_decimal_map(), word);
 
     } else {
         char *word = strtok(line_copy, " ");
-        return ht_search(opcodeAndDecimal, word);
+        return ht_search(get_opcode_and_decimal_map(), word);
     }
 }
 
@@ -135,7 +132,7 @@ void *handle_data_type_without_symbol(struct LineAndMetadata *line) {}
 
 //checks if the line starts with symbol, if so return the label, else return null.
 char *get_symbol(char *line) {
-    char *line_copy = malloc(sizeof(line));
+    char *line_copy = malloc(sizeof(char) * strlen(line));
     strcpy(line_copy, line);
 
     char *first_word = strtok(line_copy, " ");
@@ -157,18 +154,18 @@ char *get_symbol(char *line) {
 //checks if its data line , if so return the data type (".struct",".data",".string", etc'), else return null.
 char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
 
-    char *line_copy = malloc(sizeof(lineAndMetadata->line));
+    char *line_copy = malloc(sizeof(char) * strlen(lineAndMetadata->line));
     strcpy(line_copy, lineAndMetadata->line);
 
 
     if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction word may be the second
         char *word = strtok(line_copy, " ");
         word = strtok(NULL, " ");
-        return ht_search(dataInstructions,
+        return ht_search(get_data_instruction_map(),
                          word); //find the instruction in the instruction table. if not exist return NULL
     } else {
         char *word = strtok(line_copy, " ");
-        return ht_search(dataInstructions,
+        return ht_search(get_data_instruction_map(),
                          word); //find the instruction in the instruction table. if not exist return NULL
 
 
@@ -180,7 +177,7 @@ char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
 
 char *validate_instruction(char *word) { //TODO: implementation done
     char starting_char = *word; //fetch the first character
-    char *valid_word = ht_search(dataInstructions, word); //find the instruction in the instruction table
+    char *valid_word = ht_search(get_data_instruction_map(), word); //find the instruction in the instruction table
     if (starting_char != '.') //if the word doesn't start with "."
         return NULL;
     else

@@ -1,6 +1,27 @@
 #include "hashmap.h"
 #include "constants.h"
 
+struct HashTable *registers;
+struct HashTable *dataInstructions;
+struct HashTable *opcodeAndDecimal;
+struct HashTable *additionalInstructions;
+
+struct HashTable *get_registers_map() {
+    return registers;
+}
+
+struct HashTable *get_data_instruction_map() {
+    return dataInstructions;
+}
+
+struct HashTable *get_opcode_and_decimal_map() {
+    return opcodeAndDecimal;
+}
+
+struct HashTable *get_additional_instruction_map() {
+    return additionalInstructions;
+}
+
 
 void initialize_constant_tables() {
     initialize_registers_names_map();

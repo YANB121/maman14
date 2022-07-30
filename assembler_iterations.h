@@ -3,8 +3,8 @@
 #define MAMN14_ASSEMBLER_ITERATIONS_H
 
 #include <stdio.h>
-#include "utils/hashmap.h"
-#include "utils/assembler_utils.h"
+#include "hashmap.h"
+#include "assembler_utils.h"
 
 #define ERROR_ARRAY_SIZE 10
 #define  LINE_LENGTH 100

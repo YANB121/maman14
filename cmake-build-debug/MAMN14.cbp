@@ -90,7 +90,34 @@
 		<Unit filename="C:/Users/Lidar/maman14/assembler_iterations.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/first_pass.c">
+		<Unit filename="C:/Users/Lidar/maman14/assembler_utils.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/assembler_utils.h">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/constants.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/constants.h">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/errors_utils.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/errors_utils.h">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/file_utils.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/file_utils.h">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/hashmap.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/hashmap.h">
 			<Option target="MAMN14"/>
 		</Unit>
 		<Unit filename="C:/Users/Lidar/maman14/main.c">
@@ -100,42 +127,6 @@
 			<Option target="MAMN14"/>
 		</Unit>
 		<Unit filename="C:/Users/Lidar/maman14/preprocessor.h">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/assembler_addressing_utils.c">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/assembler_addressing_utils.h">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/assembler_utils.c">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/assembler_utils.h">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/constants.c">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/constants.h">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/errors_utils.c">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/errors_utils.h">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/file_utils.c">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/file_utils.h">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/hashmap.c">
-			<Option target="MAMN14"/>
-		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/utils/hashmap.h">
 			<Option target="MAMN14"/>
 		</Unit>
 		<Unit filename="C:/Users/Lidar/maman14/CMakeLists.txt">

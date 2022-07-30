@@ -1,5 +1,4 @@
-C:/Users/Lidar/maman14/utils/assembler_utils.h
-C:/Users/Lidar/maman14/utils/hashmap.h
+C:/Users/Lidar/maman14/hashmap.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
 C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
@@ -14,3 +13,4 @@ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.
 C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
 C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
+C:/Users/Lidar/maman14/constants.h

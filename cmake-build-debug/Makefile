@@ -142,29 +142,125 @@ assembler_iterations.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\assembler_iterations.c.s
 .PHONY : assembler_iterations.c.s
 
-first_pass.obj: first_pass.c.obj
-.PHONY : first_pass.obj
+assembler_utils.obj: assembler_utils.c.obj
+.PHONY : assembler_utils.obj
 
 # target to build an object file
-first_pass.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\first_pass.c.obj
-.PHONY : first_pass.c.obj
+assembler_utils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\assembler_utils.c.obj
+.PHONY : assembler_utils.c.obj
 
-first_pass.i: first_pass.c.i
-.PHONY : first_pass.i
+assembler_utils.i: assembler_utils.c.i
+.PHONY : assembler_utils.i
 
 # target to preprocess a source file
-first_pass.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\first_pass.c.i
-.PHONY : first_pass.c.i
+assembler_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\assembler_utils.c.i
+.PHONY : assembler_utils.c.i
 
-first_pass.s: first_pass.c.s
-.PHONY : first_pass.s
+assembler_utils.s: assembler_utils.c.s
+.PHONY : assembler_utils.s
 
 # target to generate assembly for a file
-first_pass.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\first_pass.c.s
-.PHONY : first_pass.c.s
+assembler_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\assembler_utils.c.s
+.PHONY : assembler_utils.c.s
+
+constants.obj: constants.c.obj
+.PHONY : constants.obj
+
+# target to build an object file
+constants.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\constants.c.obj
+.PHONY : constants.c.obj
+
+constants.i: constants.c.i
+.PHONY : constants.i
+
+# target to preprocess a source file
+constants.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\constants.c.i
+.PHONY : constants.c.i
+
+constants.s: constants.c.s
+.PHONY : constants.s
+
+# target to generate assembly for a file
+constants.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\constants.c.s
+.PHONY : constants.c.s
+
+errors_utils.obj: errors_utils.c.obj
+.PHONY : errors_utils.obj
+
+# target to build an object file
+errors_utils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\errors_utils.c.obj
+.PHONY : errors_utils.c.obj
+
+errors_utils.i: errors_utils.c.i
+.PHONY : errors_utils.i
+
+# target to preprocess a source file
+errors_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\errors_utils.c.i
+.PHONY : errors_utils.c.i
+
+errors_utils.s: errors_utils.c.s
+.PHONY : errors_utils.s
+
+# target to generate assembly for a file
+errors_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\errors_utils.c.s
+.PHONY : errors_utils.c.s
+
+file_utils.obj: file_utils.c.obj
+.PHONY : file_utils.obj
+
+# target to build an object file
+file_utils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\file_utils.c.obj
+.PHONY : file_utils.c.obj
+
+file_utils.i: file_utils.c.i
+.PHONY : file_utils.i
+
+# target to preprocess a source file
+file_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\file_utils.c.i
+.PHONY : file_utils.c.i
+
+file_utils.s: file_utils.c.s
+.PHONY : file_utils.s
+
+# target to generate assembly for a file
+file_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\file_utils.c.s
+.PHONY : file_utils.c.s
+
+hashmap.obj: hashmap.c.obj
+.PHONY : hashmap.obj
+
+# target to build an object file
+hashmap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\hashmap.c.obj
+.PHONY : hashmap.c.obj
+
+hashmap.i: hashmap.c.i
+.PHONY : hashmap.i
+
+# target to preprocess a source file
+hashmap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\hashmap.c.i
+.PHONY : hashmap.c.i
+
+hashmap.s: hashmap.c.s
+.PHONY : hashmap.s
+
+# target to generate assembly for a file
+hashmap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\hashmap.c.s
+.PHONY : hashmap.c.s
 
 main.obj: main.c.obj
 .PHONY : main.obj
@@ -214,150 +310,6 @@ preprocessor.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\preprocessor.c.s
 .PHONY : preprocessor.c.s
 
-utils\assembler_addressing_utils.obj: utils\assembler_addressing_utils.c.obj
-.PHONY : utils\assembler_addressing_utils.obj
-
-# target to build an object file
-utils\assembler_addressing_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\assembler_addressing_utils.c.obj
-.PHONY : utils\assembler_addressing_utils.c.obj
-
-utils\assembler_addressing_utils.i: utils\assembler_addressing_utils.c.i
-.PHONY : utils\assembler_addressing_utils.i
-
-# target to preprocess a source file
-utils\assembler_addressing_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\assembler_addressing_utils.c.i
-.PHONY : utils\assembler_addressing_utils.c.i
-
-utils\assembler_addressing_utils.s: utils\assembler_addressing_utils.c.s
-.PHONY : utils\assembler_addressing_utils.s
-
-# target to generate assembly for a file
-utils\assembler_addressing_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\assembler_addressing_utils.c.s
-.PHONY : utils\assembler_addressing_utils.c.s
-
-utils\assembler_utils.obj: utils\assembler_utils.c.obj
-.PHONY : utils\assembler_utils.obj
-
-# target to build an object file
-utils\assembler_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj
-.PHONY : utils\assembler_utils.c.obj
-
-utils\assembler_utils.i: utils\assembler_utils.c.i
-.PHONY : utils\assembler_utils.i
-
-# target to preprocess a source file
-utils\assembler_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\assembler_utils.c.i
-.PHONY : utils\assembler_utils.c.i
-
-utils\assembler_utils.s: utils\assembler_utils.c.s
-.PHONY : utils\assembler_utils.s
-
-# target to generate assembly for a file
-utils\assembler_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\assembler_utils.c.s
-.PHONY : utils\assembler_utils.c.s
-
-utils\constants.obj: utils\constants.c.obj
-.PHONY : utils\constants.obj
-
-# target to build an object file
-utils\constants.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\constants.c.obj
-.PHONY : utils\constants.c.obj
-
-utils\constants.i: utils\constants.c.i
-.PHONY : utils\constants.i
-
-# target to preprocess a source file
-utils\constants.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\constants.c.i
-.PHONY : utils\constants.c.i
-
-utils\constants.s: utils\constants.c.s
-.PHONY : utils\constants.s
-
-# target to generate assembly for a file
-utils\constants.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\constants.c.s
-.PHONY : utils\constants.c.s
-
-utils\errors_utils.obj: utils\errors_utils.c.obj
-.PHONY : utils\errors_utils.obj
-
-# target to build an object file
-utils\errors_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\errors_utils.c.obj
-.PHONY : utils\errors_utils.c.obj
-
-utils\errors_utils.i: utils\errors_utils.c.i
-.PHONY : utils\errors_utils.i
-
-# target to preprocess a source file
-utils\errors_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\errors_utils.c.i
-.PHONY : utils\errors_utils.c.i
-
-utils\errors_utils.s: utils\errors_utils.c.s
-.PHONY : utils\errors_utils.s
-
-# target to generate assembly for a file
-utils\errors_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\errors_utils.c.s
-.PHONY : utils\errors_utils.c.s
-
-utils\file_utils.obj: utils\file_utils.c.obj
-.PHONY : utils\file_utils.obj
-
-# target to build an object file
-utils\file_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\file_utils.c.obj
-.PHONY : utils\file_utils.c.obj
-
-utils\file_utils.i: utils\file_utils.c.i
-.PHONY : utils\file_utils.i
-
-# target to preprocess a source file
-utils\file_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\file_utils.c.i
-.PHONY : utils\file_utils.c.i
-
-utils\file_utils.s: utils\file_utils.c.s
-.PHONY : utils\file_utils.s
-
-# target to generate assembly for a file
-utils\file_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\file_utils.c.s
-.PHONY : utils\file_utils.c.s
-
-utils\hashmap.obj: utils\hashmap.c.obj
-.PHONY : utils\hashmap.obj
-
-# target to build an object file
-utils\hashmap.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\hashmap.c.obj
-.PHONY : utils\hashmap.c.obj
-
-utils\hashmap.i: utils\hashmap.c.i
-.PHONY : utils\hashmap.i
-
-# target to preprocess a source file
-utils\hashmap.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\hashmap.c.i
-.PHONY : utils\hashmap.c.i
-
-utils\hashmap.s: utils\hashmap.c.s
-.PHONY : utils\hashmap.s
-
-# target to generate assembly for a file
-utils\hashmap.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\utils\hashmap.c.s
-.PHONY : utils\hashmap.c.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -370,33 +322,27 @@ help:
 	@echo ... assembler_iterations.obj
 	@echo ... assembler_iterations.i
 	@echo ... assembler_iterations.s
-	@echo ... first_pass.obj
-	@echo ... first_pass.i
-	@echo ... first_pass.s
+	@echo ... assembler_utils.obj
+	@echo ... assembler_utils.i
+	@echo ... assembler_utils.s
+	@echo ... constants.obj
+	@echo ... constants.i
+	@echo ... constants.s
+	@echo ... errors_utils.obj
+	@echo ... errors_utils.i
+	@echo ... errors_utils.s
+	@echo ... file_utils.obj
+	@echo ... file_utils.i
+	@echo ... file_utils.s
+	@echo ... hashmap.obj
+	@echo ... hashmap.i
+	@echo ... hashmap.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
 	@echo ... preprocessor.obj
 	@echo ... preprocessor.i
 	@echo ... preprocessor.s
-	@echo ... utils/assembler_addressing_utils.obj
-	@echo ... utils/assembler_addressing_utils.i
-	@echo ... utils/assembler_addressing_utils.s
-	@echo ... utils/assembler_utils.obj
-	@echo ... utils/assembler_utils.i
-	@echo ... utils/assembler_utils.s
-	@echo ... utils/constants.obj
-	@echo ... utils/constants.i
-	@echo ... utils/constants.s
-	@echo ... utils/errors_utils.obj
-	@echo ... utils/errors_utils.i
-	@echo ... utils/errors_utils.s
-	@echo ... utils/file_utils.obj
-	@echo ... utils/file_utils.i
-	@echo ... utils/file_utils.s
-	@echo ... utils/hashmap.obj
-	@echo ... utils/hashmap.i
-	@echo ... utils/hashmap.s
 .PHONY : help
 
 

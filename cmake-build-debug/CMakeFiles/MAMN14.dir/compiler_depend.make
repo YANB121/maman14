@@ -17,24 +17,111 @@ CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\assembler_iterations.h
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
-CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\utils\hashmap.h
-CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\utils\assembler_utils.h
-CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\utils\file_utils.h
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\hashmap.h
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\assembler_utils.h
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\file_utils.h
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\string.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memory.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memcpy_s.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\errno.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
-CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\utils\constants.h
-CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\utils\errors_utils.h
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\constants.h
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\errors_utils.h
 
 
-CMakeFiles\MAMN14.dir\first_pass.c.obj: ..\first_pass.c
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: ..\assembler_utils.c
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: ..\assembler_utils.h
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: ..\hashmap.h
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
+CMakeFiles\MAMN14.dir\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
+
+
+CMakeFiles\MAMN14.dir\constants.c.obj: ..\constants.c
+CMakeFiles\MAMN14.dir\constants.c.obj: ..\hashmap.h
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
+CMakeFiles\MAMN14.dir\constants.c.obj: ..\constants.h
+
+
+CMakeFiles\MAMN14.dir\errors_utils.c.obj: ..\errors_utils.c
+CMakeFiles\MAMN14.dir\errors_utils.c.obj: ..\errors_utils.h
+
+
+CMakeFiles\MAMN14.dir\file_utils.c.obj: ..\file_utils.c
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\string.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memory.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memcpy_s.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\errno.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: ..\file_utils.h
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
+CMakeFiles\MAMN14.dir\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
+
+
+CMakeFiles\MAMN14.dir\hashmap.c.obj: ..\hashmap.c
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\string.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memory.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memcpy_s.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\errno.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
+CMakeFiles\MAMN14.dir\hashmap.c.obj: ..\hashmap.h
 
 
 CMakeFiles\MAMN14.dir\main.c.obj: ..\main.c
-CMakeFiles\MAMN14.dir\main.c.obj: ..\utils\hashmap.h
+CMakeFiles\MAMN14.dir\main.c.obj: ..\hashmap.h
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
@@ -49,7 +136,6 @@ CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\includ
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
-CMakeFiles\MAMN14.dir\main.c.obj: ..\preprocessor.h
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\string.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memory.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memcpy_s.h"
@@ -57,9 +143,9 @@ CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\includ
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
 CMakeFiles\MAMN14.dir\main.c.obj: ..\assembler_iterations.h
-CMakeFiles\MAMN14.dir\main.c.obj: ..\utils\assembler_utils.h
-CMakeFiles\MAMN14.dir\main.c.obj: ..\utils\constants.h
-CMakeFiles\MAMN14.dir\main.c.obj: ..\utils\file_utils.h
+CMakeFiles\MAMN14.dir\main.c.obj: ..\assembler_utils.h
+CMakeFiles\MAMN14.dir\main.c.obj: ..\constants.h
+CMakeFiles\MAMN14.dir\main.c.obj: ..\file_utils.h
 
 
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\preprocessor.c
@@ -84,101 +170,7 @@ CMakeFiles\MAMN14.dir\preprocessor.c.obj: "C:\Program Files (x86)\Windows Kits\1
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\preprocessor.h
-CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\utils\hashmap.h
-
-
-CMakeFiles\MAMN14.dir\utils\assembler_addressing_utils.c.obj: ..\utils\assembler_addressing_utils.c
-CMakeFiles\MAMN14.dir\utils\assembler_addressing_utils.c.obj: ..\utils\assembler_addressing_utils.h
-
-
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: ..\utils\assembler_utils.c
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: ..\utils\assembler_utils.h
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: ..\utils\hashmap.h
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
-CMakeFiles\MAMN14.dir\utils\assembler_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
-
-
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: ..\utils\constants.c
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: ..\utils\hashmap.h
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
-CMakeFiles\MAMN14.dir\utils\constants.c.obj: ..\utils\constants.h
-
-
-CMakeFiles\MAMN14.dir\utils\errors_utils.c.obj: ..\utils\errors_utils.c
-CMakeFiles\MAMN14.dir\utils\errors_utils.c.obj: ..\utils\errors_utils.h
-
-
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: ..\utils\file_utils.c
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\string.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memory.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memcpy_s.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\errno.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: ..\utils\file_utils.h
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
-CMakeFiles\MAMN14.dir\utils\file_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
-
-
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: ..\utils\hashmap.c
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\concurrencysal.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vadefs.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdio.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdlib.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_malloc.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_search.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stddef.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstdlib.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\limits.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\string.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memory.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_memcpy_s.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\errno.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
-CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: ..\utils\hashmap.h
+CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\hashmap.h
 
 
 
@@ -187,6 +179,8 @@ CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: ..\utils\hashmap.h
 ..\preprocessor.c:
 
 ..\assembler_iterations.c:
+
+..\errors_utils.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\sal.h":
 
@@ -218,11 +212,11 @@ CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: ..\utils\hashmap.h
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_stdio_config.h":
 
-..\utils\hashmap.h:
+..\hashmap.h:
 
-..\utils\file_utils.h:
+..\assembler_utils.h:
 
-..\utils\assembler_utils.h:
+..\file_utils.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h":
 
@@ -236,24 +230,16 @@ CMakeFiles\MAMN14.dir\utils\hashmap.c.obj: ..\utils\hashmap.h
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h":
 
-..\utils\constants.h:
+..\constants.h:
 
-..\utils\errors_utils.h:
+..\assembler_utils.c:
 
-..\first_pass.c:
+..\constants.c:
+
+..\errors_utils.c:
+
+..\file_utils.c:
+
+..\hashmap.c:
 
 ..\main.c:
-
-..\utils\assembler_addressing_utils.c:
-
-..\utils\assembler_addressing_utils.h:
-
-..\utils\file_utils.c:
-
-..\utils\assembler_utils.c:
-
-..\utils\constants.c:
-
-..\utils\errors_utils.c:
-
-..\utils\hashmap.c:

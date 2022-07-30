@@ -18,24 +18,22 @@ CMakeFiles/MAMN14.dir/assembler_iterations.c.obj
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
- C:/Users/Lidar/maman14/utils/hashmap.h
- C:/Users/Lidar/maman14/utils/assembler_utils.h
- C:/Users/Lidar/maman14/utils/file_utils.h
+ C:/Users/Lidar/maman14/hashmap.h
+ C:/Users/Lidar/maman14/assembler_utils.h
+ C:/Users/Lidar/maman14/file_utils.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/string.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memory.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memcpy_s.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/errno.h
  C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
- C:/Users/Lidar/maman14/utils/constants.h
- C:/Users/Lidar/maman14/utils/errors_utils.h
+ C:/Users/Lidar/maman14/constants.h
+ C:/Users/Lidar/maman14/errors_utils.h
 
-CMakeFiles/MAMN14.dir/first_pass.c.obj
- C:/Users/Lidar/maman14/first_pass.c
-
-CMakeFiles/MAMN14.dir/main.c.obj
- C:/Users/Lidar/maman14/main.c
- C:/Users/Lidar/maman14/utils/hashmap.h
+CMakeFiles/MAMN14.dir/assembler_utils.c.obj
+ C:/Users/Lidar/maman14/assembler_utils.c
+ C:/Users/Lidar/maman14/assembler_utils.h
+ C:/Users/Lidar/maman14/hashmap.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
  C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
@@ -50,7 +48,95 @@ CMakeFiles/MAMN14.dir/main.c.obj
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
  C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
- C:/Users/Lidar/maman14/preprocessor.h
+
+CMakeFiles/MAMN14.dir/constants.c.obj
+ C:/Users/Lidar/maman14/constants.c
+ C:/Users/Lidar/maman14/hashmap.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
+ C:/Users/Lidar/maman14/constants.h
+
+CMakeFiles/MAMN14.dir/errors_utils.c.obj
+ C:/Users/Lidar/maman14/errors_utils.c
+ C:/Users/Lidar/maman14/errors_utils.h
+
+CMakeFiles/MAMN14.dir/file_utils.c.obj
+ C:/Users/Lidar/maman14/file_utils.c
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/string.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memory.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memcpy_s.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/errno.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
+ C:/Users/Lidar/maman14/file_utils.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
+
+CMakeFiles/MAMN14.dir/hashmap.c.obj
+ C:/Users/Lidar/maman14/hashmap.c
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/string.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memory.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memcpy_s.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/errno.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
+ C:/Users/Lidar/maman14/hashmap.h
+
+CMakeFiles/MAMN14.dir/main.c.obj
+ C:/Users/Lidar/maman14/main.c
+ C:/Users/Lidar/maman14/hashmap.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
+ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
+ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/string.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memory.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memcpy_s.h
@@ -58,9 +144,9 @@ CMakeFiles/MAMN14.dir/main.c.obj
  C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
  C:/Users/Lidar/maman14/assembler_iterations.h
- C:/Users/Lidar/maman14/utils/assembler_utils.h
- C:/Users/Lidar/maman14/utils/constants.h
- C:/Users/Lidar/maman14/utils/file_utils.h
+ C:/Users/Lidar/maman14/assembler_utils.h
+ C:/Users/Lidar/maman14/constants.h
+ C:/Users/Lidar/maman14/file_utils.h
 
 CMakeFiles/MAMN14.dir/preprocessor.c.obj
  C:/Users/Lidar/maman14/preprocessor.c
@@ -85,99 +171,5 @@ CMakeFiles/MAMN14.dir/preprocessor.c.obj
  C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
  C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
  C:/Users/Lidar/maman14/preprocessor.h
- C:/Users/Lidar/maman14/utils/hashmap.h
-
-CMakeFiles/MAMN14.dir/utils/assembler_addressing_utils.c.obj
- C:/Users/Lidar/maman14/utils/assembler_addressing_utils.c
- C:/Users/Lidar/maman14/utils/assembler_addressing_utils.h
-
-CMakeFiles/MAMN14.dir/utils/assembler_utils.c.obj
- C:/Users/Lidar/maman14/utils/assembler_utils.c
- C:/Users/Lidar/maman14/utils/assembler_utils.h
- C:/Users/Lidar/maman14/utils/hashmap.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
-
-CMakeFiles/MAMN14.dir/utils/constants.c.obj
- C:/Users/Lidar/maman14/utils/constants.c
- C:/Users/Lidar/maman14/utils/hashmap.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
- C:/Users/Lidar/maman14/utils/constants.h
-
-CMakeFiles/MAMN14.dir/utils/errors_utils.c.obj
- C:/Users/Lidar/maman14/utils/errors_utils.c
- C:/Users/Lidar/maman14/utils/errors_utils.h
-
-CMakeFiles/MAMN14.dir/utils/file_utils.c.obj
- C:/Users/Lidar/maman14/utils/file_utils.c
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/string.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memory.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memcpy_s.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/errno.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
- C:/Users/Lidar/maman14/utils/file_utils.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
-
-CMakeFiles/MAMN14.dir/utils/hashmap.c.obj
- C:/Users/Lidar/maman14/utils/hashmap.c
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/sal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/concurrencysal.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vadefs.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdio.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_stdio_config.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stdlib.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_malloc.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_search.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/stddef.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstdlib.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/limits.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/string.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memory.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_memcpy_s.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/errno.h
- C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
- C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
- C:/Users/Lidar/maman14/utils/hashmap.h
+ C:/Users/Lidar/maman14/hashmap.h
 
