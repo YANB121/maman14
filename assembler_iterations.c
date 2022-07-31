@@ -9,7 +9,7 @@
 #include <stdbool.h>
 
 int first_iteration(char *program_file_path) {
-    int is_error_occurred = 0;
+    bool is_error_occurred = false;
     FILE *assembly_file = open_read_file_else_exit(program_file_path);
 
     //trim the ".am" extension and add ".o" extension
@@ -35,8 +35,11 @@ int first_iteration(char *program_file_path) {
         //TODO:done
         struct LineAndMetadata *lineAndMetadata = initialize_line_and_metadata(line, line_num);
         bool if_exists_is_label_valid = get_and_validate_label(lineAndMetadata, labelSection);
-        if (if_exists_is_label_valid == false) {
+
+        if (if_exists_is_label_valid ==
+            false) { //if the label is illegal then print the error and keep to the next line
             print_errors(lineAndMetadata);
+            is_error_occurred = true;
             continue;
         }
 
@@ -50,7 +53,7 @@ int first_iteration(char *program_file_path) {
 
         if (data_instruction_type != NULL)
             handle_data_instruction(lineAndMetadata, labelSection);
-        else if (opcode_type != NULL)//in case its an operation line.
+        else if (opcode_type != NULL)//in caits an operation line.
             handle_operation(lineAndMetadata, labelSection);
 
     }
