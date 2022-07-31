@@ -6,7 +6,7 @@
 #include <string.h>
 #include "constants.h"
 #include "errors_utils.h"
-
+#include <stdbool.h>
 
 int first_iteration(char *program_file_path) {
     int is_error_occurred = 0;
@@ -18,7 +18,7 @@ int first_iteration(char *program_file_path) {
     FILE *output_file = open_write_file_else_exit(output_file_name);
 
     //struct that contains the Instruction Counter, Data Counter and The Symbol table for later use.
-    struct LabelSection *symbolsSection = initialize_label_section();
+    struct LabelSection *labelSection = initialize_label_section();
 
     int is_symbol = 0; //flag that indicates if the line started with symbol (for instance: "MAIN: mov r1 r2")
 
@@ -33,13 +33,13 @@ int first_iteration(char *program_file_path) {
             continue;
 
         //TODO:done
-        char *label = get_symbol(line); //return the label, null if line is not starting with label
         struct LineAndMetadata *lineAndMetadata = initialize_line_and_metadata(line, line_num);
-
-        if (label != NULL) {
-            lineAndMetadata->is_contains_label = 1;
-            lineAndMetadata->label = label;
+        bool if_exists_is_label_valid = get_and_validate_label(lineAndMetadata, labelSection);
+        if (if_exists_is_label_valid == false) {
+            print_errors(lineAndMetadata);
+            continue;
         }
+
 
         //return the instruction type, null if not an instruction line
         char *data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
@@ -47,14 +47,21 @@ int first_iteration(char *program_file_path) {
         //return the opcode code , null if not a opcode line
         char *opcode_type = get_opcode(lineAndMetadata);
 
+
         if (data_instruction_type != NULL)
-            handle_data_instruction(lineAndMetadata, symbolsSection);
+            handle_data_instruction(lineAndMetadata, labelSection);
         else if (opcode_type != NULL)//in case its an operation line.
-            handle_operation(lineAndMetadata, symbolsSection);
+            handle_operation(lineAndMetadata, labelSection);
 
     }
     return is_error_occurred;//return 1 if any error occurred so the assembler won't proceed to the second iteration
 
+}
+
+void print_errors(struct LineAndMetadata *lineAndMetadata) {
+    //iterate over the array as long as != 0 and get the error string from the error map and print to console.
+    for (int i = 0; lineAndMetadata->arr_errors_codes[i] != 0; i++)
+        printf("%s\n", ht_search(get_errors_map(), lineAndMetadata->arr_errors_codes[i]));
 }
 
 
@@ -89,7 +96,8 @@ struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number
     lineAndMetadata->line_number = line_number;
     lineAndMetadata->is_contains_label = 0;
     lineAndMetadata->is_error_occurred = 0;
-    memset(lineAndMetadata->errors_codes, 0, ERROR_ARRAY_SIZE);
+    lineAndMetadata->label = NULL;
+    memset(lineAndMetadata->arr_errors_codes, 0, ERROR_ARRAY_SIZE);
     return lineAndMetadata;
 }
 
@@ -108,17 +116,33 @@ void *handle_data_type_with_label(struct LineAndMetadata *lineAndMetadata, struc
 
 }
 
-void *validate_label(struct LineAndMetadata *lineAndMetadata, HashTable *label_table) {
+/**validate the label of the line,
+ *  check if already in use or if name of opcode or instruction.
+ * @return false in case of invalid label.
+ * @return true in case of valid label.
+ * */
+bool validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     char *label = lineAndMetadata->label;
-    if (ht_search(label_table, label)) { //if the label already in use then add error and return.
+    if (ht_search(labelSection->label_table, label) != NULL) { //if the label already in use then add error and return.
         lineAndMetadata->is_error_occurred = 1;
-        add_error_code(lineAndMetadata->errors_codes, ERR_CODE_LABEL_ALREADY_IN_USE);
-
-    }
-
+        add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_ALREADY_IN_USE);
+        return false;
+    } else if (ht_search(get_data_instruction_map(), label) != NULL) {//if the label is instruction label.
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_IS_INSTRUCTION);
+        return false;
+    } else if (ht_search(get_opcode_and_decimal_map(), label) != NULL) {//if the label is opcode operation.
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_IS_OPERATION);
+        return false;
+    } else if (ht_search(get_registers_map(), label) != NULL) {//if the label is a register name.
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_IS_REGISTER);
+        return false;
+    } else
+        return true;
 
 }
-
 
 void insert_data_label_into_table(struct LabelSection *labelSection, struct LineAndMetadata *lineAndMetadata) {
     int *counter_and_type = calloc(2, sizeof(int));
@@ -130,8 +154,9 @@ void insert_data_label_into_table(struct LabelSection *labelSection, struct Line
 
 void *handle_data_type_without_symbol(struct LineAndMetadata *line) {}
 
+
 //checks if the line starts with symbol, if so return the label, else return null.
-char *get_symbol(char *line) {
+char *get_label(char *line) {
     char *line_copy = malloc(sizeof(char) * strlen(line));
     strcpy(line_copy, line);
 
@@ -167,17 +192,14 @@ char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
         char *word = strtok(line_copy, " ");
         return ht_search(get_data_instruction_map(),
                          word); //find the instruction in the instruction table. if not exist return NULL
-
-
-
     }
-
 
 }
 
 char *validate_instruction(char *word) { //TODO: implementation done
     char starting_char = *word; //fetch the first character
-    char *valid_word = ht_search(get_data_instruction_map(), word); //find the instruction in the instruction table
+    char *valid_word = ht_search(get_data_instruction_map(),
+                                 word); //find the instruction in the instruction table
     if (starting_char != '.') //if the word doesn't start with "."
         return NULL;
     else
@@ -185,8 +207,28 @@ char *validate_instruction(char *word) { //TODO: implementation done
 
 }
 
+bool get_and_validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
+    char *label = get_label(lineAndMetadata->line); //return the label, null if line is not starting with label
+    if (label != NULL) {
+        lineAndMetadata->is_contains_label = 1;
+        lineAndMetadata->label = label;
+        bool is_valid_label = validate_label(lineAndMetadata, labelSection);
+        if (is_valid_label == false) {
+            return false;
+        } else return true;
+    } else return NULL;
+}
 
-void second_iteration(char *file_path) {};
 
-void *handle_operation(struct LineAndMetadata *lineAndMetadata, struct LabelSection *symbolsSection) {};
+void add_error_code(struct LineAndMetadata *lineAndMetadata, int error_code) {
+    for (int i = 0; i < ERROR_ARRAY_SIZE; i++) {
+        if (lineAndMetadata->arr_errors_codes[i] == 0) {
+            lineAndMetadata->arr_errors_codes[i] = error_code;
+            break;
+        }
+    }
+}
+
+
+void *handle_operation(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {};
 

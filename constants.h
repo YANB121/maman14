@@ -2,6 +2,9 @@
 #ifndef MAMN14_CONSTANTS_H
 #define MAMN14_CONSTANTS_H
 
+#define TRUE 1
+#define FALSE 0
+
 struct HashTable *get_registers_map();
 
 struct HashTable *get_data_instruction_map();
@@ -10,6 +13,7 @@ struct HashTable *get_opcode_and_decimal_map();
 
 struct HashTable *get_additional_instruction_map();
 
+void initialize_opcode_and_amount_of_operands_map();
 
 void initialize_additional_instructions_map();
 

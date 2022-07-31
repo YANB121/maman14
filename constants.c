@@ -5,6 +5,8 @@ struct HashTable *registers;
 struct HashTable *dataInstructions;
 struct HashTable *opcodeAndDecimal;
 struct HashTable *additionalInstructions;
+struct HashTable *opcodeAndAmountOfOperands;
+
 
 struct HashTable *get_registers_map() {
     return registers;
@@ -18,6 +20,11 @@ struct HashTable *get_opcode_and_decimal_map() {
     return opcodeAndDecimal;
 }
 
+struct HashTable *get_opcode_and_amount_of_operands_map() {
+    return opcodeAndAmountOfOperands;
+}
+
+
 struct HashTable *get_additional_instruction_map() {
     return additionalInstructions;
 }
@@ -28,6 +35,28 @@ void initialize_constant_tables() {
     initialize_data_instructions_names_map();
     initialize_opcode_table();
     initialize_additional_instructions_map();
+    initialize_opcode_and_amount_of_operands_map();
+}
+
+void initialize_opcode_and_amount_of_operands_map() {
+    opcodeAndAmountOfOperands = create_table(16);
+    ht_insert(opcodeAndAmountOfOperands, "mov", "2");
+    ht_insert(opcodeAndAmountOfOperands, "cmp", "2");
+    ht_insert(opcodeAndAmountOfOperands, "add", "2");
+    ht_insert(opcodeAndAmountOfOperands, "sub", "2");
+    ht_insert(opcodeAndAmountOfOperands, "not", "1");
+    ht_insert(opcodeAndAmountOfOperands, "clr", "1");
+    ht_insert(opcodeAndAmountOfOperands, "lea", "2");
+    ht_insert(opcodeAndAmountOfOperands, "inc", "1");
+    ht_insert(opcodeAndAmountOfOperands, "dec", "1");
+    ht_insert(opcodeAndAmountOfOperands, "jmp", "1");
+    ht_insert(opcodeAndAmountOfOperands, "bne", "1");
+    ht_insert(opcodeAndAmountOfOperands, "get", "1");
+    ht_insert(opcodeAndAmountOfOperands, "prn", "1");
+    ht_insert(opcodeAndAmountOfOperands, "jsr", "1");
+    ht_insert(opcodeAndAmountOfOperands, "rts", "0");
+    ht_insert(opcodeAndAmountOfOperands, "hlt", "0");
+
 }
 
 

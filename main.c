@@ -42,7 +42,7 @@ int main(int size, char *argv[]) {
 
 //    char *str = malloc(sizeof(str));
 //    strcpy(str, "HELLO: .string \"AB:C\"");
-//    char* sym = get_symbol(str);
+//    char* sym = get_label(str);
 //    if(sym != NULL)
 //        printf("%s",sym);
 //    else
@@ -104,15 +104,15 @@ void test_find_extension_point() {
 
 void test_set_0() {
     struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
-//    lineAndMetadata->errors_codes = calloc(10, sizeof(int));
+//    lineAndMetadata->arr_errors_codes = calloc(10, sizeof(int));
     for (int i = 0; i < 10; i++)
-        printf("%d\n", lineAndMetadata->errors_codes[i]);
+        printf("%d\n", lineAndMetadata->arr_errors_codes[i]);
 
     printf("---------------------------------\n");
 
-    memset(lineAndMetadata->errors_codes, 0, ERROR_ARRAY_SIZE * sizeof(int));
+    memset(lineAndMetadata->arr_errors_codes, 0, ERROR_ARRAY_SIZE * sizeof(int));
     for (int i = 0; i < 10; i++)
-        printf("%d\n", (lineAndMetadata->errors_codes)[i]);
+        printf("%d\n", (lineAndMetadata->arr_errors_codes)[i]);
 
 }
 
