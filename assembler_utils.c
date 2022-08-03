@@ -1,4 +1,5 @@
 
+#include <vcruntime_string.h>
 #include "assembler_utils.h"
 
 struct LabelSection *initialize_label_section() {
@@ -10,6 +11,8 @@ struct LabelSection *initialize_label_section() {
     symbolsSection->dc = dc;
     symbolsSection->ic = ic;
     symbolsSection->label_table = symbols_table;
+    memset(symbolsSection->data_array, 0, MAX_PROGRAM_LENGTH * sizeof(int));
+    memset(symbolsSection->instruction_array, 0, MAX_PROGRAM_LENGTH * sizeof(int));
 
     return symbolsSection;
 }

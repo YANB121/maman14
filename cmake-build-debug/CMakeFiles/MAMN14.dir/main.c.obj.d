@@ -20,6 +20,7 @@ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/errno.h
 C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/vcruntime_string.h
 C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring.h
 C:/Users/Lidar/maman14/assembler_iterations.h
+C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/include/stdbool.h
 C:/Users/Lidar/maman14/assembler_utils.h
 C:/Users/Lidar/maman14/constants.h
 C:/Users/Lidar/maman14/file_utils.h

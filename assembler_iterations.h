@@ -18,7 +18,50 @@ typedef struct LineAndMetadata {
     int is_error_occurred;
     int is_contains_label;
     char *label;
+    int instruction_type;
+    char *opcode_type;
+
 };
+
+//typedef struct Arguments {
+//    bool contains_integers;
+//    int integer_arguments_counter;
+//    int integers_arguments[80];
+//
+//    bool contains_strings;
+//    int string_arguments_counter;
+//    char *strings_arguments[80];
+//
+//
+//};
+
+typedef struct DataArguments {
+    int data_arguments[80];
+    int data_arguments_counter;
+
+};
+
+typedef struct StructArguments {
+    char *string_argument;
+    int integer_argument;
+};
+
+
+//struct Arguments *initialize_arguments_struct();
+
+void *get_data_arguments(struct LineAndMetadata *);
+
+void *get_string_arguments(struct LineAndMetadata *);
+
+void *get_struct_arguments(struct LineAndMetadata *);
+
+bool validate_data_type(struct LineAndMetadata *);
+
+bool validate_string_type(struct LineAndMetadata *);
+
+bool validate_struct_type(struct LineAndMetadata *);
+
+bool validate_instruction_arguments(struct LineAndMetadata *);
 
 bool validate_label(struct LineAndMetadata *, struct LabelSection *);
 

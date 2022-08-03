@@ -44,16 +44,17 @@ int first_iteration(char *program_file_path) {
         }
 
 
-        //return the instruction type, null if not an instruction line
+        //return the instruction_type type, null if not an instruction_type line
         char *data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
 
-        //return the opcode code , null if not a opcode line
+        //return the opcode_type code , null if not an opcode_type line
         char *opcode_type = get_opcode(lineAndMetadata);
 
 
-        if (data_instruction_type != NULL)
+        if (data_instruction_type != NULL) {
+            lineAndMetadata->instruction_type = data_instruction_type;
             handle_data_instruction(lineAndMetadata, labelSection);
-        else if (opcode_type != NULL)//in caits an operation line.
+        } else if (opcode_type != NULL)//in caits an operation line.
             handle_operation(lineAndMetadata, labelSection);
 
     }
@@ -81,7 +82,7 @@ char *get_opcode(struct LineAndMetadata *lineAndMetadata) {
     char *line_copy = malloc(sizeof(char) * LINE_LENGTH);
     strcpy(line_copy, lineAndMetadata->line);
 
-    if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction word may be the second
+    if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction_type word may be the second
         char *word = strtok(line_copy, " ");
         word = strtok(NULL, " ");
         return ht_search(get_opcode_and_decimal_map(), word);
@@ -100,7 +101,7 @@ struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number
     lineAndMetadata->is_contains_label = 0;
     lineAndMetadata->is_error_occurred = 0;
     lineAndMetadata->label = NULL;
-    memset(lineAndMetadata->arr_errors_codes, 0, ERROR_ARRAY_SIZE);
+    memset(lineAndMetadata->arr_errors_codes, 0, ERROR_ARRAY_SIZE * sizeof(int));
     return lineAndMetadata;
 }
 
@@ -113,14 +114,83 @@ void *handle_data_instruction(struct LineAndMetadata *lineAndMetadata, struct La
 
 
 void *handle_data_type_with_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    int is_label_valid = validate_label(lineAndMetadata, labelSection->label_table);
+//    int is_label_valid = validate_label(lineAndMetadata, labelSection->label_table);
+    validate_instruction_arguments(lineAndMetadata);
     insert_data_label_into_table(lineAndMetadata, labelSection);
 
 
 }
 
+bool validate_instruction_arguments(struct LineAndMetadata *lineAndMetadata) {
+    switch (lineAndMetadata->instruction_type) {
+        case 1:
+            return validate_data_type(lineAndMetadata);
+            break;
+        case 2:
+            return validate_string_type(lineAndMetadata);
+            break;
+        case 3:
+            return validate_struct_type(lineAndMetadata);
+            break;
+    }
+
+}
+
+bool validate_data_type(struct LineAndMetadata *lineAndMetadata) {
+
+
+}
+
+bool validate_string_type(struct LineAndMetadata *lineAndMetadata) {
+    void *arguments = get_arguments(lineAndMetadata);
+
+
+}
+
+
+bool validate_struct_type(struct LineAndMetadata *lineAndMetadata) {
+
+
+}
+
+
+//struct Arguments *initialize_arguments_struct() {
+//    struct Arguments *arguments = malloc(sizeof(struct Arguments));
+//    arguments->integer_arguments_counter = 0;
+//    arguments->string_arguments_counter = 0;
+//    return arguments;
+//}
+
+
+void *get_string_arguments(struct LineAndMetadata *);
+
+void *get_struct_arguments(struct LineAndMetadata *);
+
+
+void *get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    strcpy(line_copy, lineAndMetadata->line);
+
+    struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
+
+    char *word;
+    if (lineAndMetadata->is_contains_label) {
+        word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+
+    } else
+        word = strtok(line_copy, " ");
+
+    while (word = strtok(NULL, ",") != NULL) {
+
+
+    }
+
+}
+
+
 /**validate the label of the line,
- *  check if already in use or if name of opcode or instruction.
+ *  check if already in use or if name of opcode_type or instruction_type.
  * @return false in case of invalid label.
  * @return true in case of valid label.
  * */
@@ -130,11 +200,11 @@ bool validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_ALREADY_IN_USE);
         return false;
-    } else if (ht_search(get_data_instruction_map(), label) != NULL) {//if the label is instruction label.
+    } else if (ht_search(get_data_instruction_map(), label) != NULL) {//if the label is instruction_type label.
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_IS_INSTRUCTION);
         return false;
-    } else if (ht_search(get_opcode_and_decimal_map(), label) != NULL) {//if the label is opcode operation.
+    } else if (ht_search(get_opcode_and_decimal_map(), label) != NULL) {//if the label is opcode_type operation.
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata->arr_errors_codes, ERR_CODE_LABEL_IS_OPERATION);
         return false;
@@ -186,15 +256,17 @@ char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
     strcpy(line_copy, lineAndMetadata->line);
 
 
-    if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction word may be the second
+    if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction_type word may be the second
         char *word = strtok(line_copy, " ");
         word = strtok(NULL, " ");
-        return ht_search(get_data_instruction_map(),
-                         word); //find the instruction in the instruction table. if not exist return NULL
+        if (ht_search(get_data_instruction_map(),
+                      word) != NULL)
+            return word; //find the instruction_type in the instruction_type table. if not exist return NULL
     } else {
         char *word = strtok(line_copy, " ");
-        return ht_search(get_data_instruction_map(),
-                         word); //find the instruction in the instruction table. if not exist return NULL
+        if (ht_search(get_data_instruction_map(),
+                      word) != NULL)
+            return true; //find the instruction_type in the instruction_type table. if not exist return NULL
     }
 
 }
@@ -202,11 +274,11 @@ char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
 char *validate_instruction(char *word) { //TODO: implementation done
     char starting_char = *word; //fetch the first character
     char *valid_word = ht_search(get_data_instruction_map(),
-                                 word); //find the instruction in the instruction table
+                                 word); //find the instruction_type in the instruction_type table
     if (starting_char != '.') //if the word doesn't start with "."
         return NULL;
     else
-        return valid_word; //NULL if its invalid instruction.
+        return valid_word; //NULL if its invalid instruction_type.
 
 }
 

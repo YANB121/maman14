@@ -1,5 +1,6 @@
 #include "hashmap.h"
 #include "constants.h"
+#include <stdbool.h>
 
 struct HashTable *registers;
 struct HashTable *dataInstructions;
@@ -62,21 +63,21 @@ void initialize_opcode_and_amount_of_operands_map() {
 
 void initialize_registers_names_map() {
     registers = create_table(20);
-    ht_insert(registers, "r0", "true");
-    ht_insert(registers, "r1", "true");
-    ht_insert(registers, "r2", "true");
-    ht_insert(registers, "r3", "true");
-    ht_insert(registers, "r4", "true");
-    ht_insert(registers, "r5", "true");
-    ht_insert(registers, "r6", "true");
-    ht_insert(registers, "r7", "true");
+    ht_insert(registers, "r0", true);
+    ht_insert(registers, "r1", true);
+    ht_insert(registers, "r2", true);
+    ht_insert(registers, "r3", true);
+    ht_insert(registers, "r4", true);
+    ht_insert(registers, "r5", true);
+    ht_insert(registers, "r6", true);
+    ht_insert(registers, "r7", true);
 }
 
 void initialize_data_instructions_names_map() {
     dataInstructions = create_table(20);
-    ht_insert(dataInstructions, ".data", "true");
-    ht_insert(dataInstructions, ".string", "true");
-    ht_insert(dataInstructions, ".struct", "true");
+    ht_insert(dataInstructions, ".data", 1);
+    ht_insert(dataInstructions, ".string", 2);
+    ht_insert(dataInstructions, ".struct", 3);
 }
 
 void initialize_opcode_table() {
@@ -103,8 +104,8 @@ void initialize_opcode_table() {
 
 void initialize_additional_instructions_map() {
     additionalInstructions = create_table(20);
-    ht_insert(additionalInstructions, ".external", "true");
-    ht_insert(additionalInstructions, ".entry", "true");
+    ht_insert(additionalInstructions, ".external", true);
+    ht_insert(additionalInstructions, ".entry", true);
 
 
 }

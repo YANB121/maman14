@@ -3,11 +3,15 @@
 
 #include "hashmap.h"
 
+#define MAX_PROGRAM_LENGTH 1000
+
+
 struct LabelSection {
     int dc;
     int ic;
+    int instruction_array[MAX_PROGRAM_LENGTH];
+    int data_array[MAX_PROGRAM_LENGTH];
     HashTable *label_table;
-
 };
 
 struct LabelEntry {
