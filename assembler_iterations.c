@@ -45,7 +45,7 @@ int first_iteration(char *program_file_path) {
 
 
         //return the instruction_type type, null if not an instruction_type line
-        char *data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
+        int data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
 
         //return the opcode_type code , null if not an opcode_type line
         char *opcode_type = get_opcode(lineAndMetadata);
@@ -142,7 +142,7 @@ bool validate_data_type(struct LineAndMetadata *lineAndMetadata) {
 }
 
 bool validate_string_type(struct LineAndMetadata *lineAndMetadata) {
-    void *arguments = get_arguments(lineAndMetadata);
+//    void *arguments = get_arguments(lineAndMetadata);
 
 
 }
@@ -250,7 +250,7 @@ char *get_label(char *line) {
 }
 
 //checks if its data line , if so return the data type (".struct",".data",".string", etc'), else return null.
-char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
+int get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
 
     char *line_copy = malloc(sizeof(char) * strlen(lineAndMetadata->line));
     strcpy(line_copy, lineAndMetadata->line);
@@ -259,14 +259,16 @@ char *get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
     if (lineAndMetadata->is_contains_label) {//if the line contains label the instruction_type word may be the second
         char *word = strtok(line_copy, " ");
         word = strtok(NULL, " ");
-        if (ht_search(get_data_instruction_map(),
-                      word) != NULL)
-            return word; //find the instruction_type in the instruction_type table. if not exist return NULL
+        int data_type = ht_search(get_data_instruction_map(), word);
+        if (data_type != NULL)
+            return data_type; //find the instruction_type in the instruction_type table. if not exist return NULL
+        else return NULL;
     } else {
         char *word = strtok(line_copy, " ");
-        if (ht_search(get_data_instruction_map(),
-                      word) != NULL)
-            return true; //find the instruction_type in the instruction_type table. if not exist return NULL
+        int data_type = ht_search(get_data_instruction_map(), word);
+        if (data_type != NULL)
+            return data_type; //find the instruction_type in the instruction_type table. if not exist return NULL
+        else return NULL;
     }
 
 }

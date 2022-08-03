@@ -83,7 +83,7 @@ struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number
 
 char *get_label(char *line);
 
-char *get_data_instruction(struct LineAndMetadata *lineAndMetadata);
+int get_data_instruction(struct LineAndMetadata *lineAndMetadata);
 
 void *handle_data_instruction(struct LineAndMetadata *, struct LabelSection *);
 
