@@ -6,6 +6,7 @@
 #include <string.h>
 #include "constants.h"
 #include "errors_utils.h"
+#include "input_utils.h"
 #include <stdbool.h>
 
 int first_iteration(char *program_file_path) {
@@ -54,7 +55,7 @@ int first_iteration(char *program_file_path) {
         if (data_instruction_type != NULL) {
             lineAndMetadata->instruction_type = data_instruction_type;
             handle_data_instruction(lineAndMetadata, labelSection);
-        } else if (opcode_type != NULL)//in caits an operation line.
+        } else if (opcode_type != NULL)//in case its an operation line.
             handle_operation(lineAndMetadata, labelSection);
 
     }
@@ -70,7 +71,7 @@ void print_errors(struct LineAndMetadata *lineAndMetadata) {
 
 
 int is_empty_or_comment(char *line) {
-    char first_char = line;
+    char first_char = *line;
     if (first_char == '\n' || first_char == ';')
         return 1;
     else
@@ -114,64 +115,128 @@ void *handle_data_instruction(struct LineAndMetadata *lineAndMetadata, struct La
 
 
 void *handle_data_type_with_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-//    int is_label_valid = validate_label(lineAndMetadata, labelSection->label_table);
-    validate_instruction_arguments(lineAndMetadata);
+    void *arguments = validate_and_get_instruction_arguments(lineAndMetadata);
     insert_data_label_into_table(lineAndMetadata, labelSection);
 
 
 }
 
-bool validate_instruction_arguments(struct LineAndMetadata *lineAndMetadata) {
+void *validate_and_get_instruction_arguments(struct LineAndMetadata *lineAndMetadata) {
     switch (lineAndMetadata->instruction_type) {
         case 1:
-            return validate_data_type(lineAndMetadata);
-            break;
+            return validate_and_get_data_arguments(lineAndMetadata);
         case 2:
-            return validate_string_type(lineAndMetadata);
-            break;
+            return validate_get_string_arguments(lineAndMetadata);
         case 3:
-            return validate_struct_type(lineAndMetadata);
-            break;
+            return validate_and_get_struct_arguments(lineAndMetadata);
+
     }
 
 }
 
-bool validate_data_type(struct LineAndMetadata *lineAndMetadata) {
 
-
-}
-
-bool validate_string_type(struct LineAndMetadata *lineAndMetadata) {
-//    void *arguments = get_arguments(lineAndMetadata);
-
-
-}
-
-
-bool validate_struct_type(struct LineAndMetadata *lineAndMetadata) {
-
-
-}
-
-
-//struct Arguments *initialize_arguments_struct() {
-//    struct Arguments *arguments = malloc(sizeof(struct Arguments));
-//    arguments->integer_arguments_counter = 0;
-//    arguments->string_arguments_counter = 0;
-//    return arguments;
-//}
-
-
-void *get_string_arguments(struct LineAndMetadata *);
-
-void *get_struct_arguments(struct LineAndMetadata *);
-
-
-void *get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
+void *validate_get_string_arguments(struct LineAndMetadata *lineAndMetadata) {
     char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
     strcpy(line_copy, lineAndMetadata->line);
 
     struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
+    dataArguments->data_arguments_counter = 0;
+
+    char *word;
+    if (lineAndMetadata->is_contains_label) {
+        word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+
+    } else
+        word = strtok(line_copy, " ");
+
+    char first_char = *word;
+    char last_char = word[strlen(word) - 1];
+    if (first_char != '"' || last_char != '"') {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_STRING_TYPE);
+        return NULL;
+    }
+    word = trim_commas(word);
+
+    for (int i = 0; i < strlen(word); i++) {
+        dataArguments->data_arguments[dataArguments->data_arguments_counter] = (int) word[i];
+        dataArguments->data_arguments_counter = dataArguments->data_arguments_counter + 1;
+    }
+
+    word = strtok(NULL, " ");
+
+    if (word != NULL) {
+        lineAndMetadata->is_error_occurred = 1; //too many arguments
+        add_error_code(lineAndMetadata, ERR_CODE_TOO_MANY_ARGUMENTS);
+        return NULL;
+    }
+
+    free(line_copy);
+    return dataArguments;
+
+}
+
+void *validate_and_get_struct_arguments(struct LineAndMetadata *lineAndMetadata) {
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    strcpy(line_copy, lineAndMetadata->line);
+
+    struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
+    dataArguments->data_arguments_counter = 0;
+
+    char *word;
+    if (lineAndMetadata->is_contains_label) {
+        word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+
+    } else
+        word = strtok(line_copy, " ");
+
+    int number = string_to_number(word);
+    if (number == NULL) {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_DATA_TYPE);
+        return NULL;
+    }
+    dataArguments->data_arguments[dataArguments->data_arguments_counter] = number;
+    dataArguments->data_arguments_counter++;
+
+    word = strtok(NULL, ",");
+    char first_char = *word;
+    char last_char = word[strlen(word) - 1];
+    if (first_char != '"' || last_char != '"') {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_STRING_TYPE);
+        return NULL;
+    }
+    word = trim_commas(word);
+
+    for (int i = 0; i < strlen(word); i++) {
+        dataArguments->data_arguments[dataArguments->data_arguments_counter] = (int) word[i];
+        dataArguments->
+                data_arguments_counter = dataArguments->data_arguments_counter + 1;
+    }
+
+    word = strtok(NULL, " ");
+
+    if (word != NULL) {
+        lineAndMetadata->is_error_occurred = 1; //too many arguments
+        add_error_code(lineAndMetadata, ERR_CODE_TOO_MANY_ARGUMENTS);
+        return NULL;
+    }
+    free(line_copy);
+    return dataArguments;
+
+
+}
+
+
+void *validate_and_get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    strcpy(line_copy, lineAndMetadata->line);
+
+    struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
+    dataArguments->data_arguments_counter = 0;
 
     char *word;
     if (lineAndMetadata->is_contains_label) {
@@ -182,9 +247,18 @@ void *get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
         word = strtok(line_copy, " ");
 
     while (word = strtok(NULL, ",") != NULL) {
-
-
+        long number = string_to_number(word);
+        if (number == NULL) { //in case the input is not a valid number
+            lineAndMetadata->is_error_occurred = 1;
+            add_error_code(lineAndMetadata, ERR_CODE_INVALID_DATA_TYPE);
+            return NULL;
+        } else {
+            dataArguments->data_arguments[dataArguments->data_arguments_counter] = number;
+        }
+        dataArguments->data_arguments_counter = dataArguments->data_arguments_counter + 1;
     }
+    free(line_copy);
+    return dataArguments;
 
 }
 
@@ -219,7 +293,7 @@ bool validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection
 
 void insert_data_label_into_table(struct LabelSection *labelSection, struct LineAndMetadata *lineAndMetadata) {
     int *counter_and_type = calloc(2, sizeof(int));
-    counter_and_type[0] = 1; //indicates its a data type label
+    counter_and_type[0] = DATA_TYPE_LABEL; //indicates its a data type label
     counter_and_type[1] = labelSection->dc;
     ht_insert(labelSection->label_table, lineAndMetadata->label, counter_and_type);
 }

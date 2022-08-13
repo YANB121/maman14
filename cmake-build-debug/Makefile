@@ -262,6 +262,30 @@ hashmap.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\hashmap.c.s
 .PHONY : hashmap.c.s
 
+input_utils.obj: input_utils.c.obj
+.PHONY : input_utils.obj
+
+# target to build an object file
+input_utils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\input_utils.c.obj
+.PHONY : input_utils.c.obj
+
+input_utils.i: input_utils.c.i
+.PHONY : input_utils.i
+
+# target to preprocess a source file
+input_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\input_utils.c.i
+.PHONY : input_utils.c.i
+
+input_utils.s: input_utils.c.s
+.PHONY : input_utils.s
+
+# target to generate assembly for a file
+input_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\input_utils.c.s
+.PHONY : input_utils.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -337,6 +361,9 @@ help:
 	@echo ... hashmap.obj
 	@echo ... hashmap.i
 	@echo ... hashmap.s
+	@echo ... input_utils.obj
+	@echo ... input_utils.i
+	@echo ... input_utils.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

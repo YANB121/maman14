@@ -4,7 +4,7 @@
 #include "hashmap.h"
 
 #define MAX_PROGRAM_LENGTH 1000
-
+#define MAX_STRING_SIZE 1000
 
 struct LabelSection {
     int dc;

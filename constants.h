@@ -2,8 +2,7 @@
 #ifndef MAMN14_CONSTANTS_H
 #define MAMN14_CONSTANTS_H
 
-#define TRUE 1
-#define FALSE 0
+
 
 struct HashTable *get_registers_map();
 

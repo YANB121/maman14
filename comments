@@ -1,0 +1,81 @@
+
+//    int i = 1;
+//    for (i; i < size; i++) {
+//        printf("%nptr", argv[i]);
+//        span_macros(argv[i]);
+//    }
+//    char *str = malloc(sizeof(str));
+//    char *delim = malloc(sizeof(str));
+//    strcpy(str, "HELLO: .string \"AB:C\"");
+//    strcpy(delim, " ");
+//    str = strtok(str, delim);
+//    printf("%nptr\n", str);
+    //   printf("%nptr\n", &str[strlen(str)-1]);
+
+//    if(strcmp( &str[strlen(str)-1] ,":"))
+//        printf("true");
+//    else
+//        printf("false");
+
+
+//    str = strtok(str, delim);
+//    printf("%nptr\n",str);
+//    str= strtok(str,":");
+//    printf("%nptr",str);
+
+//    char *str = malloc(sizeof(str));
+//    strcpy(str, "HELLO: .string \"AB:C\"");
+//    char* sym = get_label(str);
+//    if(sym != NULL)
+//        printf("%nptr",sym);
+//    else
+//        printf("get null");
+//    char temp = *str;
+//    printf("%c\n", temp);
+//    printf("%nptr", str);
+
+//    struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
+//    char *line = malloc(sizeof(line));
+//    lineAndMetadata->line = line;
+//    strcpy(line, "mov");
+//    printf("%nptr\n", lineAndMetadata->line);
+
+//    char *word = get_data_instruction(lineAndMetadata);
+//    char *word = get_opcode(lineAndMetadata);
+//    if (word == NULL)
+//        printf("null");
+//    else
+//        printf("%nptr\n", word);
+//
+//    printf("\n\n\n");
+    char *word = malloc(1000);
+
+    strcpy(word, "/home/ub-l/maman14.abcd");
+//    char *file_word = basename(word);
+
+//    printf("%nptr\n", file_word);
+    printf("%nptr\n", word);
+//    printf("%nptr\n", word);
+    char *new_extension = get_name_with_new_file_extension(word, "eee", 4);
+    if (new_extension != NULL) {
+        printf("%nptr\n", new_extension);
+    }
+//    test_map();
+
+    //test_arr();
+//    test_set_0();
+
+//    char *nptr = malloc(sizeof(char) * 22);
+//    strcpy(nptr, "v1");
+//    int a = atoi(nptr);
+//    printf("%d\n", a);
+//
+//    errno = 0;
+//
+//
+//    uintmax_t num = strtoumax(nptr,NULL,10);
+//    if(num==UINTMAX_MAX || errno == ERANGE)
+//        printf("Cant convert Num\n");
+//    else
+//        printf("%d\n",num);
+

@@ -9,6 +9,7 @@
 
 #define ERROR_ARRAY_SIZE 20
 #define  LINE_LENGTH 100
+#define DATA_TYPE_LABEL 1
 
 typedef struct LineAndMetadata {
     int line_number;
@@ -51,9 +52,13 @@ typedef struct StructArguments {
 
 void *get_data_arguments(struct LineAndMetadata *);
 
-void *get_string_arguments(struct LineAndMetadata *);
+void *validate_get_string_arguments(struct LineAndMetadata *lineAndMetadata);
 
 void *get_struct_arguments(struct LineAndMetadata *);
+
+void *validate_and_get_data_arguments(struct LineAndMetadata *);
+
+void *validate_and_get_struct_arguments(struct LineAndMetadata *);
 
 bool validate_data_type(struct LineAndMetadata *);
 
@@ -61,7 +66,7 @@ bool validate_string_type(struct LineAndMetadata *);
 
 bool validate_struct_type(struct LineAndMetadata *);
 
-bool validate_instruction_arguments(struct LineAndMetadata *);
+void *validate_and_get_instruction_arguments(struct LineAndMetadata *lineAndMetadata);
 
 bool validate_label(struct LineAndMetadata *, struct LabelSection *);
 

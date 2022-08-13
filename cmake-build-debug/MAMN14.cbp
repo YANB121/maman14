@@ -120,6 +120,12 @@
 		<Unit filename="C:/Users/Lidar/maman14/hashmap.h">
 			<Option target="MAMN14"/>
 		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/input_utils.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/input_utils.h">
+			<Option target="MAMN14"/>
+		</Unit>
 		<Unit filename="C:/Users/Lidar/maman14/main.c">
 			<Option target="MAMN14"/>
 		</Unit>

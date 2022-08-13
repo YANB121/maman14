@@ -3,7 +3,8 @@
 #include "string.h"
 #include "assembler_iterations.h"
 #include "constants.h"
-#include "file_utils.h"
+#include  <stdlib.h>
+#include <stdio.h>
 
 void test_map();
 
@@ -16,71 +17,28 @@ void test();
 int main(int size, char *argv[]) {
     initialize_constant_tables();
 
-//    int i = 1;
-//    for (i; i < size; i++) {
-//        printf("%s", argv[i]);
-//        span_macros(argv[i]);
-//    }
-//    char *str = malloc(sizeof(str));
-//    char *delim = malloc(sizeof(str));
-//    strcpy(str, "HELLO: .string \"AB:C\"");
-//    strcpy(delim, " ");
-//    str = strtok(str, delim);
-//    printf("%s\n", str);
-    //   printf("%s\n", &str[strlen(str)-1]);
+    char *line = malloc(sizeof(char) * 1000);
+    strcpy(line, "string,  string, strong");
+    printf("%s\n", line);
+    char *word = strtok(line, ",");
+    word = strtok(NULL, " ");
+    word = strtok(NULL, ",");
+//    word = strtok(NULL, ",");
+//    word = strtok(NULL, ",");
+    if (word == NULL)
+        printf("NULL\n");
+    else
+        printf("%s\n", word);
+    free(line);
 
-//    if(strcmp( &str[strlen(str)-1] ,":"))
-//        printf("true");
-//    else
-//        printf("false");
-
-
-//    str = strtok(str, delim);
-//    printf("%s\n",str);
-//    str= strtok(str,":");
-//    printf("%s",str);
-
-//    char *str = malloc(sizeof(str));
-//    strcpy(str, "HELLO: .string \"AB:C\"");
-//    char* sym = get_label(str);
-//    if(sym != NULL)
-//        printf("%s",sym);
-//    else
-//        printf("get null");
-//    char temp = *str;
-//    printf("%c\n", temp);
-//    printf("%s", str);
-
-//    struct LineAndMetadata *lineAndMetadata = malloc(sizeof(struct LineAndMetadata));
-//    char *line = malloc(sizeof(line));
-//    lineAndMetadata->line = line;
-//    strcpy(line, "mov");
-//    printf("%s\n", lineAndMetadata->line);
-
-//    char *word = get_data_instruction(lineAndMetadata);
-//    char *word = get_opcode(lineAndMetadata);
-//    if (word == NULL)
-//        printf("null");
-//    else
-//        printf("%s\n", word);
+//    char *line2 = malloc(sizeof(char) * 1000);
+//    strcpy(line2, "string,string,strong");
 //
-//    printf("\n\n\n");
-    char *word = malloc(1000);
-
-    strcpy(word, "/home/ub-l/maman14.abcd");
-//    char *file_word = basename(word);
-
-//    printf("%s\n", file_word);
-    printf("%s\n", word);
-//    printf("%s\n", word);
-    char *new_extension = get_name_with_new_file_extension(word, "eee", 4);
-    if (new_extension != NULL) {
-        printf("%s\n", new_extension);
-    }
-//    test_map();
-
-    //test_arr();
-//    test_set_0();
+//    char w = line2[0];
+//    char l = line2[strlen(line2)-1];
+//    int asc = w;
+//    printf("%d\n",asc);
+//    printf("%s\n",line2+1);
 
     return 0;
 }
@@ -139,5 +97,7 @@ void test_map() {
     print_table(ht);
     free_table(ht);
 }
+
+
 
 

@@ -218,6 +218,26 @@ CMakeFiles\MAMN14.dir\errors_utils.c.s: cmake_force
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\MAMN14.dir\errors_utils.c.s /c C:\Users\Lidar\maman14\errors_utils.c
 <<
 
+CMakeFiles\MAMN14.dir\input_utils.c.obj: CMakeFiles\MAMN14.dir\flags.make
+CMakeFiles\MAMN14.dir\input_utils.c.obj: ..\input_utils.c
+CMakeFiles\MAMN14.dir\input_utils.c.obj: CMakeFiles\MAMN14.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Lidar\maman14\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/MAMN14.dir/input_utils.c.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\MAMN14.dir\input_utils.c.obj.d --working-dir=C:\Users\Lidar\maman14\cmake-build-debug --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\MAMN14.dir\input_utils.c.obj /FdCMakeFiles\MAMN14.dir\ /FS -c C:\Users\Lidar\maman14\input_utils.c
+<<
+
+CMakeFiles\MAMN14.dir\input_utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MAMN14.dir/input_utils.c.i"
+	C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe > CMakeFiles\MAMN14.dir\input_utils.c.i @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Lidar\maman14\input_utils.c
+<<
+
+CMakeFiles\MAMN14.dir\input_utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MAMN14.dir/input_utils.c.s"
+	C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\MAMN14.dir\input_utils.c.s /c C:\Users\Lidar\maman14\input_utils.c
+<<
+
 # Object files for target MAMN14
 MAMN14_OBJECTS = \
 "CMakeFiles\MAMN14.dir\main.c.obj" \
@@ -227,7 +247,8 @@ MAMN14_OBJECTS = \
 "CMakeFiles\MAMN14.dir\file_utils.c.obj" \
 "CMakeFiles\MAMN14.dir\assembler_utils.c.obj" \
 "CMakeFiles\MAMN14.dir\constants.c.obj" \
-"CMakeFiles\MAMN14.dir\errors_utils.c.obj"
+"CMakeFiles\MAMN14.dir\errors_utils.c.obj" \
+"CMakeFiles\MAMN14.dir\input_utils.c.obj"
 
 # External object files for target MAMN14
 MAMN14_EXTERNAL_OBJECTS =
@@ -240,9 +261,10 @@ MAMN14.exe: CMakeFiles\MAMN14.dir\file_utils.c.obj
 MAMN14.exe: CMakeFiles\MAMN14.dir\assembler_utils.c.obj
 MAMN14.exe: CMakeFiles\MAMN14.dir\constants.c.obj
 MAMN14.exe: CMakeFiles\MAMN14.dir\errors_utils.c.obj
+MAMN14.exe: CMakeFiles\MAMN14.dir\input_utils.c.obj
 MAMN14.exe: CMakeFiles\MAMN14.dir\build.make
 MAMN14.exe: CMakeFiles\MAMN14.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Lidar\maman14\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C executable MAMN14.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Lidar\maman14\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable MAMN14.exe"
 	"C:\Program Files\JetBrains\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\MAMN14.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1429~1.301\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\MAMN14.dir\objects1.rsp @<<
  /out:MAMN14.exe /implib:MAMN14.lib /pdb:C:\Users\Lidar\maman14\cmake-build-debug\MAMN14.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
