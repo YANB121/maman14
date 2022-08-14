@@ -310,6 +310,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\main.c.s
 .PHONY : main.c.s
 
+operands_related.obj: operands_related.c.obj
+.PHONY : operands_related.obj
+
+# target to build an object file
+operands_related.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\operands_related.c.obj
+.PHONY : operands_related.c.obj
+
+operands_related.i: operands_related.c.i
+.PHONY : operands_related.i
+
+# target to preprocess a source file
+operands_related.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\operands_related.c.i
+.PHONY : operands_related.c.i
+
+operands_related.s: operands_related.c.s
+.PHONY : operands_related.s
+
+# target to generate assembly for a file
+operands_related.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\MAMN14.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\MAMN14.dir\operands_related.c.s
+.PHONY : operands_related.c.s
+
 preprocessor.obj: preprocessor.c.obj
 .PHONY : preprocessor.obj
 
@@ -367,6 +391,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... operands_related.obj
+	@echo ... operands_related.i
+	@echo ... operands_related.s
 	@echo ... preprocessor.obj
 	@echo ... preprocessor.i
 	@echo ... preprocessor.s

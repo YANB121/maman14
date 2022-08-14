@@ -8,6 +8,7 @@
 #include "errors_utils.h"
 #include "input_utils.h"
 #include <stdbool.h>
+#include <ctype.h>
 
 int first_iteration(char *program_file_path) {
     bool is_error_occurred = false;
@@ -44,21 +45,24 @@ int first_iteration(char *program_file_path) {
             continue;
         }
 
-
         //return the instruction_type type, null if not an instruction_type line
         int data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
 
         //return the opcode_type code , null if not an opcode_type line
         char *opcode_type = get_opcode(lineAndMetadata);
 
-
         if (data_instruction_type != NULL) {
             lineAndMetadata->instruction_type = data_instruction_type;
             handle_data_instruction(lineAndMetadata, labelSection);
-        } else if (opcode_type != NULL)//in case its an operation line.
+        } else if (opcode_type != NULL) {//in case its an operation line.
+            lineAndMetadata->opcode_type = opcode_type;
             handle_operation(lineAndMetadata, labelSection);
+        }
 
+        if (lineAndMetadata->is_error_occurred)
+            is_error_occurred = true;
     }
+
     return is_error_occurred;//return 1 if any error occurred so the assembler won't proceed to the second iteration
 
 }
@@ -106,41 +110,93 @@ struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number
     return lineAndMetadata;
 }
 
+void free_line_and_metadata(struct LineAndMetadata *lineAndMetadata) {
+    free(lineAndMetadata->line);
+    free(lineAndMetadata->label);
+    free(lineAndMetadata);
+}
+
 void *handle_data_instruction(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    if (lineAndMetadata->is_contains_label)
-        return handle_data_type_with_label(lineAndMetadata, labelSection);
-    else
-        return handle_data_type_without_symbol(lineAndMetadata);
+    if (lineAndMetadata->is_contains_label) { //first if the line contain label then insert it.
+        insert_data_label_into_table(lineAndMetadata, labelSection);
+    }
+    validate_and_insert_instruction_arguments(lineAndMetadata, labelSection);
 }
 
 
-void *handle_data_type_with_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    void *arguments = validate_and_get_instruction_arguments(lineAndMetadata);
-    insert_data_label_into_table(lineAndMetadata, labelSection);
-
-
-}
-
-void *validate_and_get_instruction_arguments(struct LineAndMetadata *lineAndMetadata) {
+void *
+validate_and_insert_instruction_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     switch (lineAndMetadata->instruction_type) {
-        case 1:
-            return validate_and_get_data_arguments(lineAndMetadata);
-        case 2:
-            return validate_get_string_arguments(lineAndMetadata);
-        case 3:
-            return validate_and_get_struct_arguments(lineAndMetadata);
+        case DATA_TYPE:
+            return validate_and_insert_data_arguments(lineAndMetadata, labelSection);
+        case STRING_TYPE:
+            return validate_and_insert_string_arguments(lineAndMetadata, labelSection);
+        case STRUCT_TYPE:
+            return validate_and_insert_struct_arguments(lineAndMetadata, labelSection);
+        case ENTRY_TYPE:
+            return validate_and_insert_entry_arguments(lineAndMetadata, labelSection);
+        case EXTERNAL_TYPE:
+            return validate_and_insert_external_arguments(lineAndMetadata, labelSection);
+    }
 
+}
+
+void *
+validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    strcpy(line_copy, lineAndMetadata->line);
+
+    char *word;
+    if (lineAndMetadata->is_contains_label) {
+        word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+
+    } else
+        word = strtok(line_copy, " ");
+
+    word = strtok(NULL, " ");
+    bool is_valid_label = validate_entry_and_external_label(word, labelSection);
+    if (is_valid_label) {
+        insert_external_or_entry_label_into_table(word, labelSection, ENTRY_TYPE_LABEL);
+        return true;
+    } else {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_ARGUMENTS);
+        return false;
     }
 
 }
 
 
-void *validate_get_string_arguments(struct LineAndMetadata *lineAndMetadata) {
+void *
+validate_and_insert_external_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
     strcpy(line_copy, lineAndMetadata->line);
 
-    struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
-    dataArguments->data_arguments_counter = 0;
+    char *word;
+    if (lineAndMetadata->is_contains_label) {
+        word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+
+    } else
+        word = strtok(line_copy, " ");
+
+    word = strtok(NULL, " ");
+    bool is_valid_label = validate_entry_and_external_label(word, labelSection);
+    if (is_valid_label) {
+        insert_external_or_entry_label_into_table(word, labelSection, EXTERNAL_TYPE_LABEL);
+        return true;
+    } else {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_ARGUMENTS);
+        return false;
+    }
+}
+
+
+void *validate_and_insert_string_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    strcpy(line_copy, lineAndMetadata->line);
 
     char *word;
     if (lineAndMetadata->is_contains_label) {
@@ -158,10 +214,10 @@ void *validate_get_string_arguments(struct LineAndMetadata *lineAndMetadata) {
         return NULL;
     }
     word = trim_commas(word);
-
+    int temp_dc = labelSection->dc;
     for (int i = 0; i < strlen(word); i++) {
-        dataArguments->data_arguments[dataArguments->data_arguments_counter] = (int) word[i];
-        dataArguments->data_arguments_counter = dataArguments->data_arguments_counter + 1;
+        labelSection->data_array[temp_dc] = (int) word[i];
+        temp_dc++;
     }
 
     word = strtok(NULL, " ");
@@ -171,18 +227,16 @@ void *validate_get_string_arguments(struct LineAndMetadata *lineAndMetadata) {
         add_error_code(lineAndMetadata, ERR_CODE_TOO_MANY_ARGUMENTS);
         return NULL;
     }
-
+    labelSection->dc = temp_dc; //in case the job done properly then update the dc
     free(line_copy);
-    return dataArguments;
+    return true;
 
 }
 
-void *validate_and_get_struct_arguments(struct LineAndMetadata *lineAndMetadata) {
+void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
     strcpy(line_copy, lineAndMetadata->line);
 
-    struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
-    dataArguments->data_arguments_counter = 0;
 
     char *word;
     if (lineAndMetadata->is_contains_label) {
@@ -192,14 +246,16 @@ void *validate_and_get_struct_arguments(struct LineAndMetadata *lineAndMetadata)
     } else
         word = strtok(line_copy, " ");
 
+    int temp_dc = labelSection->dc;
     int number = string_to_number(word);
     if (number == NULL) {
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata, ERR_CODE_INVALID_DATA_TYPE);
         return NULL;
     }
-    dataArguments->data_arguments[dataArguments->data_arguments_counter] = number;
-    dataArguments->data_arguments_counter++;
+
+    labelSection->data_array[temp_dc] = number;
+    temp_dc++;
 
     word = strtok(NULL, ",");
     char first_char = *word;
@@ -212,9 +268,8 @@ void *validate_and_get_struct_arguments(struct LineAndMetadata *lineAndMetadata)
     word = trim_commas(word);
 
     for (int i = 0; i < strlen(word); i++) {
-        dataArguments->data_arguments[dataArguments->data_arguments_counter] = (int) word[i];
-        dataArguments->
-                data_arguments_counter = dataArguments->data_arguments_counter + 1;
+        labelSection->data_array[temp_dc] = (int) word[i];
+        temp_dc++;
     }
 
     word = strtok(NULL, " ");
@@ -224,19 +279,17 @@ void *validate_and_get_struct_arguments(struct LineAndMetadata *lineAndMetadata)
         add_error_code(lineAndMetadata, ERR_CODE_TOO_MANY_ARGUMENTS);
         return NULL;
     }
+    labelSection->dc = temp_dc;//in case the job done properly then update the dc;
     free(line_copy);
-    return dataArguments;
+    return true;
 
 
 }
 
 
-void *validate_and_get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
+void *validate_and_insert_data_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
     strcpy(line_copy, lineAndMetadata->line);
-
-    struct DataArguments *dataArguments = malloc(sizeof(struct DataArguments));
-    dataArguments->data_arguments_counter = 0;
 
     char *word;
     if (lineAndMetadata->is_contains_label) {
@@ -246,6 +299,7 @@ void *validate_and_get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
     } else
         word = strtok(line_copy, " ");
 
+    int temp_dc = labelSection->dc;
     while (word = strtok(NULL, ",") != NULL) {
         long number = string_to_number(word);
         if (number == NULL) { //in case the input is not a valid number
@@ -253,12 +307,13 @@ void *validate_and_get_data_arguments(struct LineAndMetadata *lineAndMetadata) {
             add_error_code(lineAndMetadata, ERR_CODE_INVALID_DATA_TYPE);
             return NULL;
         } else {
-            dataArguments->data_arguments[dataArguments->data_arguments_counter] = number;
+            labelSection->data_array[temp_dc] = number;
         }
-        dataArguments->data_arguments_counter = dataArguments->data_arguments_counter + 1;
+        temp_dc++;
     }
+    labelSection->dc = temp_dc; //in case the data was validated and the insert done properly then update the dc;
     free(line_copy);
-    return dataArguments;
+    return true;
 
 }
 
@@ -291,6 +346,26 @@ bool validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection
 
 }
 
+bool validate_entry_and_external_label(char *label, struct LabelSection *labelSection) {
+    if (ht_search(labelSection->label_table, label) != NULL)  //if the label already in use then add error and return.
+        return false;
+    else if (ht_search(get_data_instruction_map(), label) != NULL) //if the label is instruction_type label.
+        return false;
+    else if (ht_search(get_opcode_and_decimal_map(), label) != NULL) //if the label is opcode_type operation.
+        return false;
+    else if (ht_search(get_registers_map(), label) != NULL) //if the label is a register name.
+        return false;
+    else
+        return true;
+}
+
+void insert_external_or_entry_label_into_table(char *label, struct LabelSection *labelSection, int type) {
+    int *counter_and_type = calloc(2, sizeof(int));
+    counter_and_type[0] = type; //indicates its a data type label
+    counter_and_type[1] = 0;
+    ht_insert(labelSection->label_table, label, counter_and_type);
+}
+
 void insert_data_label_into_table(struct LabelSection *labelSection, struct LineAndMetadata *lineAndMetadata) {
     int *counter_and_type = calloc(2, sizeof(int));
     counter_and_type[0] = DATA_TYPE_LABEL; //indicates its a data type label
@@ -299,8 +374,12 @@ void insert_data_label_into_table(struct LabelSection *labelSection, struct Line
 }
 
 
-void *handle_data_type_without_symbol(struct LineAndMetadata *line) {}
-
+void insert_opcode_label_into_table(struct LabelSection *labelSection, struct LineAndMetadata *lineAndMetadata) {
+    int *counter_and_type = calloc(2, sizeof(int));
+    counter_and_type[0] = OPCODE_TYPE_LABEL; //indicates its a opcode type label
+    counter_and_type[1] = labelSection->ic;
+    ht_insert(labelSection->label_table, lineAndMetadata->label, counter_and_type);
+}
 
 //checks if the line starts with symbol, if so return the label, else return null.
 char *get_label(char *line) {
@@ -317,10 +396,6 @@ char *get_label(char *line) {
         return first_word;
     } else
         return NULL;
-
-
-    line_copy = strtok(line_copy, ":");
-
 }
 
 //checks if its data line , if so return the data type (".struct",".data",".string", etc'), else return null.
@@ -347,17 +422,6 @@ int get_data_instruction(struct LineAndMetadata *lineAndMetadata) {
 
 }
 
-char *validate_instruction(char *word) { //TODO: implementation done
-    char starting_char = *word; //fetch the first character
-    char *valid_word = ht_search(get_data_instruction_map(),
-                                 word); //find the instruction_type in the instruction_type table
-    if (starting_char != '.') //if the word doesn't start with "."
-        return NULL;
-    else
-        return valid_word; //NULL if its invalid instruction_type.
-
-}
-
 bool get_and_validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     char *label = get_label(lineAndMetadata->line); //return the label, null if line is not starting with label
     if (label != NULL) {
@@ -380,6 +444,115 @@ void add_error_code(struct LineAndMetadata *lineAndMetadata, int error_code) {
     }
 }
 
+void *validate_and_insert_opcode_line(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
+    int operand_number = ht_search(get_opcode_and_amount_of_operands_map(), lineAndMetadata->opcode_type);
+    Operands *operands = get_operands_and_type(lineAndMetadata);
+    bool is_operand_valid = verify_operands(operands, operand_number);
 
-void *handle_operation(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {};
+    if (!is_operand_valid) {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_OPERANDS);
+        return NULL;
+    }
+    insert_opcode_line_to_image(lineAndMetadata, labelSection, operands);
+
+
+}
+
+void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection,
+                                  Operands *operands) {
+    int temp_ic = labelSection->ic; //use temporary index and update the ic only if the operation done properly.
+    int first_line = calculate_first_line(operands, lineAndMetadata);
+
+    labelSection->instruction_array[temp_ic] = first_line;
+    temp_ic++;
+
+}
+
+
+int calculate_first_line(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
+    int line_sum = 0;
+    int operand_code = ht_search(get_opcode_and_decimal_map(), lineAndMetadata->opcode_type);
+    operand_code = operand_code << 6; //move the operation code to be the 4  greater bits.
+    line_sum += operand_code; //add the operand code to the line sum.
+
+    int source_code = operands->source_operand_type;
+    if (source_code != NULL) {
+        source_code = source_code << 4;
+        line_sum += source_code;
+    }
+
+    int dest_code = operands->destination_operand_type;
+    if (dest_code != NULL) {
+        dest_code = dest_code << 2;
+        line_sum += dest_code;
+    }
+
+
+}
+
+
+Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata) {
+    Operands *operands = malloc(sizeof(Operands));
+    char *line_copy = malloc(sizeof(char) * strlen(lineAndMetadata->line));
+
+    if (lineAndMetadata->is_contains_label) { //first normalize the pointer. if the line contains label the opcode word may be the second
+        char *word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+    } else
+        char *word = strtok(line_copy, " ");
+
+    operands->source_operand = strtok(NULL, " "); //NULL if no operand
+    operands->destination_operand = strtok(NULL, " ");//NULL if no operands/only 1 operand.
+
+    operands->source_operand_type = classified_operands(operands->source_operand);
+    operands->destination_operand_type = classified_operands(operands->destination_operand);
+
+    return operands;
+
+}
+
+/*
+ * use after the operand classification.
+ * 1. check if the operand amount is correct.
+ * 2. if the operand exist but the type is null it means is invalid operand.
+ * */
+bool verify_operands(Operands *operands, int operand_number) {
+    
+
+    if (operands->source_operand != NULL && operands->source_operand_type == NULL)
+        return false;
+    else if (operands->destination_operand != NULL && operands->destination_operand_type == NULL)
+        return false;
+    else return true;
+}
+
+
+int classified_operands(char *operand) {
+    if (operand == NULL)
+        return NULL;
+
+    char first_char = *operand;
+    if (first_char == '#')
+        return IMMEDIATE_ADDRESSING_OPERAND;
+    else if (ht_search(get_registers_map(), operand) != NULL)
+        return REGISTER_ADDRESSING_OPERAND;
+    else if (isalpha(first_char)) {
+        if (operand[strlen(operand) - 2] == '.' &&
+            (operand[strlen(operand) - 1] == '1' ||
+             operand[strlen(operand) - 1] == '2')) //in case this is strcut type operand (AB.1 for instance)
+            return DIRECT_OFFSET_ADDRESSING_OPERAND;
+        else
+            return DIRECT_ADDRESSING_OPERAND;
+    } else
+        return NULL;
+
+}
+
+void *handle_operation(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
+    if (lineAndMetadata->is_contains_label)
+        insert_opcode_label_into_table(labelSection, lineAndMetadata);
+    validate_and_insert_opcode_line(lineAndMetadata, labelSection);
+
+};
 

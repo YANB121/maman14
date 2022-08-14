@@ -14,22 +14,24 @@ void test_set_0();
 
 void test();
 
+void print_binary(int num);
+
 int main(int size, char *argv[]) {
     initialize_constant_tables();
 
-    char *line = malloc(sizeof(char) * 1000);
-    strcpy(line, "string,  string, strong");
-    printf("%s\n", line);
-    char *word = strtok(line, ",");
-    word = strtok(NULL, " ");
-    word = strtok(NULL, ",");
+//    char *line = malloc(sizeof(char) * 1000);
+//    strcpy(line, "string,  string, strong");
+//    printf("%s\n", line);
+//    char *word = strtok(line, ",");
+//    word = strtok(NULL, " ");
 //    word = strtok(NULL, ",");
-//    word = strtok(NULL, ",");
-    if (word == NULL)
-        printf("NULL\n");
-    else
-        printf("%s\n", word);
-    free(line);
+////    word = strtok(NULL, ",");
+////    word = strtok(NULL, ",");
+//    if (word == NULL)
+//        printf("NULL\n");
+//    else
+//        printf("%s\n", word);
+//    free(line);
 
 //    char *line2 = malloc(sizeof(char) * 1000);
 //    strcpy(line2, "string,string,strong");
@@ -40,7 +42,41 @@ int main(int size, char *argv[]) {
 //    printf("%d\n",asc);
 //    printf("%s\n",line2+1);
 
+//    struct LabelSection *labelSection = malloc(sizeof(struct LabelSection));
+//    labelSection->ic =10;
+//    printf("%d\n",labelSection->ic);
+//    int temp_ic =labelSection->ic;
+//    printf("%d\n",temp_ic);
+//    temp_ic = 36;
+//    printf("%d\n",temp_ic);
+//    printf("%d\n",labelSection->ic);
+
+    int c = 15;
+
+    printf("%d\n", c);
+    print_binary(c);
+    c = c << 6;
+    print_binary(c);
+
+    c= c+2;
+    print_binary(c);
+
     return 0;
+}
+
+void print_binary(int num) {
+    int a[10];
+    int i = 0;
+    for (i; num > 0; i++) {
+        a[i] = num % 2;
+        num = num / 2;
+    }
+    printf("\nBinary of Given Number is=");
+    i = i - 1;
+    for (i; i >= 0; i--) {
+        printf("%d", a[i]);
+    }
+
 }
 
 
@@ -53,6 +89,7 @@ void test() {
 
 
 }
+
 
 void test_find_extension_point() {
     char *word = malloc(100);

@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/Lidar/maman14/hashmap.c" "CMakeFiles/MAMN14.dir/hashmap.c.obj" "msvc" "CMakeFiles/MAMN14.dir/hashmap.c.obj.d"
   "C:/Users/Lidar/maman14/input_utils.c" "CMakeFiles/MAMN14.dir/input_utils.c.obj" "msvc" "CMakeFiles/MAMN14.dir/input_utils.c.obj.d"
   "C:/Users/Lidar/maman14/main.c" "CMakeFiles/MAMN14.dir/main.c.obj" "msvc" "CMakeFiles/MAMN14.dir/main.c.obj.d"
+  "C:/Users/Lidar/maman14/operands_related.c" "CMakeFiles/MAMN14.dir/operands_related.c.obj" "msvc" "CMakeFiles/MAMN14.dir/operands_related.c.obj.d"
   "C:/Users/Lidar/maman14/preprocessor.c" "CMakeFiles/MAMN14.dir/preprocessor.c.obj" "msvc" "CMakeFiles/MAMN14.dir/preprocessor.c.obj.d"
   )
 

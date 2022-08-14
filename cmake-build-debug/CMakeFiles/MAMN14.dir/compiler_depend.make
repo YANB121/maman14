@@ -30,6 +30,8 @@ CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Window
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\constants.h
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\errors_utils.h
 CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: ..\input_utils.h
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\ctype.h"
+CMakeFiles\MAMN14.dir\assembler_iterations.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wctype.h"
 
 
 CMakeFiles\MAMN14.dir\assembler_utils.c.obj: ..\assembler_utils.c
@@ -191,6 +193,10 @@ CMakeFiles\MAMN14.dir\main.c.obj: ..\assembler_utils.h
 CMakeFiles\MAMN14.dir\main.c.obj: ..\constants.h
 
 
+CMakeFiles\MAMN14.dir\operands_related.c.obj: ..\operands_related.c
+CMakeFiles\MAMN14.dir\operands_related.c.obj: ..\operands_related.h
+
+
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\preprocessor.c
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\stdio.h"
 CMakeFiles\MAMN14.dir\preprocessor.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt.h"
@@ -285,6 +291,10 @@ CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\hashmap.h
 
 ..\input_utils.h:
 
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wctype.h":
+
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\ctype.h":
+
 ..\assembler_utils.c:
 
 ..\file_utils.c:
@@ -292,3 +302,7 @@ CMakeFiles\MAMN14.dir\preprocessor.c.obj: ..\hashmap.h
 ..\hashmap.c:
 
 ..\main.c:
+
+..\operands_related.c:
+
+..\operands_related.h:

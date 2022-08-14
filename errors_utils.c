@@ -25,6 +25,8 @@ void initialize_errors_map() {
     ht_insert(errors_map, ERR_CODE_INVALID_DATA_TYPE, "the data type is invalid, only integers allowed");
     ht_insert(errors_map, ERR_CODE_INVALID_STRING_TYPE, "the string type is invalid");
     ht_insert(errors_map, ERR_CODE_TOO_MANY_ARGUMENTS, "line contains too many arguments");
+    ht_insert(errors_map, ERR_CODE_INVALID_ARGUMENTS, "invalid arguments error");
+    ht_insert(errors_map, ERR_CODE_INVALID_OPERANDS, "invalid operands error");
 }
 
 

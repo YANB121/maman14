@@ -26,3 +26,5 @@ C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wstring
 C:/Users/Lidar/maman14/constants.h
 C:/Users/Lidar/maman14/errors_utils.h
 C:/Users/Lidar/maman14/input_utils.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/ctype.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.18362.0/ucrt/corecrt_wctype.h

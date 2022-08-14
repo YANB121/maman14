@@ -7,6 +7,16 @@ struct HashTable *dataInstructions;
 struct HashTable *opcodeAndDecimal;
 struct HashTable *additionalInstructions;
 struct HashTable *opcodeAndAmountOfOperands;
+struct HashTable *validSourceAddressingMap;
+struct HashTable *validDestAddressingMap;
+
+struct HashTable *get_valid_source_addressing_map() {
+    return validSourceAddressingMap;
+}
+
+struct HashTable *get_valid_dest_addressing_map() {
+    return validDestAddressingMap;
+}
 
 
 struct HashTable *get_registers_map() {
@@ -37,7 +47,59 @@ void initialize_constant_tables() {
     initialize_opcode_table();
     initialize_additional_instructions_map();
     initialize_opcode_and_amount_of_operands_map();
+    initialize_valid_source_addressing_method_map();
+    initialize_valid_dest_addressing_method_map();
 }
+
+
+void initialize_valid_source_addressing_method_map() {
+    validSourceAddressingMap = create_table(16);
+    int all[] = {0, 1, 2, 3};
+    int partial_a[] = {1, 2, 3};
+    int partial_b[] = {1, 2};
+
+    ht_insert(validSourceAddressingMap, "mov", all);
+    ht_insert(validSourceAddressingMap, "cmp", all);
+    ht_insert(validSourceAddressingMap, "add", all);
+    ht_insert(validSourceAddressingMap, "sub", all);
+    ht_insert(validSourceAddressingMap, "not", partial_a);
+    ht_insert(validSourceAddressingMap, "clr", partial_a);
+    ht_insert(validSourceAddressingMap, "lea", partial_b);
+    ht_insert(validSourceAddressingMap, "inc", partial_a);
+    ht_insert(validSourceAddressingMap, "dec", partial_a);
+    ht_insert(validSourceAddressingMap, "jmp", partial_a);
+    ht_insert(validSourceAddressingMap, "bne", partial_a);
+    ht_insert(validSourceAddressingMap, "get", partial_a);
+    ht_insert(validSourceAddressingMap, "prn", all);
+    ht_insert(validSourceAddressingMap, "jsr", partial_a);
+    ht_insert(validSourceAddressingMap, "rts", NULL);
+    ht_insert(validSourceAddressingMap, "hlt", NULL);
+}
+
+void initialize_valid_dest_addressing_method_map() {
+    validSourceAddressingMap = create_table(16);
+    int all[] = {0, 1, 2, 3};
+    int partial_a[] = {1, 2, 3};
+    int partial_b[] = {1, 2};
+
+    ht_insert(validSourceAddressingMap, "mov", partial_b);
+    ht_insert(validSourceAddressingMap, "cmp", all);
+    ht_insert(validSourceAddressingMap, "add", partial_a);
+    ht_insert(validSourceAddressingMap, "sub", partial_a);
+    ht_insert(validSourceAddressingMap, "not", partial_a);
+    ht_insert(validSourceAddressingMap, "clr", partial_a);
+    ht_insert(validSourceAddressingMap, "lea", partial_a);
+    ht_insert(validSourceAddressingMap, "inc", partial_a);
+    ht_insert(validSourceAddressingMap, "dec", partial_a);
+    ht_insert(validSourceAddressingMap, "jmp", partial_a);
+    ht_insert(validSourceAddressingMap, "bne", partial_a);
+    ht_insert(validSourceAddressingMap, "get", partial_a);
+    ht_insert(validSourceAddressingMap, "prn", all);
+    ht_insert(validSourceAddressingMap, "jsr", partial_a);
+    ht_insert(validSourceAddressingMap, "rts", NULL);
+    ht_insert(validSourceAddressingMap, "hlt", NULL);
+}
+
 
 void initialize_opcode_and_amount_of_operands_map() {
     opcodeAndAmountOfOperands = create_table(16);
@@ -78,6 +140,8 @@ void initialize_data_instructions_names_map() {
     ht_insert(dataInstructions, ".data", 1);
     ht_insert(dataInstructions, ".string", 2);
     ht_insert(dataInstructions, ".struct", 3);
+    ht_insert(dataInstructions, ".entry", 4);
+    ht_insert(dataInstructions, ".external", 5);
 }
 
 void initialize_opcode_table() {

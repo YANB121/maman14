@@ -129,6 +129,12 @@
 		<Unit filename="C:/Users/Lidar/maman14/main.c">
 			<Option target="MAMN14"/>
 		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/operands_related.c">
+			<Option target="MAMN14"/>
+		</Unit>
+		<Unit filename="C:/Users/Lidar/maman14/operands_related.h">
+			<Option target="MAMN14"/>
+		</Unit>
 		<Unit filename="C:/Users/Lidar/maman14/preprocessor.c">
 			<Option target="MAMN14"/>
 		</Unit>

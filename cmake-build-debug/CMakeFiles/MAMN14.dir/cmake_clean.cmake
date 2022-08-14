@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MAMN14.dir/input_utils.c.obj.d"
   "CMakeFiles/MAMN14.dir/main.c.obj"
   "CMakeFiles/MAMN14.dir/main.c.obj.d"
+  "CMakeFiles/MAMN14.dir/operands_related.c.obj"
+  "CMakeFiles/MAMN14.dir/operands_related.c.obj.d"
   "CMakeFiles/MAMN14.dir/preprocessor.c.obj"
   "CMakeFiles/MAMN14.dir/preprocessor.c.obj.d"
   "MAMN14.exe"

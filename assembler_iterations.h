@@ -10,6 +10,14 @@
 #define ERROR_ARRAY_SIZE 20
 #define  LINE_LENGTH 100
 #define DATA_TYPE_LABEL 1
+#define EXTERNAL_TYPE_LABEL 2
+#define ENTRY_TYPE_LABEL 3
+#define OPCODE_TYPE_LABEL 4
+
+
+
+
+
 
 typedef struct LineAndMetadata {
     int line_number;
@@ -24,41 +32,38 @@ typedef struct LineAndMetadata {
 
 };
 
-//typedef struct Arguments {
-//    bool contains_integers;
-//    int integer_arguments_counter;
-//    int integers_arguments[80];
-//
-//    bool contains_strings;
-//    int string_arguments_counter;
-//    char *strings_arguments[80];
-//
-//
-//};
 
-typedef struct DataArguments {
-    int data_arguments[80];
-    int data_arguments_counter;
-
-};
-
-typedef struct StructArguments {
-    char *string_argument;
-    int integer_argument;
-};
+typedef struct Operands {
+    int total_operands;
+    void *source_operand;
+    void *destination_operand;
+    int source_operand_type;
+    int destination_operand_type;
+} Operands;
 
 
 //struct Arguments *initialize_arguments_struct();
+bool validate_entry_and_external_label(char *, struct LabelSection *);
+
+int classified_operands(char *operands);
+
+bool verify_operands(Operands *operands, int number_of_operands);
+
+int calculate_first_line(Operands*,struct LineAndMetadata*);
+
+void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection,Operands*);
 
 void *get_data_arguments(struct LineAndMetadata *);
 
-void *validate_get_string_arguments(struct LineAndMetadata *lineAndMetadata);
+void *validate_and_insert_external_arguments(struct LineAndMetadata *, struct LabelSection *);
+
+void *validate_and_insert_string_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection);
+
+void *validate_and_insert_data_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection);
+
+void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection);
 
 void *get_struct_arguments(struct LineAndMetadata *);
-
-void *validate_and_get_data_arguments(struct LineAndMetadata *);
-
-void *validate_and_get_struct_arguments(struct LineAndMetadata *);
 
 bool validate_data_type(struct LineAndMetadata *);
 
@@ -66,7 +71,8 @@ bool validate_string_type(struct LineAndMetadata *);
 
 bool validate_struct_type(struct LineAndMetadata *);
 
-void *validate_and_get_instruction_arguments(struct LineAndMetadata *lineAndMetadata);
+void *
+validate_and_insert_instruction_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection);
 
 bool validate_label(struct LineAndMetadata *, struct LabelSection *);
 
@@ -76,7 +82,18 @@ int is_empty_or_comment(char *);
 
 void insert_data_label_into_table(struct LabelSection *, struct LineAndMetadata *);
 
+void insert_opcode_label_into_table(struct LabelSection *, struct LineAndMetadata *);
+
+void *validate_and_insert_opcode_line(struct LineAndMetadata *, struct LabelSection *);
+
+void insert_external_or_entry_label_into_table(char *label, struct LabelSection *labelSection, int type);
+
 char *get_opcode(struct LineAndMetadata *);
+
+Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata);
+
+void *
+validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection);
 
 int first_iteration(char *);
 
