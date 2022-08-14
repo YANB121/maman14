@@ -447,7 +447,7 @@ void add_error_code(struct LineAndMetadata *lineAndMetadata, int error_code) {
 void *validate_and_insert_opcode_line(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     int operand_number = ht_search(get_opcode_and_amount_of_operands_map(), lineAndMetadata->opcode_type);
     Operands *operands = get_operands_and_type(lineAndMetadata);
-    bool is_operand_valid = verify_operands(operands, operand_number);
+    bool is_operand_valid = verify_operands(operands, operand_number, NULL);
 
     if (!is_operand_valid) {
         lineAndMetadata->is_error_occurred = 1;
@@ -512,13 +512,38 @@ Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata) {
 
 }
 
-/*
- * use after the operand classification.
- * 1. check if the operand amount is correct.
- * 2. if the operand exist but the type is null it means is invalid operand.
- * */
-bool verify_operands(Operands *operands, int operand_number) {
-    
+bool verify_operands(Operands *operands, int operand_number, struct LineAndMetadata *lineAndMetadata) {
+    bool amount = verify_operand_amount(operands, operand_number);
+    bool syntax = verify_operands_syntax(operands, operand_number);
+    bool type = verify_operand_type(operands, lineAndMetadata);
+
+    return amount && syntax && type;
+
+}
+
+bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
+    int *valid_addressing_source = ht_search(get_valid_source_addressing_map(), lineAndMetadata->opcode_type);
+    int *valid_addressing_dest = ht_search(get_valid_dest_addressing_map(), lineAndMetadata->opcode_type);
+
+//    if (valid_addressing_source != NULL && operands->source_operand_type != NULL)
+
+
+}
+
+bool verify_operand_amount(Operands *operands, int operand_number) {
+    int current_operands = 0;
+
+    if (operands->destination_operand != NULL)
+        current_operands++;
+    if (operands->source_operand != NULL)
+        current_operands++;
+
+    if (current_operands != operand_number)
+        return false;
+}
+
+
+bool verify_operands_syntax(Operands *operands, int operand_number) {
 
     if (operands->source_operand != NULL && operands->source_operand_type == NULL)
         return false;
@@ -550,9 +575,10 @@ int classified_operands(char *operand) {
 }
 
 void *handle_operation(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    if (lineAndMetadata->is_contains_label)
+    if (lineAndMetadata->is_contains_label) {
         insert_opcode_label_into_table(labelSection, lineAndMetadata);
+    }
     validate_and_insert_opcode_line(lineAndMetadata, labelSection);
 
-};
+}
 

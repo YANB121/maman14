@@ -45,3 +45,13 @@ char *trim_commas(char *word) {
     word[strlen(word) - 1] = '\0';
     return word;
 }
+
+
+bool is_int_array_contains(int *array, int value) {
+    size_t array_length = sizeof(array) / sizeof(int);
+    for (int i = 0; i < array_length; i++) {
+        if (array[i] == value)
+            return true;
+    }
+    return false;
+}

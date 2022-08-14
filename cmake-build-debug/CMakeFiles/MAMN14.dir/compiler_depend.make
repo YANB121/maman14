@@ -163,6 +163,7 @@ CMakeFiles\MAMN14.dir\input_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10
 CMakeFiles\MAMN14.dir\input_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vcruntime_string.h"
 CMakeFiles\MAMN14.dir\input_utils.c.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt\corecrt_wstring.h"
 CMakeFiles\MAMN14.dir\input_utils.c.obj: ..\input_utils.h
+CMakeFiles\MAMN14.dir\input_utils.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stdbool.h"
 
 
 CMakeFiles\MAMN14.dir\main.c.obj: ..\main.c
@@ -191,6 +192,7 @@ CMakeFiles\MAMN14.dir\main.c.obj: ..\assembler_iterations.h
 CMakeFiles\MAMN14.dir\main.c.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\stdbool.h"
 CMakeFiles\MAMN14.dir\main.c.obj: ..\assembler_utils.h
 CMakeFiles\MAMN14.dir\main.c.obj: ..\constants.h
+CMakeFiles\MAMN14.dir\main.c.obj: ..\input_utils.h
 
 
 CMakeFiles\MAMN14.dir\operands_related.c.obj: ..\operands_related.c

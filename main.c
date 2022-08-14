@@ -3,6 +3,7 @@
 #include "string.h"
 #include "assembler_iterations.h"
 #include "constants.h"
+#include "input_utils.h"
 #include  <stdlib.h>
 #include <stdio.h>
 
@@ -51,17 +52,7 @@ int main(int size, char *argv[]) {
 //    printf("%d\n",temp_ic);
 //    printf("%d\n",labelSection->ic);
 
-    int c = 15;
 
-    printf("%d\n", c);
-    print_binary(c);
-    c = c << 6;
-    print_binary(c);
-
-    c= c+2;
-    print_binary(c);
-
-    return 0;
 }
 
 void print_binary(int num) {

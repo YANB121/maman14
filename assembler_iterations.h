@@ -44,10 +44,14 @@ typedef struct Operands {
 
 //struct Arguments *initialize_arguments_struct();
 bool validate_entry_and_external_label(char *, struct LabelSection *);
+bool verify_operand_amount(Operands *operands, int operand_number);
+
+bool verify_operands(Operands *operands, int operand_number, struct LineAndMetadata *lineAndMetadata);
 
 int classified_operands(char *operands);
 
-bool verify_operands(Operands *operands, int number_of_operands);
+bool verify_operand_type(Operands* ,struct LineAndMetadata*);
+bool verify_operands_syntax(Operands *operands, int operand_number);
 
 int calculate_first_line(Operands*,struct LineAndMetadata*);
 

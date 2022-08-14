@@ -5,7 +5,13 @@
 #ifndef MAMN14_INPUT_UTILS_H
 #define MAMN14_INPUT_UTILS_H
 
+#include <stdbool.h>
+
 long string_to_number(char *);
-char* trim_commas(char*);
+
+char *trim_commas(char *);
+
+bool is_int_array_contains(int *array, int value);
+
 
 #endif //MAMN14_INPUT_UTILS_H
