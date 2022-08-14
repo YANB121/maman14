@@ -52,6 +52,10 @@ int main(int size, char *argv[]) {
 //    printf("%d\n",temp_ic);
 //    printf("%d\n",labelSection->ic);
 
+    int a = 10;
+    char b= a +'0';
+    printf("%d\n",a);
+    printf("%c\n",b);
 
 }
 

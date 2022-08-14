@@ -54,48 +54,42 @@ void initialize_constant_tables() {
 
 void initialize_valid_source_addressing_method_map() {
     validSourceAddressingMap = create_table(16);
-    int all[] = {0, 1, 2, 3};
-    int partial_a[] = {1, 2, 3};
-    int partial_b[] = {1, 2};
 
-    ht_insert(validSourceAddressingMap, "mov", all);
-    ht_insert(validSourceAddressingMap, "cmp", all);
-    ht_insert(validSourceAddressingMap, "add", all);
-    ht_insert(validSourceAddressingMap, "sub", all);
-    ht_insert(validSourceAddressingMap, "not", partial_a);
-    ht_insert(validSourceAddressingMap, "clr", partial_a);
-    ht_insert(validSourceAddressingMap, "lea", partial_b);
-    ht_insert(validSourceAddressingMap, "inc", partial_a);
-    ht_insert(validSourceAddressingMap, "dec", partial_a);
-    ht_insert(validSourceAddressingMap, "jmp", partial_a);
-    ht_insert(validSourceAddressingMap, "bne", partial_a);
-    ht_insert(validSourceAddressingMap, "get", partial_a);
-    ht_insert(validSourceAddressingMap, "prn", all);
-    ht_insert(validSourceAddressingMap, "jsr", partial_a);
+    ht_insert(validSourceAddressingMap, "mov", "0123");
+    ht_insert(validSourceAddressingMap, "cmp", "0123");
+    ht_insert(validSourceAddressingMap, "add", "0123");
+    ht_insert(validSourceAddressingMap, "sub", "0123");
+    ht_insert(validSourceAddressingMap, "not", "123");
+    ht_insert(validSourceAddressingMap, "clr", "123");
+    ht_insert(validSourceAddressingMap, "lea", "12");
+    ht_insert(validSourceAddressingMap, "inc", "123");
+    ht_insert(validSourceAddressingMap, "dec", "123");
+    ht_insert(validSourceAddressingMap, "jmp", "123");
+    ht_insert(validSourceAddressingMap, "bne", "123");
+    ht_insert(validSourceAddressingMap, "get", "123");
+    ht_insert(validSourceAddressingMap, "prn", "0123");
+    ht_insert(validSourceAddressingMap, "jsr", "123");
     ht_insert(validSourceAddressingMap, "rts", NULL);
     ht_insert(validSourceAddressingMap, "hlt", NULL);
 }
 
 void initialize_valid_dest_addressing_method_map() {
     validSourceAddressingMap = create_table(16);
-    int all[] = {0, 1, 2, 3};
-    int partial_a[] = {1, 2, 3};
-    int partial_b[] = {1, 2};
 
-    ht_insert(validSourceAddressingMap, "mov", partial_b);
-    ht_insert(validSourceAddressingMap, "cmp", all);
-    ht_insert(validSourceAddressingMap, "add", partial_a);
-    ht_insert(validSourceAddressingMap, "sub", partial_a);
-    ht_insert(validSourceAddressingMap, "not", partial_a);
-    ht_insert(validSourceAddressingMap, "clr", partial_a);
-    ht_insert(validSourceAddressingMap, "lea", partial_a);
-    ht_insert(validSourceAddressingMap, "inc", partial_a);
-    ht_insert(validSourceAddressingMap, "dec", partial_a);
-    ht_insert(validSourceAddressingMap, "jmp", partial_a);
-    ht_insert(validSourceAddressingMap, "bne", partial_a);
-    ht_insert(validSourceAddressingMap, "get", partial_a);
-    ht_insert(validSourceAddressingMap, "prn", all);
-    ht_insert(validSourceAddressingMap, "jsr", partial_a);
+    ht_insert(validSourceAddressingMap, "mov", "12");
+    ht_insert(validSourceAddressingMap, "cmp", "0123");
+    ht_insert(validSourceAddressingMap, "add", "123");
+    ht_insert(validSourceAddressingMap, "sub", "123");
+    ht_insert(validSourceAddressingMap, "not", "123");
+    ht_insert(validSourceAddressingMap, "clr", "123");
+    ht_insert(validSourceAddressingMap, "lea", "123");
+    ht_insert(validSourceAddressingMap, "inc", "123");
+    ht_insert(validSourceAddressingMap, "dec", "123");
+    ht_insert(validSourceAddressingMap, "jmp", "123");
+    ht_insert(validSourceAddressingMap, "bne", "123");
+    ht_insert(validSourceAddressingMap, "get", "123");
+    ht_insert(validSourceAddressingMap, "prn", "0123");
+    ht_insert(validSourceAddressingMap, "jsr", "123");
     ht_insert(validSourceAddressingMap, "rts", NULL);
     ht_insert(validSourceAddressingMap, "hlt", NULL);
 }

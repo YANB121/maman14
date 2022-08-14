@@ -522,10 +522,15 @@ bool verify_operands(Operands *operands, int operand_number, struct LineAndMetad
 }
 
 bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
-    int *valid_addressing_source = ht_search(get_valid_source_addressing_map(), lineAndMetadata->opcode_type);
-    int *valid_addressing_dest = ht_search(get_valid_dest_addressing_map(), lineAndMetadata->opcode_type);
+    char *valid_addressing_source = ht_search(get_valid_source_addressing_map(), lineAndMetadata->opcode_type);
+    char *valid_addressing_dest = ht_search(get_valid_dest_addressing_map(), lineAndMetadata->opcode_type);
 
-//    if (valid_addressing_source != NULL && operands->source_operand_type != NULL)
+  if (valid_addressing_source != NULL && operands->source_operand_type != NULL){
+        char source_type = operands->source_operand_type +'0'; //cast int to char
+        if(strstr(valid_addressing_source,source_type));
+
+
+  }
 
 
 }
