@@ -54,21 +54,42 @@ int main(int size, char *argv[]) {
 
 
 
+
+
+
     int a = 1;
     print_binary(a);
+    printf("\n%s\n", convert_number_to_binary_string(a));
     a = a << 4;
     print_binary(a);
-    a += 2 ;
+    printf("\n%s\n", convert_number_to_binary_string(a));
+    a += 2;
     print_binary(a);
+    printf("\n%s\n", convert_number_to_binary_string(a));
     a = a << 2;
     a += 0;
     a = a << 2;
     print_binary(a);
+    printf("\n%s\n", convert_number_to_binary_string(a));
     a = a << 2;
     print_binary(a);
+    printf("\n%s\n", convert_number_to_binary_string(a));
     a -= 1024;
     print_binary(a);
+    printf("\n%s\n", convert_number_to_binary_string(a));
 }
+
+
+//char *convert_number_to_binary_string(int number) {
+//    char *str = calloc(11, sizeof(char));
+//    int i;
+//    for (i = 9; number > 0; i--) {
+//        str[i] = number % 2;
+//        number = number / 2;
+//    }
+//    return str;
+//
+//}
 
 void print_binary(int num) {
     int a[11];

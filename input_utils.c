@@ -55,3 +55,18 @@ bool is_int_array_contains(int *array, int value) {
     }
     return false;
 }
+
+
+char *convert_number_to_binary_string(int number) {
+    char *str = malloc(12);
+    str[11] = '\0';
+    int i;
+    for (i = 10; number > 0; i--) {
+        str[i] = (number % 2) + '0';
+        number = number / 2;
+    }
+    for (i = i; i >= 0; i--)
+        str[i] = '0';
+    return str;
+
+}

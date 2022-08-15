@@ -469,18 +469,26 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
 
     //handle the source operand
     if (operands->source_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
+        labelSection->instruction_array[temp_ic] = operands->source_operand;
         temp_ic++;
-        char num = ((char *) operands->source_operand)[strlen(operands->source_operand) - 1];
+        char num = ((char *) operands->source_operand)[strlen(operands->source_operand) -
+                                                       1]; //get the number of the struct operand 1/2
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
         line << 11;
         line += atoi(num);
-        labelSection->instruction_array[temp_ic] = line;
+        char *converted_line = convert_number_to_binary_string(line);
+        converted_line += 1;//delete the first 1
+        labelSection->instruction_array[temp_ic] = converted_line;
+        temp_ic++;
     } else if (operands->source_operand_type == REGISTER_ADDRESSING_OPERAND) {
         char num = ((char *) operands->source_operand)[strlen(operands->source_operand) - 1];
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
         line << 11;
         line += atoi(num);
-        labelSection->instruction_array[temp_ic] = line;
+        char *converted_line = convert_number_to_binary_string(line);
+        converted_line += 1;//delete the first 1
+        labelSection->instruction_array[temp_ic] = converted_line;
+        temp_ic++;
     } else if (operands->source_operand_type == IMMEDIATE_ADDRESSING_OPERAND) {
         char *num = ((char *) operands->source_operand);
         num = num + 1; //remove the # prefix.
@@ -488,23 +496,35 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
         int line = 1;//normalize the line  //TODO: remember to subtract 1024 before the convert to binary
         line = line << 11;
         line += converted_number;
-        labelSection->instruction_array[temp_ic] = line;
+        char *converted_line = convert_number_to_binary_string(line);
+        converted_line += 1;//delete the first 1
+        labelSection->instruction_array[temp_ic] = converted_line;
+        temp_ic++;
+    } else if (operands->source_operand_type == DIRECT_ADDRESSING_OPERAND) {
+        labelSection->instruction_array[temp_ic] = operands->source_operand;
+        temp_ic++;
     }
 
     //handle the destination operand
     if (operands->destination_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
+        labelSection->instruction_array[temp_ic] = operands->destination_operand;
         temp_ic++;
-        char num = ((char *) operands->destination_operand)[strlen(operands->source_operand) - 1];
+        char num = ((char *) operands->destination_operand)[strlen(operands->source_operand) -
+                                                            1]; //get the number of the operand 1/2.
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
         line << 11;
         line += atoi(num);
-        labelSection->instruction_array[temp_ic] = line;
+        char *converted_line = convert_number_to_binary_string(line);
+        converted_line += 1;//delete the first 1
+        labelSection->instruction_array[temp_ic] = converted_line;
     } else if (operands->destination_operand_type == REGISTER_ADDRESSING_OPERAND) {
         char num = ((char *) operands->destination_operand)[strlen(operands->destination_operand) - 1];
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
         line << 11;
         line += atoi(num);
-        labelSection->instruction_array[temp_ic] = line;
+        char *converted_line = convert_number_to_binary_string(line);
+        converted_line += 1;//delete the first 1
+        labelSection->instruction_array[temp_ic] = converted_line;
     } else if (operands->source_operand_type == IMMEDIATE_ADDRESSING_OPERAND) {
         char *num = ((char *) operands->source_operand);
         num = num + 1; //remove the # prefix.
@@ -512,11 +532,15 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
         int line = 1;//normalize the line  //TODO: remember to subtract 1024 before the convert to binary
         line = line << 11;
         line += converted_number;
-        labelSection->instruction_array[temp_ic] = line;
+        char *converted_line = convert_number_to_binary_string(line);
+        converted_line += 1;//delete the first 1
+        labelSection->instruction_array[temp_ic] = converted_line;
+    } else if (operands->destination_operand_type == DIRECT_ADDRESSING_OPERAND) {
+        labelSection->instruction_array[temp_ic] = operands->destination_operand;
+        temp_ic++;
     }
 
 }
-
 
 int calculate_first_line(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
     int line_sum = 1; //normalize the line to keep the preceding zeros. while tranformation to binary remove the first 1.
