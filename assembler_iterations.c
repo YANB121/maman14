@@ -447,7 +447,7 @@ void add_error_code(struct LineAndMetadata *lineAndMetadata, int error_code) {
 void *validate_and_insert_opcode_line(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     int operand_number = ht_search(get_opcode_and_amount_of_operands_map(), lineAndMetadata->opcode_type);
     Operands *operands = get_operands_and_type(lineAndMetadata);
-    bool is_operand_valid = verify_operands(operands, operand_number, NULL);
+    bool is_operand_valid = verify_operands(operands, operand_number, lineAndMetadata);
 
     if (!is_operand_valid) {
         lineAndMetadata->is_error_occurred = 1;
@@ -467,26 +467,75 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
     labelSection->instruction_array[temp_ic] = first_line;
     temp_ic++;
 
+    //handle the source operand
+    if (operands->source_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
+        temp_ic++;
+        char num = ((char *) operands->source_operand)[strlen(operands->source_operand) - 1];
+        int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
+        line << 11;
+        line += atoi(num);
+        labelSection->instruction_array[temp_ic] = line;
+    } else if (operands->source_operand_type == REGISTER_ADDRESSING_OPERAND) {
+        char num = ((char *) operands->source_operand)[strlen(operands->source_operand) - 1];
+        int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
+        line << 11;
+        line += atoi(num);
+        labelSection->instruction_array[temp_ic] = line;
+    } else if (operands->source_operand_type == IMMEDIATE_ADDRESSING_OPERAND) {
+        char *num = ((char *) operands->source_operand);
+        num = num + 1; //remove the # prefix.
+        int converted_number = atoi(num);
+        int line = 1;//normalize the line  //TODO: remember to subtract 1024 before the convert to binary
+        line = line << 11;
+        line += converted_number;
+        labelSection->instruction_array[temp_ic] = line;
+    }
+
+    //handle the destination operand
+    if (operands->destination_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
+        temp_ic++;
+        char num = ((char *) operands->destination_operand)[strlen(operands->source_operand) - 1];
+        int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
+        line << 11;
+        line += atoi(num);
+        labelSection->instruction_array[temp_ic] = line;
+    } else if (operands->destination_operand_type == REGISTER_ADDRESSING_OPERAND) {
+        char num = ((char *) operands->destination_operand)[strlen(operands->destination_operand) - 1];
+        int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
+        line << 11;
+        line += atoi(num);
+        labelSection->instruction_array[temp_ic] = line;
+    } else if (operands->source_operand_type == IMMEDIATE_ADDRESSING_OPERAND) {
+        char *num = ((char *) operands->source_operand);
+        num = num + 1; //remove the # prefix.
+        int converted_number = atoi(num);
+        int line = 1;//normalize the line  //TODO: remember to subtract 1024 before the convert to binary
+        line = line << 11;
+        line += converted_number;
+        labelSection->instruction_array[temp_ic] = line;
+    }
+
 }
 
 
 int calculate_first_line(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
-    int line_sum = 0;
+    int line_sum = 1; //normalize the line to keep the preceding zeros. while tranformation to binary remove the first 1.
     int operand_code = ht_search(get_opcode_and_decimal_map(), lineAndMetadata->opcode_type);
-    operand_code = operand_code << 6; //move the operation code to be the 4  greater bits.
+    line_sum = line_sum << 4; //move the operation code to be the 4  greater bits.
     line_sum += operand_code; //add the operand code to the line sum.
 
     int source_code = operands->source_operand_type;
     if (source_code != NULL) {
-        source_code = source_code << 4;
+        line_sum = line_sum << 2;
         line_sum += source_code;
     }
 
     int dest_code = operands->destination_operand_type;
     if (dest_code != NULL) {
-        dest_code = dest_code << 2;
+        line_sum = line_sum << 2;
         line_sum += dest_code;
     }
+    return line_sum;
 
 
 }
@@ -514,8 +563,23 @@ Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata) {
 
 bool verify_operands(Operands *operands, int operand_number, struct LineAndMetadata *lineAndMetadata) {
     bool amount = verify_operand_amount(operands, operand_number);
+    if (!amount) {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_OPERANDS_AMOUNT);
+    }
+
     bool syntax = verify_operands_syntax(operands, operand_number);
+    if (!syntax) {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_OPERANDS_SYNTAX);
+    }
+
     bool type = verify_operand_type(operands, lineAndMetadata);
+    if (!type) {
+        lineAndMetadata->is_error_occurred = 1;
+        add_error_code(lineAndMetadata, ERR_CODE_INVALID_OPERANDS_TYPE);
+    }
+
 
     return amount && syntax && type;
 
@@ -525,13 +589,25 @@ bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMeta
     char *valid_addressing_source = ht_search(get_valid_source_addressing_map(), lineAndMetadata->opcode_type);
     char *valid_addressing_dest = ht_search(get_valid_dest_addressing_map(), lineAndMetadata->opcode_type);
 
-  if (valid_addressing_source != NULL && operands->source_operand_type != NULL){
-        char source_type = operands->source_operand_type +'0'; //cast int to char
-        if(strstr(valid_addressing_source,source_type));
+    bool is_all_valid = true; //just set first to true if any is invalid then changed.
+
+    if (valid_addressing_source != NULL && operands->source_operand_type != NULL) {
+        char source_type = operands->source_operand_type +
+                           '0'; //cast int to char BE AWARE! only works because the type is less than 10.
+        if (!strstr(valid_addressing_source, source_type))
+            is_all_valid = false;
 
 
-  }
+    }
 
+    if (valid_addressing_dest != NULL && operands->destination_operand_type != NULL) {
+        char dest_type = operands->destination_operand_type +
+                         '0'; //cast int to char BE AWARE! only works because the type is less than 10.
+        if (!strstr(valid_addressing_source, dest_type))
+            is_all_valid = false;
+    }
+
+    return is_all_valid;
 
 }
 

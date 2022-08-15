@@ -4,7 +4,7 @@
 
 struct HashTable *registers;
 struct HashTable *dataInstructions;
-struct HashTable *opcodeAndDecimal;
+struct HashTable *  opcodeAndDecimal;
 struct HashTable *additionalInstructions;
 struct HashTable *opcodeAndAmountOfOperands;
 struct HashTable *validSourceAddressingMap;

@@ -52,15 +52,26 @@ int main(int size, char *argv[]) {
 //    printf("%d\n",temp_ic);
 //    printf("%d\n",labelSection->ic);
 
-    int a = 10;
-    char b= a +'0';
-    printf("%d\n",a);
-    printf("%c\n",b);
 
+
+    int a = 1;
+    print_binary(a);
+    a = a << 4;
+    print_binary(a);
+    a += 2 ;
+    print_binary(a);
+    a = a << 2;
+    a += 0;
+    a = a << 2;
+    print_binary(a);
+    a = a << 2;
+    print_binary(a);
+    a -= 1024;
+    print_binary(a);
 }
 
 void print_binary(int num) {
-    int a[10];
+    int a[11];
     int i = 0;
     for (i; num > 0; i++) {
         a[i] = num % 2;
@@ -68,7 +79,7 @@ void print_binary(int num) {
     }
     printf("\nBinary of Given Number is=");
     i = i - 1;
-    for (i; i >= 0; i--) {
+    for (i = i; i >= 0; i--) {
         printf("%d", a[i]);
     }
 

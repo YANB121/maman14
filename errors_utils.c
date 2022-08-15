@@ -27,6 +27,9 @@ void initialize_errors_map() {
     ht_insert(errors_map, ERR_CODE_TOO_MANY_ARGUMENTS, "line contains too many arguments");
     ht_insert(errors_map, ERR_CODE_INVALID_ARGUMENTS, "invalid arguments error");
     ht_insert(errors_map, ERR_CODE_INVALID_OPERANDS, "invalid operands error");
+    ht_insert(errors_map, ERR_CODE_INVALID_OPERANDS_AMOUNT, "invalid operands amount error");
+    ht_insert(errors_map, ERR_CODE_INVALID_OPERANDS_SYNTAX, "invalid operands syntax error");
+    ht_insert(errors_map, ERR_CODE_INVALID_OPERANDS_TYPE, "invalid operands type error, check if the operands type are correct");
 }
 
 

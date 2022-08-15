@@ -6,18 +6,19 @@
 #define MAX_PROGRAM_LENGTH 1000
 #define MAX_STRING_SIZE 1000
 
+typedef struct InstructionEntry {
+    int word[10];
+} InstructionEntry;
+
+
 struct LabelSection {
     int dc;
     int ic;
-    int instruction_array[MAX_PROGRAM_LENGTH];
+    char* instruction_array[MAX_PROGRAM_LENGTH];
     int data_array[MAX_PROGRAM_LENGTH];
     HashTable *label_table;
 };
 
-struct LabelEntry {
-    int *type; // type of data/code
-    int counter;// the relevant counter value (ic/dc)
-};
 
 struct LabelSection *initialize_label_section();
 

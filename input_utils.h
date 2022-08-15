@@ -13,5 +13,7 @@ char *trim_commas(char *);
 
 bool is_int_array_contains(int *array, int value);
 
+char* convert_number_to_binary_string(int number);
+
 
 #endif //MAMN14_INPUT_UTILS_H
