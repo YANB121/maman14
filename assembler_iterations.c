@@ -544,7 +544,7 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
 
 int calculate_first_line(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
     int line_sum = 1; //normalize the line to keep the preceding zeros. while tranformation to binary remove the first 1.
-    int operand_code = ht_search(get_opcode_and_decimal_map(), lineAndMetadata->opcode_type);
+    int *operand_code = ht_search(get_opcode_and_decimal_map(), lineAndMetadata->opcode_type);
     line_sum = line_sum << 4; //move the operation code to be the 4  greater bits.
     line_sum += operand_code; //add the operand code to the line sum.
 
@@ -620,8 +620,6 @@ bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMeta
                            '0'; //cast int to char BE AWARE! only works because the type is less than 10.
         if (!strstr(valid_addressing_source, source_type))
             is_all_valid = false;
-
-
     }
 
     if (valid_addressing_dest != NULL && operands->destination_operand_type != NULL) {
