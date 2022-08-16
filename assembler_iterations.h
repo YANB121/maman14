@@ -15,10 +15,6 @@
 #define OPCODE_TYPE_LABEL 4
 
 
-
-
-
-
 typedef struct LineAndMetadata {
     int line_number;
     char *line;
@@ -35,27 +31,30 @@ typedef struct LineAndMetadata {
 
 typedef struct Operands {
     int total_operands;
-    void *source_operand;
-    void *destination_operand;
+    char *source_operand;
+    char *destination_operand;
     int source_operand_type;
     int destination_operand_type;
 } Operands;
 
-
+void free_operand(Operands *operands);
 //struct Arguments *initialize_arguments_struct();
 bool validate_entry_and_external_label(char *, struct LabelSection *);
+
 bool verify_operand_amount(Operands *operands, int operand_number);
 
 bool verify_operands(Operands *operands, int operand_number, struct LineAndMetadata *lineAndMetadata);
 
 int classified_operands(char *operands);
 
-bool verify_operand_type(Operands* ,struct LineAndMetadata*);
+bool verify_operand_type(Operands *, struct LineAndMetadata *);
+
 bool verify_operands_syntax(Operands *operands, int operand_number);
 
-int calculate_first_line(Operands*,struct LineAndMetadata*);
+int calculate_first_line(Operands *, struct LineAndMetadata *);
 
-void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection,Operands*);
+void *
+insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection, Operands *);
 
 void *get_data_arguments(struct LineAndMetadata *);
 
@@ -103,9 +102,11 @@ int first_iteration(char *);
 
 bool get_and_validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *);
 
-void print_errors(struct LineAndMetadata *lineAndMetadata);
+void print_errors(struct LineAndMetadata *lineAndMetadata, int line);
 
 struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number);
+
+void free_line_and_metadata(struct LineAndMetadata *lineAndMetadata);
 
 char *get_label(char *line);
 

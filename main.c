@@ -4,6 +4,7 @@
 #include "assembler_iterations.h"
 #include "constants.h"
 #include "input_utils.h"
+#include "preprocessor.h"
 #include  <stdlib.h>
 #include <stdio.h>
 
@@ -19,77 +20,18 @@ void print_binary(int num);
 
 int main(int size, char *argv[]) {
     initialize_constant_tables();
+    char *path = "program_code.as";
+    span_macros(path);
 
-//    char *line = malloc(sizeof(char) * 1000);
-//    strcpy(line, "string,  string, strong");
-//    printf("%s\n", line);
-//    char *word = strtok(line, ",");
-//    word = strtok(NULL, " ");
-//    word = strtok(NULL, ",");
-////    word = strtok(NULL, ",");
-////    word = strtok(NULL, ",");
-//    if (word == NULL)
-//        printf("NULL\n");
-//    else
-//        printf("%s\n", word);
-//    free(line);
+    path[strlen(path) - 3] = '\0';
+    char a[3] = ".am";
+    strncat(path, a, 3); //add .am extension to the file name
 
-//    char *line2 = malloc(sizeof(char) * 1000);
-//    strcpy(line2, "string,string,strong");
-//
-//    char w = line2[0];
-//    char l = line2[strlen(line2)-1];
-//    int asc = w;
-//    printf("%d\n",asc);
-//    printf("%s\n",line2+1);
-
-//    struct LabelSection *labelSection = malloc(sizeof(struct LabelSection));
-//    labelSection->ic =10;
-//    printf("%d\n",labelSection->ic);
-//    int temp_ic =labelSection->ic;
-//    printf("%d\n",temp_ic);
-//    temp_ic = 36;
-//    printf("%d\n",temp_ic);
-//    printf("%d\n",labelSection->ic);
+    first_iteration(path);
 
 
-
-
-
-
-    int a = 1;
-    print_binary(a);
-    printf("\n%s\n", convert_number_to_binary_string(a));
-    a = a << 4;
-    print_binary(a);
-    printf("\n%s\n", convert_number_to_binary_string(a));
-    a += 2;
-    print_binary(a);
-    printf("\n%s\n", convert_number_to_binary_string(a));
-    a = a << 2;
-    a += 0;
-    a = a << 2;
-    print_binary(a);
-    printf("\n%s\n", convert_number_to_binary_string(a));
-    a = a << 2;
-    print_binary(a);
-    printf("\n%s\n", convert_number_to_binary_string(a));
-    a -= 1024;
-    print_binary(a);
-    printf("\n%s\n", convert_number_to_binary_string(a));
 }
 
-
-//char *convert_number_to_binary_string(int number) {
-//    char *str = calloc(11, sizeof(char));
-//    int i;
-//    for (i = 9; number > 0; i--) {
-//        str[i] = number % 2;
-//        number = number / 2;
-//    }
-//    return str;
-//
-//}
 
 void print_binary(int num) {
     int a[11];

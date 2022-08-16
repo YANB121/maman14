@@ -24,3 +24,4 @@ C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.2
 C:/Users/Lidar/maman14/assembler_utils.h
 C:/Users/Lidar/maman14/constants.h
 C:/Users/Lidar/maman14/input_utils.h
+C:/Users/Lidar/maman14/preprocessor.h

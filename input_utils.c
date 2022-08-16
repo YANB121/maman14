@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "input_utils.h"
 
 long string_to_number(char *nptr) {
@@ -69,4 +70,24 @@ char *convert_number_to_binary_string(int number) {
         str[i] = '0';
     return str;
 
+}
+
+
+char *trim_white_spaces(char *str) {
+    char *end;
+
+    // Trim leading space
+    while (isspace((unsigned char) *str)) str++;
+
+    if (*str == 0)  // All spaces?
+        return str;
+
+    // Trim trailing space
+    end = str + strlen(str) - 1;
+    while (end > str && isspace((unsigned char) *end)) end--;
+
+    // Write new null terminator character
+    end[1] = '\0';
+
+    return str;
 }

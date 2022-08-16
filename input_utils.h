@@ -10,7 +10,7 @@
 long string_to_number(char *);
 
 char *trim_commas(char *);
-
+char *trim_white_spaces(char *str);
 bool is_int_array_contains(int *array, int value);
 
 char* convert_number_to_binary_string(int number);
