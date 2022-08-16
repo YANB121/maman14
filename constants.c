@@ -4,7 +4,7 @@
 
 struct HashTable *registers;
 struct HashTable *dataInstructions;
-struct HashTable *  opcodeAndDecimal;
+struct HashTable *opcodeAndDecimal;
 struct HashTable *additionalInstructions;
 struct HashTable *opcodeAndAmountOfOperands;
 struct HashTable *validSourceAddressingMap;
@@ -74,24 +74,24 @@ void initialize_valid_source_addressing_method_map() {
 }
 
 void initialize_valid_dest_addressing_method_map() {
-    validSourceAddressingMap = create_table(16);
+    validDestAddressingMap = create_table(16);
 
-    ht_insert(validSourceAddressingMap, "mov", "12");
-    ht_insert(validSourceAddressingMap, "cmp", "0123");
-    ht_insert(validSourceAddressingMap, "add", "123");
-    ht_insert(validSourceAddressingMap, "sub", "123");
-    ht_insert(validSourceAddressingMap, "not", "123");
-    ht_insert(validSourceAddressingMap, "clr", "123");
-    ht_insert(validSourceAddressingMap, "lea", "123");
-    ht_insert(validSourceAddressingMap, "inc", "123");
-    ht_insert(validSourceAddressingMap, "dec", "123");
-    ht_insert(validSourceAddressingMap, "jmp", "123");
-    ht_insert(validSourceAddressingMap, "bne", "123");
-    ht_insert(validSourceAddressingMap, "get", "123");
-    ht_insert(validSourceAddressingMap, "prn", "0123");
-    ht_insert(validSourceAddressingMap, "jsr", "123");
-    ht_insert(validSourceAddressingMap, "rts", NULL);
-    ht_insert(validSourceAddressingMap, "hlt", NULL);
+    ht_insert(validDestAddressingMap, "mov", "12");
+    ht_insert(validDestAddressingMap, "cmp", "0123");
+    ht_insert(validDestAddressingMap, "add", "123");
+    ht_insert(validDestAddressingMap, "sub", "123");
+    ht_insert(validDestAddressingMap, "not", "123");
+    ht_insert(validDestAddressingMap, "clr", "123");
+    ht_insert(validDestAddressingMap, "lea", "123");
+    ht_insert(validDestAddressingMap, "inc", "123");
+    ht_insert(validDestAddressingMap, "dec", "123");
+    ht_insert(validDestAddressingMap, "jmp", "123");
+    ht_insert(validDestAddressingMap, "bne", "123");
+    ht_insert(validDestAddressingMap, "get", "123");
+    ht_insert(validDestAddressingMap, "prn", "0123");
+    ht_insert(validDestAddressingMap, "jsr", "123");
+    ht_insert(validDestAddressingMap, "rts", NULL);
+    ht_insert(validDestAddressingMap, "hlt", NULL);
 }
 
 

@@ -468,7 +468,7 @@ void add_error_code(struct LineAndMetadata *lineAndMetadata, int error_code) {
 }
 
 void *validate_and_insert_opcode_line(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    int operand_number = ht_search(get_opcode_and_amount_of_operands_map(), lineAndMetadata->opcode_type);
+    int operand_number = atoi(ht_search(get_opcode_and_amount_of_operands_map(), lineAndMetadata->opcode_type));
     Operands *operands = get_operands_and_type(lineAndMetadata);
     bool is_operand_valid = verify_operands(operands, operand_number, lineAndMetadata);
 
@@ -495,8 +495,9 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
                                   Operands *operands) {
     int temp_ic = labelSection->ic; //use temporary index and update the ic only if the operation done properly.
     int first_line = calculate_first_line(operands, lineAndMetadata);
-
-    labelSection->instruction_array[temp_ic] = first_line;
+    char *first_line_converted = convert_number_to_binary_string(first_line);
+    first_line_converted = first_line_converted + 1; //trim the leading 1 
+    labelSection->instruction_array[temp_ic] = first_line_converted;
     temp_ic++;
 
     //handle the source operand
@@ -576,23 +577,23 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
 
 int calculate_first_line(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
     int line_sum = 1; //normalize the line to keep the preceding zeros. while tranformation to binary remove the first 1.
-    int operand_code = *((int *) ht_search(get_opcode_and_decimal_map(), lineAndMetadata->opcode_type));
+    int operand_code = atoi(ht_search(get_opcode_and_decimal_map(), lineAndMetadata->opcode_type));
     line_sum = line_sum << 4; //move the operation code to be the 4  greater bits.
     line_sum += operand_code; //add the operand code to the line sum.
 
-    int source_code = operands->source_operand_type;
+    int source_code_type = operands->source_operand_type;
     line_sum = line_sum << 2;
-    if (source_code != 0) {
-        line_sum += source_code;
+    if (source_code_type != -1) {
+        line_sum += source_code_type;
     }
 
     line_sum = line_sum << 2;
-    int dest_code = operands->destination_operand_type;
-    if (dest_code != 0) {
-        line_sum += dest_code;
+    int dest_code_type = operands->destination_operand_type;
+    if (dest_code_type != -1) {
+        line_sum += dest_code_type;
     }
+    line_sum = line_sum << 2;
     return line_sum;
-
 
 }
 
@@ -640,6 +641,7 @@ bool verify_operands(Operands *operands, int operand_number, struct LineAndMetad
 
     return amount && syntax && type;
 
+    1
 }
 
 bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
@@ -651,14 +653,20 @@ bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMeta
     if (valid_addressing_source != NULL && operands->source_operand_type != NULL) {
         char source_type = operands->source_operand_type +
                            '0'; //cast int to char BE AWARE! only works because the type is less than 10.
-        if (!strstr(valid_addressing_source, source_type))
+        char *pSource_type = malloc(2);
+        *pSource_type = source_type;
+        pSource_type[1] = '\0';
+        if (!strstr(valid_addressing_source, pSource_type))
             is_all_valid = false;
     }
 
     if (valid_addressing_dest != NULL && operands->destination_operand_type != NULL) {
-        char dest_type = operands->destination_operand_type +
-                         '0'; //cast int to char BE AWARE! only works because the type is less than 10.
-        if (!strstr(valid_addressing_source, dest_type))
+        char *dest_type = operands->destination_operand_type +
+                          '0'; //cast int to char BE AWARE! only works because the type is less than 10.
+        char *pDest_type = malloc(2);
+        *pDest_type = dest_type;
+        pDest_type[1] = '\0';
+        if (!strstr(valid_addressing_source, pDest_type))
             is_all_valid = false;
     }
 
@@ -691,7 +699,7 @@ bool verify_operands_syntax(Operands *operands, int operand_number) {
 
 int classified_operands(char *operand) {
     if (operand == NULL)
-        return 0;
+        return -1;
 
     char first_char = *operand;
     if (first_char == '#')
@@ -708,7 +716,7 @@ int classified_operands(char *operand) {
             return DIRECT_ADDRESSING_OPERAND;
     }
 
-    return 0;
+    return -1;
 
 }
 

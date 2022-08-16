@@ -27,6 +27,17 @@ int main(int size, char *argv[]) {
     char a[3] = ".am";
     strncat(path, a, 3); //add .am extension to the file name
 
+
+    char b = 1 + '0';
+
+    printf("%c\n", b);
+
+
+    char *pB = malloc(2);
+
+    printf("%s\n", pB);
+
+
     first_iteration(path);
 
 
