@@ -25,3 +25,4 @@ C:/Users/Lidar/maman14/assembler_utils.h
 C:/Users/Lidar/maman14/constants.h
 C:/Users/Lidar/maman14/input_utils.h
 C:/Users/Lidar/maman14/preprocessor.h
+C:/Users/Lidar/maman14/errors_utils.h

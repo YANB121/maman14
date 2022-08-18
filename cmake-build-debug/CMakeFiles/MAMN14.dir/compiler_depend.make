@@ -196,6 +196,7 @@ CMakeFiles\MAMN14.dir\main.c.obj: ..\assembler_utils.h
 CMakeFiles\MAMN14.dir\main.c.obj: ..\constants.h
 CMakeFiles\MAMN14.dir\main.c.obj: ..\input_utils.h
 CMakeFiles\MAMN14.dir\main.c.obj: ..\preprocessor.h
+CMakeFiles\MAMN14.dir\main.c.obj: ..\errors_utils.h
 
 
 CMakeFiles\MAMN14.dir\operands_related.c.obj: ..\operands_related.c

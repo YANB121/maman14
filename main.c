@@ -7,6 +7,7 @@
 #include "preprocessor.h"
 #include  <stdlib.h>
 #include <stdio.h>
+#include "errors_utils.h"
 
 void test_map();
 
@@ -20,22 +21,13 @@ void print_binary(int num);
 
 int main(int size, char *argv[]) {
     initialize_constant_tables();
+    initialize_errors_map();
     char *path = "program_code.as";
     span_macros(path);
 
     path[strlen(path) - 3] = '\0';
     char a[3] = ".am";
     strncat(path, a, 3); //add .am extension to the file name
-
-
-    char b = 1 + '0';
-
-    printf("%c\n", b);
-
-
-    char *pB = malloc(2);
-
-    printf("%s\n", pB);
 
 
     first_iteration(path);

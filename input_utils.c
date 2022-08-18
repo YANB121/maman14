@@ -30,10 +30,10 @@ long string_to_number(char *nptr) {
         printf(" number : %ld  invalid, greater/lower  ()\n", number);
         return NULL;
     } else if (errno == 0 && nptr && !*endptr) {
-        printf(" number : %ld    valid  (and represents all characters read)\n", number);
+//        printf(" number : %ld    valid  (and represents all characters read)\n", number);
         return number;
     } else if (errno == 0 && nptr && *endptr != 0) {
-        printf(" number : %ld    valid  (but additional characters remain)\n", number);
+//        printf(" number : %ld    valid  (but additional characters remain)\n", number);
         return number;
     }
 
@@ -74,6 +74,8 @@ char *convert_number_to_binary_string(int number) {
 
 
 char *trim_white_spaces(char *str) {
+    if (str == NULL)
+        return NULL;
     char *end;
 
     // Trim leading space

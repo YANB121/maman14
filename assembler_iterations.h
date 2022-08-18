@@ -100,11 +100,14 @@ validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, str
 
 int first_iteration(char *);
 
+
 bool get_and_validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *);
 
 void print_errors(struct LineAndMetadata *lineAndMetadata, int line);
 
 struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number);
+
+char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int position);
 
 void free_line_and_metadata(struct LineAndMetadata *lineAndMetadata);
 

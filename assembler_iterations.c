@@ -10,16 +10,14 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-int first_iteration(char *program_file_path) {
+int first_iteration(char *program_file_path,struct LabelSection* labelSection) {
     bool is_error_occurred = false;
     FILE *assembly_file = open_read_file_else_exit(program_file_path);
 
-    //trim the ".am" extension and add ".o" extension
-    char *output_file_name = get_name_with_new_file_extension(program_file_path, ".o", 3);
-    //open new file for writing.
-    FILE *output_file = open_write_file_else_exit(output_file_name);
+
 
     //struct that contains the Instruction Counter, Data Counter and The Symbol table for later use.
+
     struct LabelSection *labelSection = initialize_label_section();
 
     int is_symbol = 0; //flag that indicates if the line started with symbol (for instance: "MAIN: mov r1 r2")
@@ -43,7 +41,9 @@ int first_iteration(char *program_file_path) {
             print_errors(lineAndMetadata, line_num);
             is_error_occurred = true;
             continue;
+
         }
+
 
         //return the instruction_type type, null if not an instruction_type line
         int data_instruction_type = get_data_instruction(lineAndMetadata); //TODO: done
@@ -59,22 +59,104 @@ int first_iteration(char *program_file_path) {
             handle_operation(lineAndMetadata, labelSection);
         }
 
-
         if (lineAndMetadata->is_error_occurred) {
             print_errors(lineAndMetadata, line_num);
             is_error_occurred = true;
         }
 
+        free(lineAndMetadata);
+
     }
 
+    for (int i = 0; i < 1000; i++) {
+        if (labelSection->instruction_array[i] != NULL)
+            printf("%s\n", labelSection->instruction_array[i]);
+
+    }
     return is_error_occurred;//return 1 if any error occurred so the assembler won't proceed to the second iteration
 
 }
 
+int second_iteration(char *program_file_path, struct LabelSection *labelSection) {
+    //trim the ".am" extension and add ".o" extension
+    char *output_file_name = get_name_with_new_file_extension(program_file_path, ".o", 3);
+    //open new file for writing.
+    FILE *output_file = open_write_file_else_exit(output_file_name);
+
+    bool is_error_occurred = false;
+
+    for (int i = 0; i < MAX_PROGRAM_LENGTH; i++) {
+        char first_char = *labelSection->instruction_array[i];
+
+        if (first_char == '1' || first_char == '0')
+            continue; //in case we already  parse the line in the previous iteration
+        else { //if the line not yet parsed its means that its a label line.
+            int *label_arr = ht_search(labelSection->label_table, labelSection->instruction_array[i]);
+            if (label_arr == NULL) {
+                is_error_occurred = true;
+                printf("the label: %s , doesn't exist", labelSection->instruction_array[i]);
+                exit(1);
+            } else {
+                char *line = calculate_line_for_second_iteration(labelSection, i);
+                labelSection->instruction_array[i] = line;
+            }
+
+        }
+
+
+    }
+
+
+}
+
+char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int position) {
+    char *label = labelSection->instruction_array[position];
+    int *label_arr = ht_search(labelSection->label_table, label);
+    int type_code = label_arr[0];
+    int line;
+    char *converted_line;
+    switch (type_code) {
+        case DATA_TYPE_LABEL:
+            int dc = label_arr[1];
+            line = 1; //just for normalization
+            line = line << 8; //move 8 bit left for adding the dc number
+            line += dc;
+            line = line << 2; //move nother 2 bit for the encodiong code R,E,A
+            line += 2; //add encoding code 10
+            converted_line = convert_number_to_binary_string(line);
+            converted_line = converted_line + 1;
+            return converted_line;
+
+        case OPCODE_TYPE_LABEL:
+            int ic = label_arr[1];
+            line = 1; //just for normalization
+            line = line << 8; //move 8 bit left for adding the dc number
+            line += ic;
+            line = line << 2; //move nother 2 bit for the encodiong code R,E,A
+            line += 2; //add encoding code 10
+            converted_line = convert_number_to_binary_string(line);
+            converted_line = converted_line + 1;
+            return converted_line;
+        case EXTERNAL_TYPE_LABEL:
+            line = 1; //just for normalization
+            line = line << 10; //move 10 bit left for adding the dc number
+            line += 1; //add encoding code 01
+            converted_line = convert_number_to_binary_string(line);
+            converted_line = converted_line + 1;
+            return converted_line;
+
+
+    }
+
+
+}
+
+
 void free_line_and_metadata(struct LineAndMetadata *lineAndMetadata) {
     free(lineAndMetadata->line);
     free(lineAndMetadata->label);
-    free(lineAndMetadata->opcode_type);
+    if (lineAndMetadata->opcode_type)
+        free(lineAndMetadata->opcode_type);
     free(lineAndMetadata);
 }
 
@@ -129,7 +211,7 @@ struct LineAndMetadata *initialize_line_and_metadata(char *line, int line_number
 
 void *handle_data_instruction(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     if (lineAndMetadata->is_contains_label) { //first if the line contain label then insert it.
-        insert_data_label_into_table(lineAndMetadata, labelSection);
+        insert_data_label_into_table(labelSection, lineAndMetadata);
     }
     validate_and_insert_instruction_arguments(lineAndMetadata, labelSection);
 }
@@ -154,7 +236,7 @@ validate_and_insert_instruction_arguments(struct LineAndMetadata *lineAndMetadat
 
 void *
 validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char) + 1);
     strcpy(line_copy, lineAndMetadata->line);
 
     char *word;
@@ -171,10 +253,12 @@ validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, str
     bool is_valid_label = validate_entry_and_external_label(word, labelSection);
     if (is_valid_label) {
         insert_external_or_entry_label_into_table(word, labelSection, ENTRY_TYPE_LABEL);
+        free(line_copy);
         return true;
     } else {
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata, ERR_CODE_INVALID_ARGUMENTS);
+        free(line_copy);
         return false;
     }
 
@@ -183,7 +267,7 @@ validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, str
 
 void *
 validate_and_insert_external_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char) + 1);
     strcpy(line_copy, lineAndMetadata->line);
 
     char *word;
@@ -199,26 +283,31 @@ validate_and_insert_external_arguments(struct LineAndMetadata *lineAndMetadata, 
     bool is_valid_label = validate_entry_and_external_label(word, labelSection);
     if (is_valid_label) {
         insert_external_or_entry_label_into_table(word, labelSection, EXTERNAL_TYPE_LABEL);
+        free(line_copy);
         return true;
     } else {
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata, ERR_CODE_INVALID_ARGUMENTS);
+        free(line_copy);
         return false;
     }
 }
 
 
 void *validate_and_insert_string_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char) + 1);
     strcpy(line_copy, lineAndMetadata->line);
 
     char *word;
     if (lineAndMetadata->is_contains_label) {
         word = strtok(line_copy, " ");
         word = strtok(NULL, " ");
+        word = strtok(NULL, " ");
 
-    } else
+    } else {
         word = strtok(line_copy, " ");
+        word = strtok(NULL, " ");
+    }
 
     word = trim_white_spaces(word);
     char first_char = *word;
@@ -226,11 +315,13 @@ void *validate_and_insert_string_arguments(struct LineAndMetadata *lineAndMetada
     if (first_char != '"' || last_char != '"') {
         lineAndMetadata->is_error_occurred = 1;
         add_error_code(lineAndMetadata, ERR_CODE_INVALID_STRING_TYPE);
+        free(line_copy);
         return NULL;
     }
     word = trim_commas(word);
     int temp_dc = labelSection->dc;
     for (int i = 0; i < strlen(word); i++) {
+        char temp = word[i];
         labelSection->data_array[temp_dc] = (int) word[i];
         temp_dc++;
     }
@@ -238,19 +329,22 @@ void *validate_and_insert_string_arguments(struct LineAndMetadata *lineAndMetada
     word = strtok(NULL, " ");
     word = trim_white_spaces(word);
 
-    if (word != NULL) {
+    if (word != NULL && strcmp(word,
+                               "")) { //in case the word is not null and the word is not empty string (strcmp return 0 if the string is equal)
         lineAndMetadata->is_error_occurred = 1; //too many arguments
         add_error_code(lineAndMetadata, ERR_CODE_TOO_MANY_ARGUMENTS);
+        free(line_copy);
         return NULL;
     }
     labelSection->dc = temp_dc; //in case the job done properly then update the dc
     free(line_copy);
     return true;
 
+    free(line_copy);
 }
 
 void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char) + 1);
     strcpy(line_copy, lineAndMetadata->line);
 
 
@@ -262,6 +356,7 @@ void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetada
     } else
         word = strtok(line_copy, " ");
 
+    word = strtok(NULL, " ");
     word = trim_white_spaces(word);
     int temp_dc = labelSection->dc;
     int number = string_to_number(word);
@@ -306,7 +401,7 @@ void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetada
 
 
 void *validate_and_insert_data_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
-    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char));
+    char *line_copy = malloc(strlen(lineAndMetadata->line) * sizeof(char) + 1);
     strcpy(line_copy, lineAndMetadata->line);
 
     char *word;
@@ -319,8 +414,9 @@ void *validate_and_insert_data_arguments(struct LineAndMetadata *lineAndMetadata
 
     int temp_dc = labelSection->dc;
     word = strtok(NULL, ",");
-    word = trim_white_spaces(word);
+
     while (word != NULL) {
+        word = trim_white_spaces(word);
         long number = string_to_number(word);
         if (number == NULL) { //in case the input is not a valid number
             lineAndMetadata->is_error_occurred = 1;
@@ -330,6 +426,7 @@ void *validate_and_insert_data_arguments(struct LineAndMetadata *lineAndMetadata
             labelSection->data_array[temp_dc] = number;
         }
         temp_dc++;
+        word = strtok(NULL, ",");
     }
     labelSection->dc = temp_dc; //in case the data was validated and the insert done properly then update the dc;
     free(line_copy);
@@ -403,7 +500,7 @@ void insert_opcode_label_into_table(struct LabelSection *labelSection, struct Li
 
 //checks if the line starts with symbol, if so return the label, else return null.
 char *get_label(char *line) {
-    char *line_copy = malloc(sizeof(char) * strlen(line));
+    char *line_copy = malloc(sizeof(char) * strlen(line) + 1);
     strcpy(line_copy, line);
 
     char *first_word = strtok(line_copy, " ");
@@ -417,6 +514,8 @@ char *get_label(char *line) {
         return first_word;
     } else
         return NULL;
+
+    free(line_copy);
 }
 
 //checks if its data line , if so return the data type (".struct",".data",".string", etc'), else return null.
@@ -454,7 +553,7 @@ bool get_and_validate_label(struct LineAndMetadata *lineAndMetadata, struct Labe
         if (is_valid_label == false) {
             return false;
         } else return true;
-    } else return NULL;
+    } else return true;
 }
 
 
@@ -496,34 +595,56 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
     int temp_ic = labelSection->ic; //use temporary index and update the ic only if the operation done properly.
     int first_line = calculate_first_line(operands, lineAndMetadata);
     char *first_line_converted = convert_number_to_binary_string(first_line);
-    first_line_converted = first_line_converted + 1; //trim the leading 1 
+    first_line_converted = first_line_converted + 1; //trim the leading 1
     labelSection->instruction_array[temp_ic] = first_line_converted;
     temp_ic++;
+
+
 
     //handle the source operand
     if (operands->source_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
         labelSection->instruction_array[temp_ic] = operands->source_operand;
         temp_ic++;
-        char num = ((char *) operands->source_operand)[strlen(operands->source_operand) -
-                                                       1]; //get the number of the struct operand 1/2
+        char num = operands->source_operand[strlen(operands->source_operand) -
+                                            1]; //get the number of the struct operand 1/2
+
+        // the following lines are for cast the char into char*
+        //-----------------------------------------------------
+        char *pNum;
+        pNum = malloc(sizeof(char) * 2);
+        *pNum = num;
+        pNum[1] = '\0';
+        //-----------------------------------------------------
+
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
-        line << 11;
-        line += atoi(num);
+        line = line << 8;
+        line += atoi(pNum);
+        line = line << 2;
         char *converted_line = convert_number_to_binary_string(line);
         converted_line += 1;//delete the first 1
         labelSection->instruction_array[temp_ic] = converted_line;
         temp_ic++;
+
     } else if (operands->source_operand_type == REGISTER_ADDRESSING_OPERAND) {
         char num = ((char *) operands->source_operand)[strlen(operands->source_operand) - 1];
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
-        line << 11;
-        line += atoi(num);
+        line = line << 8;
+        // the following lines are for cast the char into char*
+        //-----------------------------------------------------
+        char *pNum;
+        pNum = malloc(sizeof(char) * 2);
+        *pNum = num;
+        pNum[1] = '\0';
+        //-----------------------------------------------------
+
+        line += atoi(pNum);
+        line = line << 2;
         char *converted_line = convert_number_to_binary_string(line);
         converted_line += 1;//delete the first 1
         labelSection->instruction_array[temp_ic] = converted_line;
         temp_ic++;
     } else if (operands->source_operand_type == IMMEDIATE_ADDRESSING_OPERAND) {
-        char *num = ((char *) operands->source_operand);
+        char *num = operands->source_operand;
         num = num + 1; //remove the # prefix.
         int converted_number = atoi(num);
         int line = 1;//normalize the line  //TODO: remember to subtract 1024 before the convert to binary
@@ -545,26 +666,45 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
         char num = ((char *) operands->destination_operand)[strlen(operands->source_operand) -
                                                             1]; //get the number of the operand 1/2.
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
-        line << 11;
-        line += atoi(num);
+        line = line << 8;
+        // the following lines are for cast the char into char*
+        //-----------------------------------------------------
+        char *pNum;
+        pNum = malloc(sizeof(char) * 2);
+        *pNum = num;
+        pNum[1] = '\0';
+        //-----------------------------------------------------
+        line += atoi(pNum);
+        line = line << 2;
         char *converted_line = convert_number_to_binary_string(line);
         converted_line += 1;//delete the first 1
         labelSection->instruction_array[temp_ic] = converted_line;
     } else if (operands->destination_operand_type == REGISTER_ADDRESSING_OPERAND) {
         char num = ((char *) operands->destination_operand)[strlen(operands->destination_operand) - 1];
         int line = 1; //normalize the line  //TODO: remember to subtract 1024 before the convert to binary
-        line << 11;
-        line += atoi(num);
+        line = line << 8;
+
+        // the following lines are for cast the char into char*
+        //-----------------------------------------------------
+        char *pNum;
+        pNum = malloc(sizeof(char) * 2);
+        *pNum = num;
+        pNum[1] = '\0';
+        //-----------------------------------------------------
+
+        line += atoi(pNum);
+        line = line << 2;
         char *converted_line = convert_number_to_binary_string(line);
         converted_line += 1;//delete the first 1
         labelSection->instruction_array[temp_ic] = converted_line;
     } else if (operands->source_operand_type == IMMEDIATE_ADDRESSING_OPERAND) {
-        char *num = ((char *) operands->source_operand);
+        char *num = operands->source_operand;
         num = num + 1; //remove the # prefix.
         int converted_number = atoi(num);
         int line = 1;//normalize the line  //TODO: remember to subtract 1024 before the convert to binary
-        line = line << 11;
+        line = line << 8;
         line += converted_number;
+        line = line << 2;
         char *converted_line = convert_number_to_binary_string(line);
         converted_line += 1;//delete the first 1
         labelSection->instruction_array[temp_ic] = converted_line;
@@ -572,6 +712,7 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
         labelSection->instruction_array[temp_ic] = operands->destination_operand;
         temp_ic++;
     }
+    labelSection->ic = temp_ic;
 
 }
 
@@ -609,8 +750,18 @@ Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata) {
     } else
         strtok(line_copy, " ");
 
-    operands->source_operand = trim_white_spaces(strtok(NULL, ",")); //NULL if no operand
-    operands->destination_operand = trim_white_spaces(strtok(NULL, ","));//NULL if no operands/only 1 operand.
+    char *temp = trim_white_spaces(strtok(NULL, ",")); //NULL if no operand
+    if (temp == NULL || temp == '\0' || !strcmp(temp, ""))
+        operands->source_operand = NULL;
+    else
+        operands->source_operand = temp;
+
+    temp = trim_white_spaces(strtok(NULL, ","));//NULL if no operands/only 1 operand.
+    if (temp == NULL || temp == '\0' || !strcmp(temp, ""))
+        operands->destination_operand = NULL;
+    else
+        operands->destination_operand = temp;
+
 
     operands->source_operand_type = classified_operands(operands->source_operand);
     operands->destination_operand_type = classified_operands(operands->destination_operand);
@@ -641,7 +792,7 @@ bool verify_operands(Operands *operands, int operand_number, struct LineAndMetad
 
     return amount && syntax && type;
 
-    1
+
 }
 
 bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMetadata) {
@@ -660,7 +811,7 @@ bool verify_operand_type(Operands *operands, struct LineAndMetadata *lineAndMeta
             is_all_valid = false;
     }
 
-    if (valid_addressing_dest != NULL && operands->destination_operand_type != NULL) {
+    if (valid_addressing_dest != NULL && operands->destination_operand_type != -1) {
         char *dest_type = operands->destination_operand_type +
                           '0'; //cast int to char BE AWARE! only works because the type is less than 10.
         char *pDest_type = malloc(2);
@@ -689,9 +840,9 @@ bool verify_operand_amount(Operands *operands, int operand_number) {
 
 bool verify_operands_syntax(Operands *operands, int operand_number) {
 
-    if (operands->source_operand != NULL && operands->source_operand_type == NULL)
+    if (operands->source_operand != NULL && operands->source_operand_type == -1)
         return false;
-    else if (operands->destination_operand != NULL && operands->destination_operand_type == NULL)
+    else if (operands->destination_operand != NULL && operands->destination_operand_type == -1)
         return false;
     else return true;
 }
