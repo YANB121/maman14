@@ -10,17 +10,9 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-int first_iteration(char *program_file_path,struct LabelSection* labelSection) {
+int first_iteration(char *program_file_path, struct LabelSection *labelSection) {
     bool is_error_occurred = false;
     FILE *assembly_file = open_read_file_else_exit(program_file_path);
-
-
-
-    //struct that contains the Instruction Counter, Data Counter and The Symbol table for later use.
-
-    struct LabelSection *labelSection = initialize_label_section();
-
-    int is_symbol = 0; //flag that indicates if the line started with symbol (for instance: "MAIN: mov r1 r2")
 
     char *line = malloc(sizeof(char) * LINE_LENGTH);
     int line_num = 0; //indicates the current line number
@@ -67,12 +59,8 @@ int first_iteration(char *program_file_path,struct LabelSection* labelSection) {
         free(lineAndMetadata);
 
     }
+    update_label_table(labelSection);
 
-    for (int i = 0; i < 1000; i++) {
-        if (labelSection->instruction_array[i] != NULL)
-            printf("%s\n", labelSection->instruction_array[i]);
-
-    }
     return is_error_occurred;//return 1 if any error occurred so the assembler won't proceed to the second iteration
 
 }
@@ -86,7 +74,11 @@ int second_iteration(char *program_file_path, struct LabelSection *labelSection)
     bool is_error_occurred = false;
 
     for (int i = 0; i < MAX_PROGRAM_LENGTH; i++) {
+        if (labelSection->instruction_array[i] == NULL)
+            break; //exit the loop when program ended
+
         char first_char = *labelSection->instruction_array[i];
+
 
         if (first_char == '1' || first_char == '0')
             continue; //in case we already  parse the line in the previous iteration
@@ -106,8 +98,28 @@ int second_iteration(char *program_file_path, struct LabelSection *labelSection)
 
     }
 
+    for (int i = 0; i < 1000; i++) {
+        if (labelSection->instruction_array[i] != NULL)
+            printf("%s\n", labelSection->instruction_array[i]);
+
+    }
 
 }
+
+void update_label_table(struct LabelSection *labelSection) {
+    char **keys = get_keys(labelSection->label_table);
+    int ic = labelSection->ic;
+    for (int i = 0; i < MAX_LABELS; i++) {
+        if (keys[i] == NULL)
+            break;
+        int *label_arr = ht_search(labelSection->label_table, keys[i]);
+        int type_code = label_arr[0];
+        if (type_code == DATA_TYPE_LABEL)
+            label_arr[1] = label_arr[1] + ic;
+
+    }
+}
+
 
 char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int position) {
     char *label = labelSection->instruction_array[position];
@@ -149,15 +161,6 @@ char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int
     }
 
 
-}
-
-
-void free_line_and_metadata(struct LineAndMetadata *lineAndMetadata) {
-    free(lineAndMetadata->line);
-    free(lineAndMetadata->label);
-    if (lineAndMetadata->opcode_type)
-        free(lineAndMetadata->opcode_type);
-    free(lineAndMetadata);
 }
 
 
@@ -603,7 +606,13 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
 
     //handle the source operand
     if (operands->source_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
-        labelSection->instruction_array[temp_ic] = operands->source_operand;
+        char *temp = malloc(sizeof(char) * strlen(operands->source_operand));
+        strcpy(temp, operands->source_operand);
+        temp[strlen(temp) - 2] = '\0'; //trim the struct number.
+
+        labelSection->instruction_array[temp_ic] = temp;
+//        free(temp);
+
         temp_ic++;
         char num = operands->source_operand[strlen(operands->source_operand) -
                                             1]; //get the number of the struct operand 1/2
@@ -661,7 +670,13 @@ void *insert_opcode_line_to_image(struct LineAndMetadata *lineAndMetadata, struc
 
     //handle the destination operand
     if (operands->destination_operand_type == DIRECT_OFFSET_ADDRESSING_OPERAND) {
-        labelSection->instruction_array[temp_ic] = operands->destination_operand;
+        char *temp = malloc(sizeof(char) * strlen(operands->source_operand));
+        strcpy(temp, operands->source_operand);
+        temp[strlen(temp) - 2] = '\0'; //trim the struct number.
+
+        labelSection->instruction_array[temp_ic] = temp;
+//        free(temp);
+
         temp_ic++;
         char num = ((char *) operands->destination_operand)[strlen(operands->source_operand) -
                                                             1]; //get the number of the operand 1/2.
@@ -765,6 +780,7 @@ Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata) {
 
     operands->source_operand_type = classified_operands(operands->source_operand);
     operands->destination_operand_type = classified_operands(operands->destination_operand);
+
 
     return operands;
 

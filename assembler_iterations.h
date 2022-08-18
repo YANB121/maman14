@@ -37,6 +37,8 @@ typedef struct Operands {
     int destination_operand_type;
 } Operands;
 
+void update_label_table(struct LabelSection*);
+
 void free_operand(Operands *operands);
 //struct Arguments *initialize_arguments_struct();
 bool validate_entry_and_external_label(char *, struct LabelSection *);
@@ -98,8 +100,9 @@ Operands *get_operands_and_type(struct LineAndMetadata *lineAndMetadata);
 void *
 validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection);
 
-int first_iteration(char *);
+int first_iteration(char *, struct LabelSection *labelSection);
 
+int second_iteration(char *program_file_path, struct LabelSection *labelSection);
 
 bool get_and_validate_label(struct LineAndMetadata *lineAndMetadata, struct LabelSection *);
 

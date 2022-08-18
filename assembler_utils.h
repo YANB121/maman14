@@ -4,6 +4,7 @@
 #include "hashmap.h"
 
 #define MAX_PROGRAM_LENGTH 1000
+#define MAX_LABELS 100
 #define MAX_STRING_SIZE 1000
 
 typedef struct InstructionEntry {
@@ -14,7 +15,7 @@ typedef struct InstructionEntry {
 struct LabelSection {
     int dc;
     int ic;
-    char* instruction_array[MAX_PROGRAM_LENGTH];
+    char *instruction_array[MAX_PROGRAM_LENGTH];
     int data_array[MAX_PROGRAM_LENGTH];
     HashTable *label_table;
 };

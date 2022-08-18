@@ -29,8 +29,15 @@ int main(int size, char *argv[]) {
     char a[3] = ".am";
     strncat(path, a, 3); //add .am extension to the file name
 
+    struct LabelSection *labelSection = initialize_label_section();
 
-    first_iteration(path);
+    first_iteration(path, labelSection);
+    printf("\n");
+    print_table(labelSection->label_table);
+
+    second_iteration(path, labelSection);
+
+    char **keys = get_keys(labelSection->label_table);
 
 
 }

@@ -222,7 +222,7 @@ void ht_insert(HashTable *table, char *key, void *value) {
     }
 }
 
-void * ht_search(HashTable *table, char *key) {
+void *ht_search(HashTable *table, char *key) {
 
     int index = hash_function(key, table->size);
     Ht_item *item = table->items[index];
@@ -276,6 +276,34 @@ void print_table(HashTable *table) {
         }
     }
     printf("-------------------\n\n");
+}
+
+
+char **get_keys(HashTable *table) {
+    char **keys_array = calloc(1000, sizeof(char *));
+    LinkedList **overflowed_list = table->overflow_buckets;
+    int array_index = 0;
+    int i;
+    for (int i = 0; i < table->size; i++) {
+        if (table->items[i]) {
+            keys_array[array_index] = table->items[i]->key;
+            array_index++;
+        }
+
+        if (overflowed_list[i]) {
+            LinkedList *current = overflowed_list[i];
+            do {
+                if (current->item) {
+                    keys_array[array_index] = current->item->key;
+                    array_index++;
+                }
+                current = current->next;
+            } while (current);
+        }
+    }
+    for (i = array_index; i < 1000; i++)
+        keys_array[i] = NULL;
+    return keys_array;
 }
 
 
