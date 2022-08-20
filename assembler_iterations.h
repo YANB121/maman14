@@ -7,12 +7,7 @@
 #include "hashmap.h"
 #include "assembler_utils.h"
 
-#define ERROR_ARRAY_SIZE 20
-#define  LINE_LENGTH 100
-#define DATA_TYPE_LABEL 1
-#define EXTERNAL_TYPE_LABEL 2
-#define ENTRY_TYPE_LABEL 3
-#define OPCODE_TYPE_LABEL 4
+
 
 
 typedef struct LineAndMetadata {

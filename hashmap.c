@@ -132,7 +132,7 @@ LinkedList *linkedlist_insert(LinkedList *list, Ht_item *item) {
     LinkedList *node = allocate_list();
     node->item = item;
     node->next = NULL;
-    temp->next = node;
+    temp->next->next = node;
 
     return list;
 }

@@ -22,26 +22,28 @@ void print_binary(int num);
 int main(int size, char *argv[]) {
     initialize_constant_tables();
     initialize_errors_map();
-    char *path = "program_code.as";
-    span_macros(path);
 
-    path[strlen(path) - 3] = '\0';
-    char a[3] = ".am";
-    strncat(path, a, 3); //add .am extension to the file name
+    for (int i = 0; i < size; i++) {
+        char *path = argv[i];
+        span_macros(path);
 
-    struct LabelSection *labelSection = initialize_label_section();
+        path[strlen(path) - 3] = '\0';
+        char a[3] = ".am";
+        strncat(path, a, 3); //add .am extension to the file name
 
-    first_iteration(path, labelSection);
-    printf("\n");
-    print_table(labelSection->label_table);
+        struct LabelSection *labelSection = initialize_label_section();
 
-    second_iteration(path, labelSection);
+        first_iteration(path, labelSection);
+        printf("\n");
+        print_table(labelSection->label_table);
 
-    char **keys = get_keys(labelSection->label_table);
+        second_iteration(path, labelSection);
 
-
+        write_memory_image_to_object_file(path, labelSection);
+        write_external_file(path, labelSection);
+        write_entry_file(path, labelSection);
+    }
 }
-
 
 void print_binary(int num) {
     int a[11];

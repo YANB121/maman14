@@ -9,6 +9,8 @@ struct HashTable *additionalInstructions;
 struct HashTable *opcodeAndAmountOfOperands;
 struct HashTable *validSourceAddressingMap;
 struct HashTable *validDestAddressingMap;
+struct HashTable *binaryTo32BaseMap;
+
 
 struct HashTable *get_valid_source_addressing_map() {
     return validSourceAddressingMap;
@@ -49,6 +51,7 @@ void initialize_constant_tables() {
     initialize_opcode_and_amount_of_operands_map();
     initialize_valid_source_addressing_method_map();
     initialize_valid_dest_addressing_method_map();
+    initialize_binary_to_32_base_map();
 }
 
 
@@ -131,11 +134,11 @@ void initialize_registers_names_map() {
 
 void initialize_data_instructions_names_map() {
     dataInstructions = create_table(20);
-    ht_insert(dataInstructions, ".data", 1);
-    ht_insert(dataInstructions, ".string", 2);
-    ht_insert(dataInstructions, ".struct", 3);
-    ht_insert(dataInstructions, ".entry", 4);
-    ht_insert(dataInstructions, ".external", 5);
+    ht_insert(dataInstructions, ".data", DATA_TYPE);
+    ht_insert(dataInstructions, ".string", STRING_TYPE);
+    ht_insert(dataInstructions, ".struct", STRUCT_TYPE);
+    ht_insert(dataInstructions, ".entry", ENTRY_TYPE);
+    ht_insert(dataInstructions, ".extern", EXTERNAL_TYPE);
 }
 
 void initialize_opcode_table() {
@@ -162,11 +165,51 @@ void initialize_opcode_table() {
 
 void initialize_additional_instructions_map() {
     additionalInstructions = create_table(20);
-    ht_insert(additionalInstructions, ".external", true);
+    ht_insert(additionalInstructions, ".extern", true);
     ht_insert(additionalInstructions, ".entry", true);
 
 
 }
 
+struct HashTable *get_binary_to_32_base_map() {
+    return binaryTo32BaseMap;
+}
 
+void initialize_binary_to_32_base_map() {
+    binaryTo32BaseMap = create_table(32);
+    ht_insert(binaryTo32BaseMap, "00000", "!");
+    ht_insert(binaryTo32BaseMap, "00001", "@");
+    ht_insert(binaryTo32BaseMap, "00010", "#");
+    ht_insert(binaryTo32BaseMap, "00011", "$");
+    ht_insert(binaryTo32BaseMap, "00100", "%");
+    ht_insert(binaryTo32BaseMap, "00101", "^");
+    ht_insert(binaryTo32BaseMap, "00110", "&");
+    ht_insert(binaryTo32BaseMap, "00111", "*");
+    ht_insert(binaryTo32BaseMap, "01000", "<");
+    ht_insert(binaryTo32BaseMap, "01001", ">");
+    ht_insert(binaryTo32BaseMap, "01010", "a");
+    ht_insert(binaryTo32BaseMap, "01011", "b");
+    ht_insert(binaryTo32BaseMap, "01100", "c");
+    ht_insert(binaryTo32BaseMap, "01101", "d");
+    ht_insert(binaryTo32BaseMap, "01110", "e");
+    ht_insert(binaryTo32BaseMap, "01111", "f");
+    ht_insert(binaryTo32BaseMap, "10000", "g");
+    ht_insert(binaryTo32BaseMap, "10001", "h");
+    ht_insert(binaryTo32BaseMap, "10010", "i");
+    ht_insert(binaryTo32BaseMap, "10011", "j");
+    ht_insert(binaryTo32BaseMap, "10100", "k");
+    ht_insert(binaryTo32BaseMap, "10101", "l");
+    ht_insert(binaryTo32BaseMap, "10110", "m");
+    ht_insert(binaryTo32BaseMap, "10111", "n");
+    ht_insert(binaryTo32BaseMap, "11000", "o");
+    ht_insert(binaryTo32BaseMap, "11001", "p");
+    ht_insert(binaryTo32BaseMap, "11010", "w");
+    ht_insert(binaryTo32BaseMap, "11011", "r");
+    ht_insert(binaryTo32BaseMap, "11100", "s");
+    ht_insert(binaryTo32BaseMap, "11101", "t");
+    ht_insert(binaryTo32BaseMap, "11110", "u");
+    ht_insert(binaryTo32BaseMap, "11111", "v");
+
+
+}
 

@@ -65,11 +65,9 @@ int first_iteration(char *program_file_path, struct LabelSection *labelSection) 
 
 }
 
+
 int second_iteration(char *program_file_path, struct LabelSection *labelSection) {
-    //trim the ".am" extension and add ".o" extension
-    char *output_file_name = get_name_with_new_file_extension(program_file_path, ".o", 3);
-    //open new file for writing.
-    FILE *output_file = open_write_file_else_exit(output_file_name);
+
 
     bool is_error_occurred = false;
 
@@ -89,6 +87,12 @@ int second_iteration(char *program_file_path, struct LabelSection *labelSection)
                 printf("the label: %s , doesn't exist", labelSection->instruction_array[i]);
                 exit(1);
             } else {
+                if (label_arr[0] == EXTERNAL_TYPE_LABEL)
+                    for (int j = 2; j < 10; j++)
+                        if (label_arr[j] == 0) {
+                            label_arr[j] = i;
+                            break;
+                        }
                 char *line = calculate_line_for_second_iteration(labelSection, i);
                 labelSection->instruction_array[i] = line;
             }
@@ -255,7 +259,8 @@ validate_and_insert_entry_arguments(struct LineAndMetadata *lineAndMetadata, str
 
     bool is_valid_label = validate_entry_and_external_label(word, labelSection);
     if (is_valid_label) {
-        insert_external_or_entry_label_into_table(word, labelSection, ENTRY_TYPE_LABEL);
+        //insert_external_or_entry_label_into_table(word, labelSection, ENTRY_TYPE_LABEL);
+        ht_insert(labelSection->entry_labels, word, 1);
         free(line_copy);
         return true;
     } else {
@@ -324,10 +329,11 @@ void *validate_and_insert_string_arguments(struct LineAndMetadata *lineAndMetada
     word = trim_commas(word);
     int temp_dc = labelSection->dc;
     for (int i = 0; i < strlen(word); i++) {
-        char temp = word[i];
-        labelSection->data_array[temp_dc] = (int) word[i];
+        labelSection->data_array[temp_dc] = convert_number_to_binary_string((int) word[i]);
         temp_dc++;
     }
+    labelSection->data_array[temp_dc] = convert_number_to_binary_string(0);
+    temp_dc++;
 
     word = strtok(NULL, " ");
     word = trim_white_spaces(word);
@@ -369,7 +375,7 @@ void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetada
         return NULL;
     }
 
-    labelSection->data_array[temp_dc] = number;
+    labelSection->data_array[temp_dc] = convert_number_to_binary_string(number);
     temp_dc++;
 
     word = strtok(NULL, ",");
@@ -384,9 +390,11 @@ void *validate_and_insert_struct_arguments(struct LineAndMetadata *lineAndMetada
     word = trim_commas(word);
 
     for (int i = 0; i < strlen(word); i++) {
-        labelSection->data_array[temp_dc] = (int) word[i];
+        labelSection->data_array[temp_dc] = convert_number_to_binary_string((int) word[i]);
         temp_dc++;
     }
+    labelSection->data_array[temp_dc] = convert_number_to_binary_string(0);
+    temp_dc++;
 
     word = strtok(NULL, " ");
     word = trim_white_spaces(word);
@@ -421,12 +429,13 @@ void *validate_and_insert_data_arguments(struct LineAndMetadata *lineAndMetadata
     while (word != NULL) {
         word = trim_white_spaces(word);
         long number = string_to_number(word);
+        char *converted_string = convert_number_to_binary_string(number);
         if (number == NULL) { //in case the input is not a valid number
             lineAndMetadata->is_error_occurred = 1;
             add_error_code(lineAndMetadata, ERR_CODE_INVALID_DATA_TYPE);
             return NULL;
         } else {
-            labelSection->data_array[temp_dc] = number;
+            labelSection->data_array[temp_dc] = converted_string;
         }
         temp_dc++;
         word = strtok(NULL, ",");
@@ -480,7 +489,7 @@ bool validate_entry_and_external_label(char *label, struct LabelSection *labelSe
 }
 
 void insert_external_or_entry_label_into_table(char *label, struct LabelSection *labelSection, int type) {
-    int *counter_and_type = calloc(2, sizeof(int));
+    int *counter_and_type = calloc(10, sizeof(int));
     counter_and_type[0] = type; //indicates its a data type label
     counter_and_type[1] = 0;
     ht_insert(labelSection->label_table, label, counter_and_type);

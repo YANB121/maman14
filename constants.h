@@ -16,6 +16,8 @@
 #define EXTERNAL_TYPE 5
 
 
+struct HashTable *get_binary_to_32_base_map();
+
 struct HashTable *get_valid_source_addressing_map();
 
 struct HashTable *get_valid_dest_addressing_map();
@@ -33,6 +35,8 @@ struct HashTable *get_additional_instruction_map();
 void initialize_opcode_and_amount_of_operands_map();
 
 void initialize_additional_instructions_map();
+
+void initialize_binary_to_32_base_map();
 
 void initialize_constant_tables();
 
