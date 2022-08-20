@@ -860,6 +860,8 @@ bool verify_operand_amount(Operands *operands, int operand_number) {
 
     if (current_operands != operand_number)
         return false;
+    else
+        return true;
 }
 
 

@@ -4,144 +4,136 @@
 	<Project>
 		<Option title="MAMN14"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="msvc8"/>
+		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/Lidar/maman14/cmake-build-debug"/>
+				<Option working_dir="/home/ub-l/project/maman14/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MAMN14">
-				<Option output="C:/Users/Lidar/maman14/cmake-build-debug/MAMN14.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Lidar/maman14/cmake-build-debug"/>
+				<Option output="/home/ub-l/project/maman14/cmake-build-debug/MAMN14" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ub-l/project/maman14/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="msvc8"/>
+				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 MAMN14"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 MAMN14"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="MAMN14/fast">
-				<Option output="C:/Users/Lidar/maman14/cmake-build-debug/MAMN14.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Lidar/maman14/cmake-build-debug"/>
+				<Option output="/home/ub-l/project/maman14/cmake-build-debug/MAMN14" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ub-l/project/maman14/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="msvc8"/>
+				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 MAMN14/fast"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 MAMN14/fast"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="C:/Users/Lidar/maman14/cmake-build-debug"/>
+				<Option working_dir="/home/ub-l/project/maman14/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/Lidar/maman14/cmake-build-debug"/>
+				<Option working_dir="/home/ub-l/project/maman14/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f C:\Users\Lidar\maman14\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j8 -f &quot;/home/ub-l/project/maman14/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Lidar/maman14/assembler_iterations.c">
+		<Unit filename="/home/ub-l/project/maman14/assembler_iterations.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/assembler_iterations.h">
+		<Unit filename="/home/ub-l/project/maman14/assembler_iterations.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/assembler_utils.c">
+		<Unit filename="/home/ub-l/project/maman14/assembler_utils.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/assembler_utils.h">
+		<Unit filename="/home/ub-l/project/maman14/assembler_utils.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/constants.c">
+		<Unit filename="/home/ub-l/project/maman14/constants.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/constants.h">
+		<Unit filename="/home/ub-l/project/maman14/constants.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/errors_utils.c">
+		<Unit filename="/home/ub-l/project/maman14/errors_utils.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/errors_utils.h">
+		<Unit filename="/home/ub-l/project/maman14/errors_utils.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/file_utils.c">
+		<Unit filename="/home/ub-l/project/maman14/file_utils.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/file_utils.h">
+		<Unit filename="/home/ub-l/project/maman14/file_utils.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/hashmap.c">
+		<Unit filename="/home/ub-l/project/maman14/hashmap.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/hashmap.h">
+		<Unit filename="/home/ub-l/project/maman14/hashmap.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/input_utils.c">
+		<Unit filename="/home/ub-l/project/maman14/input_utils.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/input_utils.h">
+		<Unit filename="/home/ub-l/project/maman14/input_utils.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/main.c">
+		<Unit filename="/home/ub-l/project/maman14/main.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/operands_related.c">
+		<Unit filename="/home/ub-l/project/maman14/operands_related.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/operands_related.h">
+		<Unit filename="/home/ub-l/project/maman14/operands_related.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/preprocessor.c">
+		<Unit filename="/home/ub-l/project/maman14/preprocessor.c">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/preprocessor.h">
+		<Unit filename="/home/ub-l/project/maman14/preprocessor.h">
 			<Option target="MAMN14"/>
 		</Unit>
-		<Unit filename="C:/Users/Lidar/maman14/CMakeLists.txt">
+		<Unit filename="/home/ub-l/project/maman14/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

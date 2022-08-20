@@ -10,7 +10,7 @@
 
 #if defined(_WIN32) || defined(_WIN64)
 //for developing in windows.
-# define strtok_r strtok_s
+# define strtok strtok_s
 #endif
 
 
@@ -62,9 +62,9 @@ void fetch_write_macros(FILE *file, HashTable *hashTable, char *path) {
         temp_copy = calloc(1, 255);//temporary allocate buffer for string copy
         strcpy(temp_copy, buffer); //copy the original line into temporary line
 
-        first_word = strtok_r(temp_copy, delimiter, &reminder); //fetch the first word from the line
+        first_word = strtok(temp_copy, delimiter); //fetch the first word from the line
         first_word[strcspn(first_word, "\n")] = 0; //trim the \n
-        second_word = strtok_r(NULL, delimiter, &reminder); //fetch the second word from line
+        second_word = strtok(NULL, delimiter); //fetch the second word from line
 
         if (second_word != NULL)
             second_word[strcspn(second_word, "\n")] = 0; //trim the \n

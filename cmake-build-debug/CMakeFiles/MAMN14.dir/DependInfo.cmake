@@ -8,16 +8,16 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/Lidar/maman14/assembler_iterations.c" "CMakeFiles/MAMN14.dir/assembler_iterations.c.obj" "msvc" "CMakeFiles/MAMN14.dir/assembler_iterations.c.obj.d"
-  "C:/Users/Lidar/maman14/assembler_utils.c" "CMakeFiles/MAMN14.dir/assembler_utils.c.obj" "msvc" "CMakeFiles/MAMN14.dir/assembler_utils.c.obj.d"
-  "C:/Users/Lidar/maman14/constants.c" "CMakeFiles/MAMN14.dir/constants.c.obj" "msvc" "CMakeFiles/MAMN14.dir/constants.c.obj.d"
-  "C:/Users/Lidar/maman14/errors_utils.c" "CMakeFiles/MAMN14.dir/errors_utils.c.obj" "msvc" "CMakeFiles/MAMN14.dir/errors_utils.c.obj.d"
-  "C:/Users/Lidar/maman14/file_utils.c" "CMakeFiles/MAMN14.dir/file_utils.c.obj" "msvc" "CMakeFiles/MAMN14.dir/file_utils.c.obj.d"
-  "C:/Users/Lidar/maman14/hashmap.c" "CMakeFiles/MAMN14.dir/hashmap.c.obj" "msvc" "CMakeFiles/MAMN14.dir/hashmap.c.obj.d"
-  "C:/Users/Lidar/maman14/input_utils.c" "CMakeFiles/MAMN14.dir/input_utils.c.obj" "msvc" "CMakeFiles/MAMN14.dir/input_utils.c.obj.d"
-  "C:/Users/Lidar/maman14/main.c" "CMakeFiles/MAMN14.dir/main.c.obj" "msvc" "CMakeFiles/MAMN14.dir/main.c.obj.d"
-  "C:/Users/Lidar/maman14/operands_related.c" "CMakeFiles/MAMN14.dir/operands_related.c.obj" "msvc" "CMakeFiles/MAMN14.dir/operands_related.c.obj.d"
-  "C:/Users/Lidar/maman14/preprocessor.c" "CMakeFiles/MAMN14.dir/preprocessor.c.obj" "msvc" "CMakeFiles/MAMN14.dir/preprocessor.c.obj.d"
+  "/home/ub-l/project/maman14/assembler_iterations.c" "CMakeFiles/MAMN14.dir/assembler_iterations.c.o" "gcc" "CMakeFiles/MAMN14.dir/assembler_iterations.c.o.d"
+  "/home/ub-l/project/maman14/assembler_utils.c" "CMakeFiles/MAMN14.dir/assembler_utils.c.o" "gcc" "CMakeFiles/MAMN14.dir/assembler_utils.c.o.d"
+  "/home/ub-l/project/maman14/constants.c" "CMakeFiles/MAMN14.dir/constants.c.o" "gcc" "CMakeFiles/MAMN14.dir/constants.c.o.d"
+  "/home/ub-l/project/maman14/errors_utils.c" "CMakeFiles/MAMN14.dir/errors_utils.c.o" "gcc" "CMakeFiles/MAMN14.dir/errors_utils.c.o.d"
+  "/home/ub-l/project/maman14/file_utils.c" "CMakeFiles/MAMN14.dir/file_utils.c.o" "gcc" "CMakeFiles/MAMN14.dir/file_utils.c.o.d"
+  "/home/ub-l/project/maman14/hashmap.c" "CMakeFiles/MAMN14.dir/hashmap.c.o" "gcc" "CMakeFiles/MAMN14.dir/hashmap.c.o.d"
+  "/home/ub-l/project/maman14/input_utils.c" "CMakeFiles/MAMN14.dir/input_utils.c.o" "gcc" "CMakeFiles/MAMN14.dir/input_utils.c.o.d"
+  "/home/ub-l/project/maman14/main.c" "CMakeFiles/MAMN14.dir/main.c.o" "gcc" "CMakeFiles/MAMN14.dir/main.c.o.d"
+  "/home/ub-l/project/maman14/operands_related.c" "CMakeFiles/MAMN14.dir/operands_related.c.o" "gcc" "CMakeFiles/MAMN14.dir/operands_related.c.o.d"
+  "/home/ub-l/project/maman14/preprocessor.c" "CMakeFiles/MAMN14.dir/preprocessor.c.o" "gcc" "CMakeFiles/MAMN14.dir/preprocessor.c.o.d"
   )
 
 # Targets to which this target links.

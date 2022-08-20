@@ -1,6 +1,6 @@
 
 #include "hashmap.h"
-#include "string.h"
+#include <string.h>
 #include "assembler_iterations.h"
 #include "constants.h"
 #include "input_utils.h"
@@ -19,11 +19,17 @@ void test();
 
 void print_binary(int num);
 
-int main(int size, char **argv) {
+int main(int size, char *argv[]) {
     initialize_constant_tables();
     initialize_errors_map();
+    if (size < 2) {
+        printf("please pass at least 1 file name as argument");
+        exit(1);
+    }
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 1; i < size; i++) {
+//    char *path = malloc(30);
+//    strcpy(path,"program_code.as");
         char *path = argv[i];
         span_macros(path);
 
