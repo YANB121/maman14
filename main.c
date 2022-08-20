@@ -19,7 +19,7 @@ void test();
 
 void print_binary(int num);
 
-int main(int size, char *argv[]) {
+int main(int size, char **argv) {
     initialize_constant_tables();
     initialize_errors_map();
 
