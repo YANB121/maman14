@@ -132,7 +132,7 @@ char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int
     int line;
     char *converted_line;
     switch (type_code) {
-        case DATA_TYPE_LABEL:
+        case DATA_TYPE_LABEL:;
             int dc = label_arr[1];
             line = 1; //just for normalization
             line = line << 8; //move 8 bit left for adding the dc number
@@ -143,7 +143,7 @@ char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int
             converted_line = converted_line + 1;
             return converted_line;
 
-        case OPCODE_TYPE_LABEL:
+        case OPCODE_TYPE_LABEL:;
             int ic = label_arr[1];
             line = 1; //just for normalization
             line = line << 8; //move 8 bit left for adding the dc number
@@ -153,7 +153,7 @@ char *calculate_line_for_second_iteration(struct LabelSection *labelSection, int
             converted_line = convert_number_to_binary_string(line);
             converted_line = converted_line + 1;
             return converted_line;
-        case EXTERNAL_TYPE_LABEL:
+        case EXTERNAL_TYPE_LABEL:;
             line = 1; //just for normalization
             line = line << 10; //move 10 bit left for adding the dc number
             line += 1; //add encoding code 01
@@ -227,15 +227,15 @@ void *handle_data_instruction(struct LineAndMetadata *lineAndMetadata, struct La
 void *
 validate_and_insert_instruction_arguments(struct LineAndMetadata *lineAndMetadata, struct LabelSection *labelSection) {
     switch (lineAndMetadata->instruction_type) {
-        case DATA_TYPE:
+        case DATA_TYPE:;
             return validate_and_insert_data_arguments(lineAndMetadata, labelSection);
-        case STRING_TYPE:
+        case STRING_TYPE:;
             return validate_and_insert_string_arguments(lineAndMetadata, labelSection);
-        case STRUCT_TYPE:
+        case STRUCT_TYPE:;
             return validate_and_insert_struct_arguments(lineAndMetadata, labelSection);
-        case ENTRY_TYPE:
+        case ENTRY_TYPE:;
             return validate_and_insert_entry_arguments(lineAndMetadata, labelSection);
-        case EXTERNAL_TYPE:
+        case EXTERNAL_TYPE:;
             return validate_and_insert_external_arguments(lineAndMetadata, labelSection);
     }
 
